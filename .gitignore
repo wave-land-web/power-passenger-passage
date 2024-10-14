@@ -20,6 +20,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# misc 
+# workspace 
 .netlify
 .vscode
+NOTES.md

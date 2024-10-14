@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Alegreya';
+    src:
+      url('/fonts/Alegreya-Regular.woff2') format('woff2'),
+      url('/fonts/Alegreya-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Alegreya';
+    src:
+      url('/fonts/Alegreya-Italic.woff2') format('woff2'),
+      url('/fonts/Alegreya-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Alegreya Sans';
+    src:
+      url('/fonts/AlegreyaSans-Regular.woff2') format('woff2'),
+      url('/fonts/AlegreyaSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Alegreya Sans';
+    src:
+      url('/fonts/AlegreyaSans-Bold.woff2') format('woff2'),
+      url('/fonts/AlegreyaSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Alegreya Sans';
+    src:
+      url('/fonts/AlegreyaSans-Italic.woff2') format('woff2'),
+      url('/fonts/AlegreyaSans-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Alegreya Sans';
+    src:
+      url('/fonts/AlegreyaSans-BoldItalic.woff2') format('woff2'),
+      url('/fonts/AlegreyaSans-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+}
+
+:root {
+  --color-transparent: transparent;
+  --color-white: #fffafa;
+  --color-black: #000000;
+  --color-grey: #999697;
+  --color-slate: #332d2e;
+  --color-red-900: #a82c51;
+  --color-red-500: #d496a8;
+  --color-red-100: #f6eaee;
+  --color-tan-100: #fff6f0;
+
+  /* TODO: add text sizes, heights, spacing, padding, etc. */
+}
+
+/* General */
+
+html {
+  /* Scrollbar */
+  scrollbar-color: var(--color-black) var(--color-white);
+  scrollbar-width: thin;
+
+  /* Font */
+  @apply font-body;
+}
+
+img,
+svg,
+video {
+  @apply block w-full h-auto;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply text-balance font-header text-black;
+}
+
+p {
+  @apply text-pretty text-slate;
+}
+
+/* Animations */
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /**
+    * Required class: `lsa` (initializes animations and defaults to fade-in)
+    * Note: Add `no-repeat` class to prevent animations from repeating on scroll
+    */
+  .lsa {
+    @apply opacity-0 transform transition-[opacity,transform] duration-700;
+
+    /* Slide animations */
+    &.lsa-slide-up {
+      @apply translate-y-4;
+    }
+    &.lsa-slide-down {
+      @apply -translate-y-4;
+    }
+    &.lsa-slide-left {
+      @apply -translate-x-4;
+    }
+    &.lsa-slide-right {
+      @apply translate-x-4;
+    }
+    &.lsa-slide-down-right {
+      @apply -translate-x-4 -translate-y-4;
+    }
+    &.lsa-slide-down-left {
+      @apply translate-x-4 -translate-y-4;
+    }
+    &.lsa-slide-up-right {
+      @apply -translate-x-4 translate-y-4;
+    }
+    &.lsa-slide-up-left {
+      @apply translate-x-4 translate-y-4;
+    }
+
+    /* Handle active state */
+    &.active {
+      @apply opacity-100 translate-x-0 translate-y-0;
+    }
+  }
+}
