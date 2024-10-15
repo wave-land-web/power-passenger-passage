@@ -64,6 +64,12 @@
   }
 }
 
+@layer components {
+  .site-icon {
+    @apply w-6 stroke-1;
+  }
+}
+
 :root {
   --color-transparent: transparent;
   --color-white: #fffafa;
@@ -96,6 +102,9 @@
   /* Spacing */
   --site-padding: clamp(1rem, 2vw, 2rem);
   --section-padding: clamp(7rem, 10vw, 9rem);
+
+  /* Sizing */
+  --nav-height: 98px;
 }
 
 /* General */
@@ -111,7 +120,6 @@ html {
 
 body {
   overflow-x: hidden;
-  padding: var(--site-padding);
 }
 
 section {
@@ -140,8 +148,17 @@ h5 {
   @apply text-balance font-header text-black;
 }
 
+p,
+li {
+  @apply text-xs text-slate;
+}
+
 p {
-  @apply text-pretty text-slate;
+  @apply text-pretty;
+}
+
+a {
+  @apply hover:text-red-900 transition;
 }
 
 /* Animations */

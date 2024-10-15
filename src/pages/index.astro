@@ -1,12 +1,34 @@
 ---
+import { Picture } from 'astro:assets'
+import momWoodsImage from '../assets/mom-woods.png'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Power Passenger Passage">
-  <header>
-    <h1 class="text-xl lsa lsa-slide-up">Life coaching for preconception, pregnancy, and beyond</h1>
-    <p class="text-s lsa lsa-slide-up delay-200">
-      Experience your BEST pregnancy with life coaching
-    </p>
+  <!-- TODO: create PageHeader component -->
+  <header class="h-dvh p-[var(--site-padding)] bg-gradient-to-b from-tan-100 to-white">
+    <div
+      class="max-w-6xl mx-auto pt-[var(--nav-height)] h-full grid md:grid-cols-2 justify-items-center items-center"
+    >
+      <div class="flex flex-col gap-4 text-center md:text-left">
+        <h1 class="text-xl lsa lsa-slide-up">
+          <span class="font-bold text-red-900">Life coaching</span> for preconception, pregnancy, and
+          beyond
+        </h1>
+        <p class="text-s lsa lsa-slide-up delay-200">
+          Experience your BEST pregnancy with life coaching
+        </p>
+        <!-- TODO: create Button component -->
+        <a href="/contact" class="lsa lsa-slide-up delay-500" title="Book a Free Call"
+          >Book a Free Call</a
+        >
+      </div>
+
+      <Picture
+        class="max-w-96 rounded-[125px_24px_125px_125px]"
+        src={momWoodsImage}
+        alt="Power Passenger Passage logo"
+      />
+    </div>
   </header>
 </Layout>
