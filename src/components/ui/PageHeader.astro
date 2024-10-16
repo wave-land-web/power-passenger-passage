@@ -1,0 +1,54 @@
+---
+/**
+ * PageHeader component
+ *
+ * Images are optional, but if you include one, you must also include an `imageAlt` prop.
+ * There is an optional slot for additional content - CTA buttons, newsletter input, etc.
+ */
+import type { ImageMetadata } from 'astro'
+import { Icon } from 'astro-icon/components'
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  title: string
+  subtitle: string
+  image?: ImageMetadata
+  imageAlt?: string
+}
+
+const { title, subtitle, image, imageAlt } = Astro.props
+---
+
+<header class="h-dvh p-[var(--site-padding)] bg-gradient-to-b from-tan-100 to-white">
+  {
+    image && imageAlt ? (
+      <div class="max-w-6xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-[var(--nav-height)] h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center">
+        <div class="md:w-2/3 flex flex-col items-center md:items-start gap-8 text-center md:text-left">
+          <Icon name="zig-zag" class="w-16 lsa lsa-slide-up no-repeat" />
+          <h1 class="text-xl lsa lsa-slide-up no-repeat" set:html={title} />
+          <p class="text-base lsa lsa-slide-up no-repeat delay-200" set:html={subtitle} />
+          <div class="lsa lsa-slide-up no-repeat delay-500">
+            <slot />
+          </div>
+        </div>
+
+        <Picture
+          class="w-full max-w-96 rounded-[125px_24px_125px_125px] lsa lsa-slide-up no-repeat delay-700"
+          src={image}
+          loading="eager"
+          alt={imageAlt}
+        />
+      </div>
+    ) : (
+      <div class="max-w-4xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-[var(--nav-height)] h-full flex flex-col items-center md:justify-center gap-8 text-center ">
+        <Icon name="zig-zag" class="w-16 lsa lsa-slide-up no-repeat" />
+        <h1 class="text-xl lsa lsa-slide-up no-repeat" set:html={title} />
+        <p class="text-base lsa lsa-slide-up no-repeat delay-200" set:html={subtitle} />
+        <div class="lsa lsa-slide-up no-repeat delay-500">
+          
+          <slot />
+        </div>
+      </div>
+    )
+  }
+</header>

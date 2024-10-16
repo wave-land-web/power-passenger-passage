@@ -1,39 +1,17 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { Picture } from 'astro:assets'
 import momWoodsImage from '../assets/mom-woods.png'
 import CTA from '../components/text/CTA.astro'
+import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Power Passenger Passage">
-  <!-- TODO: create PageHeader component -->
-  <header class="h-dvh p-[var(--site-padding)] bg-gradient-to-b from-tan-100 to-white">
-    <div
-      class="max-w-6xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-[var(--nav-height)] h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center"
-    >
-      <div
-        class="md:w-2/3 flex flex-col items-center md:items-start gap-8 text-center md:text-left"
-      >
-        <Icon name="zig-zag" class="w-16 lsa lsa-slide-up no-repeat" />
-        <h1 class="text-xl lsa lsa-slide-up no-repeat">
-          <span class="font-bold text-red-900">Life coaching</span> for preconception, pregnancy, and
-          beyond
-        </h1>
-        <p class="text-base lsa lsa-slide-up no-repeat delay-200">
-          Experience your BEST pregnancy with life coaching
-        </p>
-        <div class="lsa lsa-slide-up no-repeat delay-500">
-          <CTA href="/contact" text="Book a Free Call" class="m-auto md:m-0" />
-        </div>
-      </div>
-
-      <Picture
-        class="w-full max-w-96 rounded-[125px_24px_125px_125px] lsa lsa-slide-up no-repeat delay-700"
-        src={momWoodsImage}
-        loading="eager"
-        alt="Power Passenger Passage logo"
-      />
-    </div>
-  </header>
+  <PageHeader
+    title='<span class="font-bold text-red-900">Life coaching</span> for preconception, pregnancy, and beyond'
+    subtitle="Experience your BEST pregnancy with life coaching"
+    image={momWoodsImage}
+    imageAlt="A mom with her baby in the woods"
+  >
+    <CTA href="/contact" text="Book a Free Call" class="m-auto md:m-0" />
+  </PageHeader>
 </Layout>
