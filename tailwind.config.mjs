@@ -22,11 +22,13 @@ export default {
     colors: {
       transparent: 'transparent',
       white: 'var(--color-white)',
+      whiteTransparent: 'var(--color-white-transparent)',
       black: 'var(--color-black)',
       grey: 'var(--color-grey)',
       slate: 'var(--color-slate)',
       red: {
         900: 'var(--color-red-900)',
+        800: 'var(--color-red-800)',
         500: 'var(--color-red-500)',
         100: 'var(--color-red-100)',
       },

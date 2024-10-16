@@ -1,0 +1,19 @@
+---
+export interface Props {
+  text: string
+  href: string
+  newWindow?: boolean
+  class?: string
+}
+
+const { text, href, newWindow, class: className } = Astro.props
+---
+
+<a
+  href={href}
+  class={`${className} block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-lg transition`}
+  target={newWindow ? '_blank' : '_self'}
+  rel={newWindow ? 'noopener noreferrer' : ''}
+  title={text}
+  aria-label={text}>{text}</a
+>
