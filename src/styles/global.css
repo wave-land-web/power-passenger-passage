@@ -80,6 +80,7 @@
   --color-red-900: #a82c51;
   --color-red-800: #b95674;
   --color-red-500: #d496a8;
+  --color-red-200: #eed5dc;
   --color-red-100: #f6eaee;
   --color-tan-100: #fff6f0;
 
@@ -115,11 +116,11 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  @apply overflow-x-hidden;
 }
 
 section {
-  padding: var(--section-padding) 0;
+  @apply py-sectionPadding px-0;
 }
 
 header,
@@ -144,6 +145,22 @@ h5 {
   @apply text-balance font-header text-black;
 }
 
+h1 {
+  @apply text-xl;
+}
+
+h2 {
+  @apply text-lg;
+}
+
+h3 {
+  @apply text-md;
+}
+
+h4 {
+  @apply text-base;
+}
+
 p,
 li {
   @apply text-sm text-slate;
@@ -154,7 +171,7 @@ p {
 }
 
 a {
-  @apply hover:text-red-900 transition;
+  @apply hover:text-red-900 transition-all;
 }
 
 /* Utility Classes */
@@ -165,6 +182,10 @@ a {
 
 .site-icon {
   @apply w-6 stroke-1;
+}
+
+.site-link-2 {
+  @apply hover:text-white transition-all;
 }
 
 /* Animations */

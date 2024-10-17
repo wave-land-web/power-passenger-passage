@@ -3,13 +3,12 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <nav
-  class="fixed left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-[var(--nav-height)] z-20 mt-[var(--site-padding)] px-8 py-2 flex items-center justify-between gap-4 bg-whiteTransparent backdrop-blur-md border rounded-full"
+  class="fixed left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 flex items-center justify-between gap-4 bg-whiteTransparent backdrop-blur-md border rounded-full"
 >
   <a href="/" title="Power Passenger Passage Home" aria-label="Power Passenger Passage Home">
-    <Icon name="logo" class="size-20" />
+    <Icon name="logo" class="size-20 md:size-24" />
   </a>
 
-  <!-- TODO: build mobile navigation -->
   <button
     id="hamburger"
     class="relative z-10 flex md:hidden flex-col justify-center items-center size-8"
@@ -23,6 +22,9 @@ import { Icon } from 'astro-icon/components'
     </span>
   </button>
 
+  <!-- TODO: build mobile navigation -->
+
+  <!-- Desktop navigation -->
   <ul class="hidden md:flex items-center gap-8">
     <li>
       <a href="/" title="Home" aria-label="Home">Home</a>

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import Subscribe from './Subscribe.astro'
 ---
 
@@ -13,5 +14,79 @@ import Subscribe from './Subscribe.astro'
     <Subscribe />
   </div>
 
-  <!-- Main footer items (logo, sitemap, contact info, social icons) -->
+  <!-- Main footer items -->
+  <div class="bg-red-900 text-white">
+    <div class="p-12 container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+      <div>
+        <Icon name="logo" class="size-20 md:size-24 mb-4" />
+        <p class="text-red-200">Life coaching for preconception, pregnancy, and beyond</p>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-white">Sitemap</h3>
+        <ul class="flex flex-col gap-2">
+          <li class="text-red-200"><a href="/" class="site-link-2">Home</a></li>
+          <li class="text-red-200"><a href="/about" class="site-link-2">About</a></li>
+          <li class="text-red-200"><a href="/blog" class="site-link-2">Blog</a></li>
+          <li class="text-red-200"><a href="/contact" class="site-link-2">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-white">Contact</h3>
+        <ul class="flex flex-col gap-2">
+          <li class="text-red-200">
+            <a
+              href="mailto:emmie@erslifecoach.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Email"
+              aria-label="Email"
+              class="site-link-2">emmie@erslifecoach.com</a
+            >
+          </li>
+          <li class="text-red-200">
+            <a
+              href="https://www.instagram.com/erslifecoach/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Instagram"
+              aria-label="Instagram"
+              class="site-link-2">Instagram</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Social icons -->
+    <div class="px-12 container border-red-200">
+      <div class="py-12 border-t-[1px]">
+        <ul class="flex gap-8 md:justify-end">
+          <li>
+            <a
+              href="https://www.instagram.com/erslifecoach/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Instagram"
+              aria-label="Instagram"
+            >
+              <Icon name="tabler:brand-instagram" class="site-icon text-red-200 site-link-2" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:emmie@erslifecoach.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Email"
+              aria-label="Email"
+            >
+              <Icon name="tabler:mail" class="site-icon text-red-200 site-link-2" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </footer>

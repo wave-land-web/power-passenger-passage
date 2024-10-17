@@ -23,6 +23,7 @@ export default {
         900: 'var(--color-red-900)',
         800: 'var(--color-red-800)',
         500: 'var(--color-red-500)',
+        200: 'var(--color-red-200)',
         100: 'var(--color-red-100)',
       },
       tan: {
@@ -33,6 +34,11 @@ export default {
       fontFamily: {
         header: ['Alegreya', 'serif'],
         body: ['Alegreya Sans', 'sans-serif'],
+      },
+      spacing: {
+        sitePadding: 'var(--site-padding)',
+        sectionPadding: 'var(--section-padding)',
+        navHeight: 'var(--nav-height)',
       },
     },
   },
