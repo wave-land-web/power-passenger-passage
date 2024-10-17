@@ -19,11 +19,11 @@ export interface Props {
 const { title, subtitle, image, imageAlt } = Astro.props
 ---
 
-<header class="h-dvh p-[var(--site-padding)] bg-gradient-to-b from-tan-100 to-white">
+<header class="md:h-dvh p-[var(--site-padding)] bg-gradient-to-b from-tan-100 to-white">
   {
     image && imageAlt ? (
       <div class="max-w-6xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-[var(--nav-height)] h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center">
-        <div class="md:w-2/3 flex flex-col items-center md:items-start gap-8 text-center md:text-left">
+        <div class="md:w-3/5 flex flex-col items-center md:items-start gap-8 text-center md:text-left">
           <Icon name="zig-zag" class="w-16 lsa lsa-slide-up no-repeat" />
           <h1 class="text-xl lsa lsa-slide-up no-repeat" set:html={title} />
           <p class="text-base lsa lsa-slide-up no-repeat delay-200" set:html={subtitle} />
@@ -33,7 +33,7 @@ const { title, subtitle, image, imageAlt } = Astro.props
         </div>
 
         <Picture
-          class="w-full max-w-96 rounded-[125px_24px_125px_125px] lsa lsa-slide-up no-repeat delay-700"
+          class="w-full max-h-[500px] rounded-[125px_24px_125px_125px] shadow-sm lsa lsa-slide-up no-repeat delay-700"
           src={image}
           loading="eager"
           alt={imageAlt}
@@ -44,8 +44,7 @@ const { title, subtitle, image, imageAlt } = Astro.props
         <Icon name="zig-zag" class="w-16 lsa lsa-slide-up no-repeat" />
         <h1 class="text-xl lsa lsa-slide-up no-repeat" set:html={title} />
         <p class="text-base lsa lsa-slide-up no-repeat delay-200" set:html={subtitle} />
-        <div class="lsa lsa-slide-up no-repeat delay-500">
-          
+        <div class="w-full lsa lsa-slide-up no-repeat delay-500">
           <slot />
         </div>
       </div>

@@ -84,21 +84,15 @@
   --color-tan-100: #fff6f0;
 
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
-  --fs-2xs: clamp(0.64rem, 0.752941vi + 0.45rem, 0.96rem);
-  --fs-xs: clamp(0.8rem, 0.941176vi + 0.56rem, 1.2rem);
-  --fs-base: clamp(1rem, 1.176471vi + 0.71rem, 1.5rem);
-  --fs-s: clamp(1.25rem, 1.482353vi + 0.88rem, 1.88rem);
-  --fs-m: clamp(1.56rem, 1.835294vi + 1.1rem, 2.34rem);
-  --fs-l: clamp(1.95rem, 2.305882vi + 1.37rem, 2.93rem);
-  --fs-xl: clamp(2.44rem, 2.870588vi + 1.72rem, 3.66rem);
-  --fs-2xl: clamp(3.05rem, 3.6vi + 2.15rem, 4.58rem);
-  --fs-3xl: clamp(3.81rem, 4.494118vi + 2.69rem, 5.72rem);
-  --fs-4xl: clamp(4.77rem, 5.6vi + 3.37rem, 7.15rem);
-  --fs-5xl: clamp(5.96rem, 7.011765vi + 4.21rem, 8.94rem);
-  --fs-6xl: clamp(7.45rem, 8.776471vi + 5.26rem, 11.18rem);
-  --fs-7xl: clamp(9.31rem, 10.964706vi + 6.57rem, 13.97rem);
-  --fs-8xl: clamp(11.64rem, 13.694118vi + 8.22rem, 17.46rem);
-  --fs-9xl: clamp(14.55rem, 17.129412vi + 10.27rem, 21.83rem);
+  --fs-2xs: clamp(0.64rem, 0.05vi + 0.63rem, 0.67rem);
+  --fs-xs: clamp(0.8rem, 0.17vi + 0.76rem, 0.89rem);
+  --fs-sm: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
+  --fs-base: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
+  --fs-md: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
+  --fs-lg: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
+  --fs-xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
+  --fx-xxl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
+
   --line-height: calc(0.6rem + 2ex);
 
   /* Spacing */
@@ -131,7 +125,7 @@ section {
 header,
 main,
 nav {
-  @apply w-full max-w-screen-2xl mx-auto;
+  @apply w-full mx-auto;
 }
 
 img,
@@ -152,7 +146,7 @@ h5 {
 
 p,
 li {
-  @apply text-xs text-slate;
+  @apply text-sm text-slate;
 }
 
 p {
@@ -161,6 +155,16 @@ p {
 
 a {
   @apply hover:text-red-900 transition;
+}
+
+/* Utility Classes */
+
+.container {
+  @apply w-full h-full max-w-screen-2xl mx-auto;
+}
+
+.site-icon {
+  @apply w-6 stroke-1;
 }
 
 /* Animations */

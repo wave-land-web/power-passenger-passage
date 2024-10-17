@@ -1,0 +1,29 @@
+---
+import CTA from '../text/CTA.astro'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<form action="/" method="post" class={`${className} w-full max-w-lg`}>
+  <label for="email" class="sr-only">Email:</label>
+  <div class="relative h-16">
+    <input
+      type="email"
+      name="Email"
+      id="email"
+      class="w-full h-full py-2 pl-4 text-sm placeholder:text-grey focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm border rounded-lg transition"
+      autocomplete="email"
+      placeholder="Enter your email"
+      required
+    />
+    <CTA
+      type="button"
+      text="Subscribe"
+      class="absolute top-1/2 right-[6px] -translate-y-1/2 h-[calc(100%-12px)] flex items-center text-sm"
+    />
+  </div>
+</form>
