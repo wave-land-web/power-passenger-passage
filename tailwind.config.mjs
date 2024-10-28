@@ -2,6 +2,16 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      'custom-height-mq': {
+        raw: '(min-height: 740px)',
+      },
+    },
     fontSize: {
       '2xs': ['var(--fs-2xs)', { lineHeight: 'var(--line-height)' }],
       xs: ['var(--fs-xs)', { lineHeight: 'var(--line-height)' }],
@@ -17,7 +27,10 @@ export default {
       white: 'var(--color-white)',
       whiteTransparent: 'var(--color-white-transparent)',
       black: 'var(--color-black)',
-      grey: 'var(--color-grey)',
+      grey: {
+        200: 'var(--color-grey-200)',
+        100: 'var(--color-grey-100)',
+      },
       slate: 'var(--color-slate)',
       red: {
         900: 'var(--color-red-900)',

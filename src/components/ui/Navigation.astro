@@ -1,64 +1,192 @@
 ---
 import { Icon } from 'astro-icon/components'
+import Subscribe from './Subscribe.astro'
+
+const currentPath = Astro.url.pathname
 ---
 
 <nav
-  class="fixed left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 flex items-center justify-between gap-4 bg-whiteTransparent backdrop-blur-md border rounded-full"
+  id="navigation"
+  class="group fixed top-0 has-[.active]:bottom-[1rem] left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 bg-whiteTransparent has-[.active]:bg-white backdrop-blur-xl border rounded-full has-[.active]:rounded-lg has-[.active]:transition has-[.active]:shadow-lg overflow-auto"
+  data-current-url={currentPath}
 >
-  <a href="/" title="Power Passenger Passage Home" aria-label="Power Passenger Passage Home">
-    <Icon name="logo" class="size-20 md:size-24" />
-  </a>
+  <div class="flex items-center justify-between gap-4">
+    <!-- Logo -->
+    <a href="/" title="Power Passenger Passage Home" aria-label="Power Passenger Passage Home">
+      <Icon name="logo" class="size-20 md:size-24" />
+    </a>
 
-  <button
-    id="hamburger"
-    class="relative z-10 flex md:hidden flex-col justify-center items-center size-8"
-    aria-expanded="false"
-    title="Menu"
-    aria-label="Menu"
-  >
-    <span id="top" class="h-[2px] w-6 bg-black rounded-md transition duration-200 -translate-y-1">
-    </span>
-    <span id="bottom" class="h-[2px] w-6 bg-black rounded-md transition duration-200 translate-y-1">
-    </span>
-  </button>
-
-  <!-- TODO: build mobile navigation -->
-
-  <!-- Desktop navigation -->
-  <ul class="hidden md:flex items-center gap-8">
-    <li>
-      <a href="/" title="Home" aria-label="Home">Home</a>
-    </li>
-    <li>
-      <a href="/about" title="About" aria-label="About">About</a>
-    </li>
-    <li>
-      <a href="/blog" title="Blog" aria-label="Blog">Blog</a>
-    </li>
-    <li>
-      <a href="/contact" title="Contact" aria-label="Contact">Contact</a>
-    </li>
-    <li>
-      <a
-        href="https://www.instagram.com/erslifecoach/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Instagram"
-        aria-label="Instagram"
+    <!-- Menu toggle -->
+    <button
+      id="hamburger"
+      class="relative size-10 flex md:hidden flex-col justify-center items-center hover:bg-red-100 transition rounded-lg"
+      aria-expanded="false"
+      title="Menu"
+      aria-label="Menu"
+    >
+      <span
+        id="top"
+        class="h-[2px] w-6 bg-black rounded-md transition -translate-y-1 group-[.active]:rotate-[135deg] group-[.active]:translate-y-[1px]"
       >
-        <Icon name="tabler:brand-instagram" class="site-icon" />
-      </a>
-    </li>
-    <li>
-      <a
-        href="mailto:emmie@erslifecoach.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Email"
-        aria-label="Email"
+      </span>
+      <span
+        id="bottom"
+        class="h-[2px] w-6 bg-black rounded-md transition translate-y-1 group-[.active]:rotate-[-135deg] group-[.active]:-translate-y-[1px]"
       >
-        <Icon name="tabler:mail" class="site-icon" />
-      </a>
-    </li>
-  </ul>
+      </span>
+    </button>
+
+    <!-- Desktop navigation -->
+    <ul id="desktop-nav" class="hidden md:flex items-center gap-8">
+      <li>
+        <a href="/" title="Home" aria-label="Home">Home</a>
+      </li>
+      <li>
+        <a href="/about" title="About" aria-label="About">About</a>
+      </li>
+      <li>
+        <a href="/blog" title="Blog" aria-label="Blog">Blog</a>
+      </li>
+      <li>
+        <a href="/contact" title="Contact" aria-label="Contact">Contact</a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/erslifecoach/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram"
+          aria-label="Instagram"
+        >
+          <Icon name="tabler:brand-instagram" class="site-icon" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="mailto:emmie@erslifecoach.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Email"
+          aria-label="Email"
+        >
+          <Icon name="tabler:mail" class="site-icon" />
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile navigation -->
+  <div id="mobile-nav" class="hidden group-[.active]:block pt-12">
+    <ul class="font-header">
+      <li class="border-y-[1px] border-grey-100 py-6">
+        <a href="/" title="Home" aria-label="Home" class="block hover:translate-x-2 text-md">Home</a
+        >
+      </li>
+      <li class="border-b-[1px] border-grey-100 py-6">
+        <a href="/about" title="About" aria-label="About" class="block hover:translate-x-2 text-md"
+          >About</a
+        >
+      </li>
+      <li class="border-b-[1px] border-grey-100 py-6">
+        <a href="/blog" title="Blog" aria-label="Blog" class="block hover:translate-x-2 text-md"
+          >Blog</a
+        >
+      </li>
+      <li class="border-b-[1px] border-grey-100 py-6">
+        <a
+          href="/contact"
+          title="Contact"
+          aria-label="Contact"
+          class="block hover:translate-x-2 text-md">Contact</a
+        >
+      </li>
+      <li class="flex gap-8 border-b-[1px] border-grey-100 py-6">
+        <a
+          href="https://www.instagram.com/erslifecoach/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram"
+          aria-label="Instagram"
+        >
+          <Icon name="tabler:brand-instagram" class="w-7" />
+        </a>
+        <a
+          href="mailto:emmie@erslifecoach.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Email"
+          aria-label="Email"
+        >
+          <Icon name="tabler:mail" class="w-7" />
+        </a>
+      </li>
+    </ul>
+
+    <!-- Subscribe -->
+    <div class="hidden custom-height-mq:group-[.active]:block absolute bottom-8 w-5/6 max-w-80">
+      <p class="mb-4">Subscribe to our newsletter:</p>
+      <Subscribe />
+    </div>
+  </div>
 </nav>
+
+<style>
+  /* Active nav item styles */
+
+  #navigation[data-current-url='/'] [aria-label='Home'],
+  #navigation[data-current-url^='/about'] [aria-label='About'],
+  #navigation[data-current-url^='/blog'] [aria-label='Blog'],
+  #navigation[data-current-url^='/contact'] [aria-label='Contact'] {
+    color: var(--color-red-900);
+  }
+</style>
+
+<script>
+  const body = document.querySelector('body') as HTMLBodyElement
+  const navigation = document.querySelector('nav')
+  const mobileNavItems = document.querySelectorAll('#mobile-nav a')
+  const hamburger = document.getElementById('hamburger') as HTMLButtonElement
+  let overlayDisplayed = false
+
+  /**
+   * Mobile navigation overlay helpers
+   */
+
+  function handleMobileNavigationOverlayOnClick() {
+    overlayDisplayed = !overlayDisplayed
+    body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+
+    // Mobile nav overlay styles
+    navigation?.classList.toggle('active')
+
+    // Hamburger styles
+    hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
+    hamburger.classList.toggle('active')
+  }
+
+  function handleMobileNavigationOverlayOnResize() {
+    if (window.innerWidth >= 768) {
+      overlayDisplayed = false
+      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+
+      // Reset mobile nav overlay styles
+      navigation?.classList.remove('active')
+
+      // Reset hamburger styles
+      hamburger.setAttribute('aria-expanded', `${overlayDisplayed}`)
+      hamburger.classList.remove('active')
+    }
+  }
+
+  // Accessibility
+  hamburger.addEventListener('keyup', (event) => {
+    if (event.code === 'Escape' && overlayDisplayed) {
+      handleMobileNavigationOverlayOnClick()
+    }
+  })
+
+  // Event listeners
+  mobileNavItems.forEach((i) => i.addEventListener('click', handleMobileNavigationOverlayOnClick))
+  hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
+  window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
+</script>

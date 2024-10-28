@@ -75,7 +75,8 @@
   --color-white: #fffafa;
   --color-white-transparent: #fffffa80;
   --color-black: #000000;
-  --color-grey: #999697;
+  --color-grey-200: #999697;
+  --color-grey-100: #e5e1dd;
   --color-slate: #332d2e;
   --color-red-900: #a82c51;
   --color-red-800: #b95674;
@@ -117,6 +118,10 @@ html {
 
 body {
   @apply overflow-x-hidden;
+}
+
+body[data-overlay-displayed='true'] {
+  @apply overflow-y-hidden;
 }
 
 section {
