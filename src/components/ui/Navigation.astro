@@ -7,7 +7,7 @@ const currentPath = Astro.url.pathname
 
 <nav
   id="navigation"
-  class="group fixed top-0 has-[.active]:bottom-[1rem] left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 bg-whiteTransparent has-[.active]:bg-white backdrop-blur-xl border rounded-full has-[.active]:rounded-lg has-[.active]:transition has-[.active]:shadow-lg overflow-auto"
+  class="group fixed top-0 has-[.active]:bottom-[1rem] left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 bg-whiteTransparent has-[.active]:bg-white backdrop-blur-xl border rounded-full has-[.active]:rounded-lg has-[.active]:transition has-[.active]:shadow-lg overflow-auto transition-all duration-500"
   data-current-url={currentPath}
 >
   <div class="flex items-center justify-between gap-4">
@@ -143,10 +143,40 @@ const currentPath = Astro.url.pathname
 
 <script>
   const body = document.querySelector('body') as HTMLBodyElement
-  const navigation = document.querySelector('nav')
+  const navigation = document.querySelector('#navigation')
   const mobileNavItems = document.querySelectorAll('#mobile-nav a')
   const hamburger = document.getElementById('hamburger') as HTMLButtonElement
+  let prevScrollpos = window.scrollY
   let overlayDisplayed = false
+
+  /**
+   * Navbar visibility helpers
+   */
+
+  function showNavbar() {
+    navigation?.classList.add('top-0')
+    navigation?.classList.remove('-top-40')
+  }
+
+  function hideNavbar() {
+    navigation?.classList.remove('top-0')
+    navigation?.classList.add('-top-40')
+  }
+
+  function handleActiveNavigationOnScroll() {
+    let currentScrollPos = window.scrollY
+
+    // Show nav when scrolling up or at the top of the page
+    if (prevScrollpos > currentScrollPos || currentScrollPos < 20) {
+      showNavbar()
+      // Chrome bug: nav disappears when opening mobile nav near the footer
+      // Checking if the overlay is displayed prevents the nav from disappearing
+    } else if (prevScrollpos < currentScrollPos && !overlayDisplayed) {
+      hideNavbar()
+    }
+
+    prevScrollpos = currentScrollPos
+  }
 
   /**
    * Mobile navigation overlay helpers
@@ -189,4 +219,5 @@ const currentPath = Astro.url.pathname
   mobileNavItems.forEach((i) => i.addEventListener('click', handleMobileNavigationOverlayOnClick))
   hamburger.addEventListener('click', handleMobileNavigationOverlayOnClick)
   window.addEventListener('resize', handleMobileNavigationOverlayOnResize)
+  window.addEventListener('scroll', handleActiveNavigationOnScroll)
 </script>
