@@ -2,6 +2,8 @@
 import emmieTwo from '../assets/emmie-2.png'
 import momWoodsImage from '../assets/mom-woods.png'
 import CTA from '../components/text/CTA.astro'
+import SectionHeader from '../components/text/SectionHeader.astro'
+import IconCard from '../components/ui/IconCard.astro'
 import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
@@ -26,5 +28,55 @@ import Layout from '../layouts/Layout.astro'
     >
       <CTA type="link" href="/about" text="Read More" />
     </ImageAndText>
+  </section>
+
+  <section id="benefits" class="flex flex-col gap-20 bg-gradient-to-b from-white to-tan-100">
+    <SectionHeader
+      title="Benefits of Pregnancy Coaching"
+      class="max-w-96 md:items-center mx-auto text-center"
+    />
+    <!-- Icon Cards -->
+    <div class="flex flex-wrap items-center justify-center mx-auto w-full max-w-6xl">
+      <IconCard
+        title="Empowerment"
+        text="Be the authority in your own life"
+        icon="mood-heart"
+        class="lsa lsa-slide-up no-repeat delay-100"
+      />
+      <IconCard
+        title="Consultation"
+        text="Deal with the fear and uncertainties that come up around pregnancy"
+        icon="friends"
+        class="lsa lsa-slide-up no-repeat delay-200"
+      />
+      <IconCard
+        title="Intention"
+        text="Create the intentional experience you desire"
+        icon="checkup-list"
+        class="lsa lsa-slide-up no-repeat delay-300"
+      />
+    </div>
+
+    <!-- Testimonials -->
+    <div class="grid md:grid-cols-2 mx-auto gap-8 text-center md:text-left w-full max-w-6xl">
+      <h3 class="text-lg md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
+        From <span class="text-red-900 font-bold">Our Community</span>
+      </h3>
+
+      <blockquote class="relative lsa lsa-slide-up no-repeat delay-700">
+        <span class="absolute -top-8 left-0 md:-top-12 md:-left-4 text-2xl text-red-900">“</span>
+        <p class="mb-4">
+          <em>
+            I had a great experience with Emmie Strassberg during my coaching sessions. I went
+            through 5 rounds of Intrauterine insemination and three rounds of In vitro fertilization
+            which resulted in one miscarriage and one successful pregnancy. Emmie's support was
+            crucial in the process. It was an emotional experience and having a life coach was very
+            helpful.
+          </em>
+        </p>
+        <cite> - MG</cite>
+        <span class="absolute -bottom-8 right-0 md:-right-4 text-2xl text-red-900">”</span>
+      </blockquote>
+    </div>
   </section>
 </Layout>

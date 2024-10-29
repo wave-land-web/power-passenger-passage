@@ -5,14 +5,14 @@
  * Optional slot for additional content - CTA buttons, newsletter input, etc.
  */
 
-import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
+import SectionHeader from '../text/SectionHeader.astro'
 
 export interface Props {
   image: ImageMetadata
   imageAlt: string
   title: string
-  text: string
+  text?: string
 }
 
 const { image, imageAlt, title, text } = Astro.props
@@ -27,12 +27,11 @@ const { image, imageAlt, title, text } = Astro.props
     loading="eager"
     alt={imageAlt}
   />
-  <div class="flex flex-col items-center md:items-start gap-8 text-center md:text-left">
-    <Icon name="zig-zag" class="w-16 lsa no-repeat" />
-    <h2 class="lsa lsa-slide-up no-repeat" set:html={title} />
+  <article class="flex flex-col items-center md:items-start gap-8 text-center md:text-left">
+    <SectionHeader title={title} />
     <p class="lsa lsa-slide-up no-repeat delay-200" set:html={text} />
     <div class="lsa lsa-slide-up no-repeat delay-500">
       <slot />
     </div>
-  </div>
+  </article>
 </div>
