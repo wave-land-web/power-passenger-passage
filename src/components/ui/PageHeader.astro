@@ -19,9 +19,7 @@ export interface Props {
 const { title, subtitle, image, imageAlt } = Astro.props
 ---
 
-<header
-  class="md:h-dvh pb-sectionPadding px-sitePadding md:py-sitePadding bg-gradient-to-b from-tan-100 to-white"
->
+<header class="md:h-dvh bg-gradient-to-b from-tan-100 to-white">
   {
     image && imageAlt ? (
       <div class="max-w-6xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center">

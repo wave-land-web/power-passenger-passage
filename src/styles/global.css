@@ -125,13 +125,17 @@ body[data-overlay-displayed='true'] {
 }
 
 section {
-  @apply py-sectionPadding px-0;
+  @apply py-sectionPadding px-sitePadding;
 }
 
 header,
 main,
 nav {
   @apply w-full mx-auto;
+}
+
+header {
+  @apply pb-sectionPadding px-sitePadding md:p-sitePadding;
 }
 
 img,

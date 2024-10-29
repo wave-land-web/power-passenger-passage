@@ -1,6 +1,8 @@
 ---
+import emmieTwo from '../assets/emmie-2.png'
 import momWoodsImage from '../assets/mom-woods.png'
 import CTA from '../components/text/CTA.astro'
+import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -14,4 +16,15 @@ import Layout from '../layouts/Layout.astro'
   >
     <CTA type="link" href="/contact" text="Book a Free Call" class="m-auto md:m-0" />
   </PageHeader>
+
+  <section id="introduction">
+    <ImageAndText
+      image={emmieTwo}
+      imageAlt="Emmie Strassberg"
+      title="About Emmie Strassberg"
+      text="I am a life coach, mother, double board certified OBGYN and Maternal-Fetal Medicine specialist. In my work as a high risk pregnancy doctor, I regularly see women struggle with anxiety and uncertainty that come up during pregnancy. Past pregnancies, medical conditions, family circumstances, work and current pregnancy concerns can all be overwhelming at times. If this is you, I can show you how to manage your thinking and create the pregnancy experience you desire."
+    >
+      <CTA type="link" href="/about" text="Read More" />
+    </ImageAndText>
+  </section>
 </Layout>
