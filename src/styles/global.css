@@ -72,18 +72,30 @@
 
 :root {
   --color-transparent: transparent;
-  --color-white: #fffafa;
+  --color-white: #ffffff;
+  --color-white: oklch(100% 3.5594404384177905e-8 106.37411429114086);
   --color-white-transparent: #fffffa80;
+  --color-white-transparent: oklch(99.86% 0.0065 106.52 / 50.2%);
   --color-black: #000000;
+  --color-black: oklch(0% 0 0);
   --color-grey-200: #999697;
+  --color-grey-200: oklch(67.6% 0.0038 354.75);
   --color-grey-100: #e5e1dd;
+  --color-grey-100: oklch(91.18% 0.007 67.74);
   --color-slate: #332d2e;
+  --color-slate: oklch(30.4% 0.0089 6.2);
   --color-red-900: #a82c51;
+  --color-red-900: oklch(49.58% 0.1611 7.64);
   --color-red-800: #b95674;
+  --color-red-800: oklch(58.4% 0.1312 2.9);
   --color-red-500: #d496a8;
+  --color-red-500: oklch(73.83% 0.0778 0.16);
   --color-red-200: #eed5dc;
+  --color-red-200: oklch(89.56% 0.0292 358.84);
   --color-red-100: #f6eaee;
+  --color-red-100: oklch(94.76% 0.014 355.01);
   --color-tan-100: #fff6f0;
+  --color-tan-100: oklch(97.85% 0.01256189712240146 56.25631738338603);
 
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
   --fs-2xs: clamp(0.64rem, 0.05vi + 0.63rem, 0.67rem);
