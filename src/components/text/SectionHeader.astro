@@ -9,7 +9,8 @@ export interface Props {
 const { title, class: className } = Astro.props
 ---
 
-<div class={`${className} flex flex-col gap-8 items-center md:items-start`}>
+<div class={`${className} flex flex-col gap-8`}>
   <Icon name="zig-zag" class="w-16 lsa no-repeat" />
   <h2 class="lsa lsa-slide-up no-repeat" set:html={title} />
+  <slot />
 </div>

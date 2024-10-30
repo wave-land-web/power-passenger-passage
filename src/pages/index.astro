@@ -1,8 +1,12 @@
 ---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 import blogCardOneImage from '../assets/blog-card-1.png'
 import blogCardTwoImage from '../assets/blog-card-2.png'
 import blogCardThreeImage from '../assets/blog-card-3.png'
-import emmieTwo from '../assets/emmie-2.png'
+import emmieOneSquareImage from '../assets/emmie-1-square.png'
+import emmieOneImage from '../assets/emmie-1.png'
+import emmieTwoImage from '../assets/emmie-2.png'
 import momWoodsImage from '../assets/mom-woods.png'
 import CTA from '../components/text/CTA.astro'
 import SectionHeader from '../components/text/SectionHeader.astro'
@@ -25,7 +29,7 @@ import Layout from '../layouts/Layout.astro'
 
   <section id="introduction">
     <ImageAndText
-      image={emmieTwo}
+      image={emmieTwoImage}
       imageAlt="Emmie Strassberg"
       title="About Emmie Strassberg"
       text="I am a life coach, mother, double board certified OBGYN and Maternal-Fetal Medicine specialist. In my work as a high risk pregnancy doctor, I regularly see women struggle with anxiety and uncertainty that come up during pregnancy. Past pregnancies, medical conditions, family circumstances, work and current pregnancy concerns can all be overwhelming at times. If this is you, I can show you how to manage your thinking and create the pregnancy experience you desire."
@@ -37,7 +41,7 @@ import Layout from '../layouts/Layout.astro'
   <section id="benefits" class="flex flex-col gap-20 bg-gradient-to-b from-white to-tan-100">
     <SectionHeader
       title="Benefits of Pregnancy Coaching"
-      class="max-w-96 md:items-center mx-auto text-center"
+      class="max-w-96 items-center md:items-start mx-auto text-center"
     />
     <!-- Icon Cards -->
     <div class="flex flex-wrap items-center justify-center mx-auto w-full max-w-6xl">
@@ -88,7 +92,7 @@ import Layout from '../layouts/Layout.astro'
     <div class="container-md flex flex-col gap-20">
       <SectionHeader
         title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
-        class="max-w-screen-sm text-center md:text-left"
+        class="max-w-screen-sm items-center md:items-start text-center md:text-left"
       />
 
       <!-- Blog Cards TODO: replace with real content -->
@@ -127,6 +131,41 @@ import Layout from '../layouts/Layout.astro'
         text="View All Posts"
         class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
       />
+    </div>
+  </section>
+
+  <!-- CTA TODO: refactor this! -->
+  <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">
+    <div
+      class="container-sm relative overflow-hidden p-8 md:pl-8 md:pt-0 md:pb-0 md:pr-0 grid grid-rows-[auto_1fr] sm:grid-rows-1 md:grid-cols-[2fr_1fr] md:items-center gap-8 bg-white border rounded-3xl drop-shadow-sm"
+    >
+      <Image
+        src={emmieOneSquareImage}
+        alt="Emmie Strassberg"
+        class="block max-w-32 md:hidden border rounded-full justify-self-end"
+      />
+      <Icon name="circle" class="absolute -bottom-20 -right-20 w-48" />
+
+      <SectionHeader
+        title='Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span> Now'
+        class="items-start"
+      >
+        <CTA
+          type="link"
+          href="/contact"
+          text="Book Now"
+          class="lsa lsa-slide-up delay-100 no-repeat"
+        />
+      </SectionHeader>
+
+      <div class="hidden md:block relative">
+        <Icon name="circle" class="absolute -left-1/3 top-1/2 transform -translate-y-1/2 w-48" />
+        <Image
+          src={emmieOneImage}
+          alt="Emmie Strassberg"
+          class="rounded-[0_24px_24px_0] border-l-[1px]"
+        />
+      </div>
     </div>
   </section>
 </Layout>
