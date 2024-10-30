@@ -1,0 +1,27 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  image: ImageMetadata
+  imageAlt: string
+  dateAndReadTime: string
+  title: string
+  text: string
+  class?: string
+}
+
+const { image, imageAlt, dateAndReadTime, title, text, class: className } = Astro.props
+---
+
+<article class={`${className} w-full max-w-[350px] lsa lsa-slide-up no-repeat`}>
+  <a class="flex flex-col gap-4 group" href="/">
+    <Picture src={image} alt={imageAlt} />
+    <span>{dateAndReadTime}</span>
+    <h3 class="text-base group-hover:text-red-900 transition">
+      {title}
+    </h3>
+    <p>
+      {text}
+    </p>
+  </a>
+</article>

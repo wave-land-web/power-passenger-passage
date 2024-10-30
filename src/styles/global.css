@@ -156,6 +156,10 @@ video {
   @apply block w-full h-auto;
 }
 
+img {
+  @apply rounded-3xl drop-shadow-sm;
+}
+
 /* Typography */
 
 h1,
@@ -183,7 +187,8 @@ h4 {
 }
 
 p,
-li {
+li,
+span {
   @apply text-sm text-slate;
 }
 
@@ -197,8 +202,16 @@ a {
 
 /* Utility Classes */
 
-.container {
-  @apply w-full h-full max-w-screen-2xl mx-auto;
+.container-sm {
+  @apply w-full max-w-xl md:max-w-4xl mx-auto;
+}
+
+.container-md {
+  @apply w-full max-w-xl md:max-w-6xl mx-auto;
+}
+
+.container-lg {
+  @apply w-full max-w-screen-2xl mx-auto;
 }
 
 .site-icon {

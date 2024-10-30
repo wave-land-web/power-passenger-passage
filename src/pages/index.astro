@@ -1,8 +1,12 @@
 ---
+import blogCardOneImage from '../assets/blog-card-1.png'
+import blogCardTwoImage from '../assets/blog-card-2.png'
+import blogCardThreeImage from '../assets/blog-card-3.png'
 import emmieTwo from '../assets/emmie-2.png'
 import momWoodsImage from '../assets/mom-woods.png'
 import CTA from '../components/text/CTA.astro'
 import SectionHeader from '../components/text/SectionHeader.astro'
+import BlogCard from '../components/ui/BlogCard.astro'
 import IconCard from '../components/ui/IconCard.astro'
 import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
@@ -11,7 +15,7 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="Power Passenger Passage">
   <PageHeader
-    title='<span class="font-bold text-red-900">Life coaching</span> for preconception, pregnancy, and beyond'
+    title='<span class="font-bold text-xl text-red-900">Life coaching</span> for preconception, pregnancy, and beyond'
     subtitle="Experience your BEST pregnancy with life coaching"
     image={momWoodsImage}
     imageAlt="A mom with her baby in the woods"
@@ -58,9 +62,9 @@ import Layout from '../layouts/Layout.astro'
     </div>
 
     <!-- Testimonials -->
-    <div class="grid md:grid-cols-2 mx-auto gap-8 text-center md:text-left w-full max-w-6xl">
+    <div class="container-md grid md:grid-cols-2 mx-auto gap-8 text-center md:text-left">
       <h3 class="text-lg md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
-        From <span class="text-red-900 font-bold">Our Community</span>
+        From <span class="text-lg text-red-900 font-bold">Our Community</span>
       </h3>
 
       <blockquote class="relative lsa lsa-slide-up no-repeat delay-700">
@@ -77,6 +81,52 @@ import Layout from '../layouts/Layout.astro'
         <cite> - MG</cite>
         <span class="absolute -bottom-8 right-0 md:-right-4 text-2xl text-red-900">”</span>
       </blockquote>
+    </div>
+  </section>
+
+  <section id="recent-blog-articles" class="bg-gradient-to-b from-tan-100 to-white">
+    <div class="container-md flex flex-col gap-20">
+      <SectionHeader
+        title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
+        class="max-w-screen-sm text-center md:text-left"
+      />
+
+      <!-- Blog Cards TODO: replace with real content -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
+      >
+        <BlogCard
+          image={blogCardOneImage}
+          imageAlt=""
+          dateAndReadTime="May 29, 2023 • 3 min read"
+          title='Power Passenger Passage Love Letter No. 11: Being "Good"'
+          text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          class="delay-100"
+        />
+        <BlogCard
+          image={blogCardTwoImage}
+          imageAlt=""
+          dateAndReadTime="Jul 7, 2022 • 3 min read"
+          title="Power Passenger Passage Love Letter No. 10: Shame"
+          text="Hi Loves! I want to talk about shame. Shame is a particularly common emotion that can surface during pregnancy and motherhood. We receive..."
+          class="delay-200"
+        />
+        <BlogCard
+          image={blogCardThreeImage}
+          imageAlt=""
+          dateAndReadTime="Jun 5, 2022 • 3 min read"
+          title="Power Passenger Passage Love Letter No. 9: Perfectly Imperfect"
+          text="Hello Loves! I have been putting out this blog monthly since September 2021. It is now June and I have skipped the month of May. And..."
+          class="delay-300"
+        />
+      </div>
+
+      <CTA
+        type="link"
+        href="/blog"
+        text="View All Posts"
+        class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
+      />
     </div>
   </section>
 </Layout>

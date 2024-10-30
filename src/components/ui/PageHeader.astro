@@ -22,7 +22,7 @@ const { title, subtitle, image, imageAlt } = Astro.props
 <header class="md:h-dvh bg-gradient-to-b from-tan-100 to-white">
   {
     image && imageAlt ? (
-      <div class="max-w-6xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center">
+      <div class="container-md pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col md:flex-row justify-between gap-16 justify-items-center items-center">
         <div class="md:w-3/5 flex flex-col items-center md:items-start gap-8 text-center md:text-left">
           <Icon name="zig-zag" class="w-16 lsa no-repeat" />
           <h1 class="lsa lsa-slide-up no-repeat" set:html={title} />
@@ -40,7 +40,7 @@ const { title, subtitle, image, imageAlt } = Astro.props
         />
       </div>
     ) : (
-      <div class="max-w-4xl mx-auto pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col items-center md:justify-center gap-8 text-center ">
+      <div class="container-sm pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col items-center md:justify-center gap-8 text-center ">
         <Icon name="zig-zag" class="w-16 lsa no-repeat" />
         <h1 class="lsa lsa-slide-up no-repeat" set:html={title} />
         <p class="text-base lsa lsa-slide-up no-repeat delay-200" set:html={subtitle} />
