@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets'
 import emmieImage from '../assets/emmie-1.png'
+import momFlowersImage from '../assets/mom-flowers.png'
 import CTA from '../components/text/CTA.astro'
 import ListItem from '../components/text/ListItem.astro'
 import SectionHeader from '../components/text/SectionHeader.astro'
@@ -43,6 +45,22 @@ import Layout from '../layouts/Layout.astro'
           />
           <ListItem icon="check" text="Create the intentional experience they desire" />
         </ul>
+      </div>
+    </section>
+
+    <!-- TODO: add circles and blob -->
+    <section id="life-coaching" class="pl-0 pr-0 mb-sectionPadding">
+      <div class="bg-red-100 p-4">
+        <div class="w-full max-w-lg translate-y-24 mx-auto text-center">
+          <h2 class="mb-8">Life Coaching</h2>
+          <p class="mb-12">
+            Coaching sessions to guide you on your journey through preconception, pregnancy and the
+            postpartum period. I will help you navigate your way through the fear and uncertainty
+            that can present around pregnancy and help you create thoughts and intentions that
+            cultivate the pregnancy experience you desire.
+          </p>
+          <Picture src={momFlowersImage} alt="A mom holding flowers with her baby" />
+        </div>
       </div>
     </section>
   </main>
