@@ -41,7 +41,7 @@ import Layout from '../layouts/Layout.astro'
   <section id="benefits" class="flex flex-col gap-20 bg-gradient-to-b from-white to-tan-100">
     <SectionHeader
       title="Benefits of Pregnancy Coaching"
-      class="max-w-96 items-center md:items-start mx-auto text-center"
+      class="max-w-96 items-center mx-auto text-center"
     />
     <!-- Icon Cards -->
     <div class="flex flex-wrap items-center justify-center mx-auto w-full max-w-6xl">
@@ -134,17 +134,15 @@ import Layout from '../layouts/Layout.astro'
     </div>
   </section>
 
-  <!-- CTA TODO: refactor this! -->
   <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">
     <div
       class="container-sm relative overflow-hidden p-8 md:pl-8 md:pt-0 md:pb-0 md:pr-0 grid grid-rows-[auto_1fr] sm:grid-rows-1 md:grid-cols-[2fr_1fr] md:items-center gap-8 bg-white border rounded-3xl drop-shadow-sm"
     >
-      <Image
-        src={emmieOneSquareImage}
-        alt="Emmie Strassberg"
-        class="block max-w-32 md:hidden border rounded-full justify-self-end"
-      />
-      <Icon name="circle" class="absolute -bottom-20 -right-20 w-48" />
+      <!-- Mobile Image -->
+      <div class="block md:hidden max-w-32 justify-self-end">
+        <Icon name="circle" class="absolute -bottom-20 -right-20 w-48" />
+        <Image src={emmieOneSquareImage} alt="Emmie Strassberg" class="border rounded-full" />
+      </div>
 
       <SectionHeader
         title='Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span> Now'
@@ -158,13 +156,10 @@ import Layout from '../layouts/Layout.astro'
         />
       </SectionHeader>
 
+      <!-- Desktop Image -->
       <div class="hidden md:block relative">
         <Icon name="circle" class="absolute -left-1/3 top-1/2 transform -translate-y-1/2 w-48" />
-        <Image
-          src={emmieOneImage}
-          alt="Emmie Strassberg"
-          class="rounded-[0_24px_24px_0] border-l-[1px]"
-        />
+        <Image src={emmieOneImage} alt="Emmie Strassberg" class="rounded-none border-l-[1px]" />
       </div>
     </div>
   </section>
