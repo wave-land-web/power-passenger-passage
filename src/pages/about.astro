@@ -1,6 +1,8 @@
 ---
 import emmieImage from '../assets/emmie-1.png'
 import CTA from '../components/text/CTA.astro'
+import ListItem from '../components/text/ListItem.astro'
+import SectionHeader from '../components/text/SectionHeader.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -14,4 +16,34 @@ import Layout from '../layouts/Layout.astro'
   >
     <CTA type="link" href="/contact" text="Book a Free Call" class="m-auto md:m-0" />
   </PageHeader>
+
+  <main>
+    <section
+      id="what-you-can-expect"
+      class="container-md grid md:grid-cols-2 gap-8 text-center md:text-left"
+    >
+      <SectionHeader
+        title='What <span class="font-bold text-lg text-red-900">You Can Expect</span>'
+        class="items-center md:items-start"
+      />
+
+      <div class="flex flex-col gap-8 lsa lsa-slide-up no-repeat delay-100">
+        <p>
+          As a Maternal-Fetal Medicine specialist, I diagnose, counsel, and manage high-risk
+          pregnancies. <em
+            >Please note, as a life coach, I do not offer medical advice or management.</em
+          >
+        </p>
+        <h3>Through life coaching, I help women:</h3>
+        <ul class="flex flex-col gap-4">
+          <ListItem icon="check" text="Empower themselves to be the authority in their own life" />
+          <ListItem
+            icon="check"
+            text="Deal with the fear and uncertainties that come up around pregnancy"
+          />
+          <ListItem icon="check" text="Create the intentional experience they desire" />
+        </ul>
+      </div>
+    </section>
+  </main>
 </Layout>

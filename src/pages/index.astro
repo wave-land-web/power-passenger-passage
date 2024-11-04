@@ -27,140 +27,142 @@ import Layout from '../layouts/Layout.astro'
     <CTA type="link" href="/contact" text="Book a Free Call" class="m-auto md:m-0" />
   </PageHeader>
 
-  <section id="introduction">
-    <ImageAndText
-      image={emmieTwoImage}
-      imageAlt="Emmie Strassberg"
-      title="About Emmie Strassberg"
-      text="I am a life coach, mother, double board certified OBGYN and Maternal-Fetal Medicine specialist. In my work as a high risk pregnancy doctor, I regularly see women struggle with anxiety and uncertainty that come up during pregnancy. Past pregnancies, medical conditions, family circumstances, work and current pregnancy concerns can all be overwhelming at times. If this is you, I can show you how to manage your thinking and create the pregnancy experience you desire."
-    >
-      <CTA type="link" href="/about" text="Read More" />
-    </ImageAndText>
-  </section>
-
-  <section id="benefits" class="flex flex-col gap-20 bg-gradient-to-b from-white to-tan-100">
-    <SectionHeader
-      title="Benefits of Pregnancy Coaching"
-      class="max-w-96 items-center mx-auto text-center"
-    />
-    <!-- Icon Cards -->
-    <div class="flex flex-wrap items-center justify-center mx-auto w-full max-w-6xl">
-      <IconCard
-        title="Empowerment"
-        text="Be the authority in your own life"
-        icon="mood-heart"
-        class="lsa lsa-slide-up no-repeat delay-100"
-      />
-      <IconCard
-        title="Consultation"
-        text="Deal with the fear and uncertainties that come up around pregnancy"
-        icon="friends"
-        class="lsa lsa-slide-up no-repeat delay-200"
-      />
-      <IconCard
-        title="Intention"
-        text="Create the intentional experience you desire"
-        icon="checkup-list"
-        class="lsa lsa-slide-up no-repeat delay-300"
-      />
-    </div>
-
-    <!-- Testimonials -->
-    <div class="container-md grid md:grid-cols-2 mx-auto gap-8 text-center md:text-left">
-      <h3 class="text-lg md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
-        From <span class="text-lg text-red-900 font-bold">Our Community</span>
-      </h3>
-
-      <blockquote class="relative lsa lsa-slide-up no-repeat delay-700">
-        <span class="absolute -top-8 left-0 md:-top-12 md:-left-4 text-2xl text-red-900">“</span>
-        <p class="mb-4">
-          <em>
-            I had a great experience with Emmie Strassberg during my coaching sessions. I went
-            through 5 rounds of Intrauterine insemination and three rounds of In vitro fertilization
-            which resulted in one miscarriage and one successful pregnancy. Emmie's support was
-            crucial in the process. It was an emotional experience and having a life coach was very
-            helpful.
-          </em>
-        </p>
-        <cite> - MG</cite>
-        <span class="absolute -bottom-8 right-0 md:-right-4 text-2xl text-red-900">”</span>
-      </blockquote>
-    </div>
-  </section>
-
-  <section id="recent-blog-articles" class="bg-gradient-to-b from-tan-100 to-white">
-    <div class="container-md flex flex-col gap-20">
-      <SectionHeader
-        title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
-        class="max-w-screen-sm items-center md:items-start text-center md:text-left"
-      />
-
-      <!-- Blog Cards TODO: replace with real content -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
+  <main>
+    <section id="introduction">
+      <ImageAndText
+        image={emmieTwoImage}
+        imageAlt="Emmie Strassberg"
+        title="About Emmie Strassberg"
+        text="I am a life coach, mother, double board certified OBGYN and Maternal-Fetal Medicine specialist. In my work as a high risk pregnancy doctor, I regularly see women struggle with anxiety and uncertainty that come up during pregnancy. Past pregnancies, medical conditions, family circumstances, work and current pregnancy concerns can all be overwhelming at times. If this is you, I can show you how to manage your thinking and create the pregnancy experience you desire."
       >
-        <BlogCard
-          image={blogCardOneImage}
-          imageAlt=""
-          dateAndReadTime="May 29, 2023 • 3 min read"
-          title='Power Passenger Passage Love Letter No. 11: Being "Good"'
-          text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
-          class="delay-100"
+        <CTA type="link" href="/about" text="Read More" />
+      </ImageAndText>
+    </section>
+
+    <section id="benefits" class="flex flex-col gap-20 bg-gradient-to-b from-white to-tan-100">
+      <SectionHeader
+        title="Benefits of Pregnancy Coaching"
+        class="max-w-96 items-center mx-auto text-center"
+      />
+      <!-- Icon Cards -->
+      <div class="flex flex-wrap items-center justify-center mx-auto w-full max-w-6xl">
+        <IconCard
+          title="Empowerment"
+          text="Be the authority in your own life"
+          icon="mood-heart"
+          class="lsa lsa-slide-up no-repeat delay-100"
         />
-        <BlogCard
-          image={blogCardTwoImage}
-          imageAlt=""
-          dateAndReadTime="Jul 7, 2022 • 3 min read"
-          title="Power Passenger Passage Love Letter No. 10: Shame"
-          text="Hi Loves! I want to talk about shame. Shame is a particularly common emotion that can surface during pregnancy and motherhood. We receive..."
-          class="delay-200"
+        <IconCard
+          title="Consultation"
+          text="Deal with the fear and uncertainties that come up around pregnancy"
+          icon="friends"
+          class="lsa lsa-slide-up no-repeat delay-200"
         />
-        <BlogCard
-          image={blogCardThreeImage}
-          imageAlt=""
-          dateAndReadTime="Jun 5, 2022 • 3 min read"
-          title="Power Passenger Passage Love Letter No. 9: Perfectly Imperfect"
-          text="Hello Loves! I have been putting out this blog monthly since September 2021. It is now June and I have skipped the month of May. And..."
-          class="delay-300"
+        <IconCard
+          title="Intention"
+          text="Create the intentional experience you desire"
+          icon="checkup-list"
+          class="lsa lsa-slide-up no-repeat delay-300"
         />
       </div>
 
-      <CTA
-        type="link"
-        href="/blog"
-        text="View All Posts"
-        class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
-      />
-    </div>
-  </section>
+      <!-- Testimonials -->
+      <div class="container-md grid md:grid-cols-2 gap-8 text-center md:text-left">
+        <h3 class="text-lg md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
+          From <span class="text-lg text-red-900 font-bold">Our Community</span>
+        </h3>
 
-  <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">
-    <div
-      class="container-sm relative overflow-hidden p-8 md:pl-8 md:pt-0 md:pb-0 md:pr-0 grid grid-rows-[auto_1fr] sm:grid-rows-1 md:grid-cols-[2fr_1fr] md:items-center gap-8 bg-white border rounded-3xl drop-shadow-sm"
-    >
-      <!-- Mobile Image -->
-      <div class="block md:hidden max-w-32 justify-self-end">
-        <Icon name="circle" class="absolute -bottom-20 -right-20 w-48" />
-        <Image src={emmieOneSquareImage} alt="Emmie Strassberg" class="border rounded-full" />
+        <blockquote class="relative lsa lsa-slide-up no-repeat delay-700">
+          <span class="absolute -top-8 left-0 md:-top-12 md:-left-4 text-2xl text-red-900">“</span>
+          <p class="mb-4">
+            <em>
+              I had a great experience with Emmie Strassberg during my coaching sessions. I went
+              through 5 rounds of Intrauterine insemination and three rounds of In vitro
+              fertilization which resulted in one miscarriage and one successful pregnancy. Emmie's
+              support was crucial in the process. It was an emotional experience and having a life
+              coach was very helpful.
+            </em>
+          </p>
+          <cite> - MG</cite>
+          <span class="absolute -bottom-8 right-0 md:-right-4 text-2xl text-red-900">”</span>
+        </blockquote>
       </div>
+    </section>
 
-      <SectionHeader
-        title='Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span> Now'
-        class="items-start"
-      >
+    <section id="recent-blog-articles" class="bg-gradient-to-b from-tan-100 to-white">
+      <div class="container-md flex flex-col gap-20">
+        <SectionHeader
+          title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
+          class="max-w-screen-sm items-center md:items-start text-center md:text-left"
+        />
+
+        <!-- Blog Cards TODO: replace with real content -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
+        >
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title='Power Passenger Passage Love Letter No. 11: Being "Good"'
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+            class="delay-100"
+          />
+          <BlogCard
+            image={blogCardTwoImage}
+            imageAlt=""
+            dateAndReadTime="Jul 7, 2022 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 10: Shame"
+            text="Hi Loves! I want to talk about shame. Shame is a particularly common emotion that can surface during pregnancy and motherhood. We receive..."
+            class="delay-200"
+          />
+          <BlogCard
+            image={blogCardThreeImage}
+            imageAlt=""
+            dateAndReadTime="Jun 5, 2022 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 9: Perfectly Imperfect"
+            text="Hello Loves! I have been putting out this blog monthly since September 2021. It is now June and I have skipped the month of May. And..."
+            class="delay-300"
+          />
+        </div>
+
         <CTA
           type="link"
-          href="/contact"
-          text="Book Now"
-          class="lsa lsa-slide-up delay-100 no-repeat"
+          href="/blog"
+          text="View All Posts"
+          class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
         />
-      </SectionHeader>
-
-      <!-- Desktop Image -->
-      <div class="hidden md:block relative">
-        <Icon name="circle" class="absolute -left-1/3 top-1/2 transform -translate-y-1/2 w-48" />
-        <Image src={emmieOneImage} alt="Emmie Strassberg" class="rounded-none border-l-[1px]" />
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">
+      <div
+        class="container-sm relative overflow-hidden p-8 md:pl-8 md:pt-0 md:pb-0 md:pr-0 grid grid-rows-[auto_1fr] sm:grid-rows-1 md:grid-cols-[2fr_1fr] md:items-center gap-8 bg-white border rounded-3xl drop-shadow-sm"
+      >
+        <!-- Mobile Image -->
+        <div class="block md:hidden max-w-32 justify-self-end">
+          <Icon name="circle" class="absolute -bottom-20 -right-20 w-48" />
+          <Image src={emmieOneSquareImage} alt="Emmie Strassberg" class="border rounded-full" />
+        </div>
+
+        <SectionHeader
+          title='Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span> Now'
+          class="items-start"
+        >
+          <CTA
+            type="link"
+            href="/contact"
+            text="Book Now"
+            class="lsa lsa-slide-up delay-100 no-repeat"
+          />
+        </SectionHeader>
+
+        <!-- Desktop Image -->
+        <div class="hidden md:block relative">
+          <Icon name="circle" class="absolute -left-1/3 top-1/2 transform -translate-y-1/2 w-48" />
+          <Image src={emmieOneImage} alt="Emmie Strassberg" class="rounded-none border-l-[1px]" />
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
