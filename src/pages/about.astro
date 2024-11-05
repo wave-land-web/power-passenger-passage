@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 import emmieImage from '../assets/emmie-1.png'
 import momFlowersImage from '../assets/mom-flowers.png'
@@ -48,18 +49,25 @@ import Layout from '../layouts/Layout.astro'
       </div>
     </section>
 
-    <!-- TODO: add circles and blob -->
     <section id="life-coaching" class="pl-0 pr-0 mb-sectionPadding">
-      <div class="bg-red-100 p-4">
-        <div class="w-full max-w-lg translate-y-24 mx-auto text-center">
-          <h2 class="mb-8">Life Coaching</h2>
-          <p class="mb-12">
+      <div class="relative p-4 bg-red-100 max-h-[550px]">
+        <Icon name="circle" class="absolute -top-20 -left-24 w-48" />
+        <Icon name="circle" class="absolute -bottom-20 -right-24 w-48" />
+
+        <div class="w-full max-w-lg translate-y-16 mx-auto text-center">
+          <h2 class="mb-8 lsa lsa-slide-up no-repeat">Life Coaching</h2>
+          <p class="mb-12 lsa lsa-slide-up no-repeat delay-100">
             Coaching sessions to guide you on your journey through preconception, pregnancy and the
             postpartum period. I will help you navigate your way through the fear and uncertainty
             that can present around pregnancy and help you create thoughts and intentions that
             cultivate the pregnancy experience you desire.
           </p>
-          <Picture src={momFlowersImage} alt="A mom holding flowers with her baby" />
+          <Picture
+            class="lsa lsa-slide-up no-repeat delay-200"
+            src={momFlowersImage}
+            alt="A mom holding flowers with her baby"
+          />
+          <Icon name="blob" class="relative w-4/5 -z-10 mx-auto -translate-y-48" />
         </div>
       </div>
     </section>
