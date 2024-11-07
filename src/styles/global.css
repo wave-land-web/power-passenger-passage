@@ -189,11 +189,7 @@ h4 {
 p,
 li,
 span {
-  @apply text-sm text-slate;
-}
-
-p {
-  @apply text-pretty;
+  @apply text-sm text-slate text-pretty;
 }
 
 a {

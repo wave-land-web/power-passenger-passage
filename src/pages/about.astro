@@ -2,10 +2,13 @@
 import { Icon } from 'astro-icon/components'
 import { Picture } from 'astro:assets'
 import emmieImage from '../assets/emmie-1.png'
-import momFlowersImage from '../assets/mom-flowers.png'
+import momTwoImage from '../assets/mom-2.png'
+import momThreeImage from '../assets/mom-3.png'
 import CTA from '../components/text/CTA.astro'
-import ListItem from '../components/text/ListItem.astro'
+import ListItemOne from '../components/text/ListItemOne.astro'
+import ListItemTwo from '../components/text/ListItemTwo.astro'
 import SectionHeader from '../components/text/SectionHeader.astro'
+import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
@@ -39,12 +42,15 @@ import Layout from '../layouts/Layout.astro'
         </p>
         <h3>Through life coaching, I help women:</h3>
         <ul class="flex flex-col gap-4">
-          <ListItem icon="check" text="Empower themselves to be the authority in their own life" />
-          <ListItem
+          <ListItemTwo
+            icon="check"
+            text="Empower themselves to be the authority in their own life"
+          />
+          <ListItemTwo
             icon="check"
             text="Deal with the fear and uncertainties that come up around pregnancy"
           />
-          <ListItem icon="check" text="Create the intentional experience they desire" />
+          <ListItemTwo icon="check" text="Create the intentional experience they desire" />
         </ul>
       </div>
     </section>
@@ -64,11 +70,107 @@ import Layout from '../layouts/Layout.astro'
           </p>
           <Picture
             class="lsa lsa-slide-up no-repeat delay-200"
-            src={momFlowersImage}
+            src={momTwoImage}
             alt="A mom holding flowers with her baby"
           />
           <Icon name="blob" class="relative w-4/5 -z-10 mx-auto -translate-y-48" />
         </div>
+      </div>
+    </section>
+
+    <section id="power-passenger-passage" class="bg-gradient-to-b from-white to-tan-100">
+      <div class="container-md">
+        <ImageAndText
+          image={momThreeImage}
+          imageAlt="A mom in a red floral dress with her baby"
+          title="Power Passenger Passage"
+          text="Power Passenger Passage is a phrase used in obstetrics to review the key components of a successful labor and delivery; and in my coaching to review the key components of a joyous and fulfilling pregnancy."
+        >
+          <ul class="flex flex-col gap-4 mb-8">
+            <ListItemTwo
+              icon="arrow-right"
+              text="The <span class='text-red-900'>power</span> is the uterus - a strong muscle whose contractions open the birth canal to propel the baby outward."
+            />
+            <ListItemTwo
+              icon="arrow-right"
+              text="The <span class='text-red-900'>passenger</span> is the baby whose position and size determine easy passage through the birth canal."
+            />
+            <ListItemTwo
+              icon="arrow-right"
+              text="The <span class='text-red-900'>passage</span> is the birth canal that must stretch to safely deliver the baby."
+            />
+          </ul>
+
+          <p class="text-red-900">
+            <em>Alignment of these three components is required for a successful birth.</em>
+          </p>
+        </ImageAndText>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-16 pt-sectionPadding pb-16">
+          <article class="flex flex-col items-center gap-8 lsa lsa-slide-up no-repeat">
+            <Icon name="star" class="size-12 p-3 rounded-full bg-tan-100 flex-shrink-0" />
+            <h3>Power</h3>
+            <ul class="flex flex-col gap-4">
+              <ListItemOne
+                icon="check"
+                text="You have power to control how you think, feel and respond to any situation"
+              />
+              <ListItemOne
+                icon="check"
+                text="You have power to process emotions and not suppress them or bottle them up."
+              />
+              <ListItemOne
+                icon="check"
+                text="You have power to always show up with love for others and especially for yourself."
+              />
+            </ul>
+          </article>
+
+          <article class="flex flex-col items-center gap-8 lsa lsa-slide-up no-repeat delay-100">
+            <Icon name="star" class="size-12 p-3 rounded-full bg-tan-100 flex-shrink-0" />
+            <h3>Passenger</h3>
+            <ul class="flex flex-col gap-4">
+              <ListItemOne
+                icon="check"
+                text="Your passenger baby is a miracle of new life. Pregnancy, preconception and postpartum are the time when you can decide how you show up a mother. You create the relationship you want with your little passenger."
+              />
+              <ListItemOne
+                icon="check"
+                text="Typically, pregnancies go well, but sometimes they don't. You do not always have control over your passengers, but you can always control how to think, feel and show up."
+              />
+            </ul>
+          </article>
+
+          <article class="flex flex-col items-center gap-8 lsa lsa-slide-up no-repeat delay-200">
+            <Icon name="star" class="size-12 p-3 rounded-full bg-tan-100 flex-shrink-0" />
+            <h3>Passage</h3>
+            <ul class="flex flex-col gap-4">
+              <ListItemOne
+                icon="check"
+                text="Mamas, WE are the passage of pregnancy. You may feel many things are out of your control - physically and emotionally."
+              />
+              <ListItemOne
+                icon="check"
+                text="You can learn to listen to your body and to care for yourselves exquisitely. The body's passage through pregnancy is the perfect time to about self-care and deep self—love."
+              />
+              <ListItemOne
+                icon="check"
+                text="Learn to listen to your own wisdom. You are the expert of your own body."
+              />
+              <ListItemOne
+                icon="check"
+                text="Generating love for yourself as passage has only positive impact on your little passenger!"
+              />
+            </ul>
+          </article>
+        </div>
+
+        <CTA
+          type="link"
+          href="/contact"
+          text="Book a Free Call"
+          class="m-auto lsa lsa-slide-up no-repeat delay-300"
+        />
       </div>
     </section>
   </main>
