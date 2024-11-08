@@ -208,7 +208,7 @@ a {
 }
 
 .container-lg {
-  @apply w-full max-w-screen-2xl mx-auto;
+  @apply w-full max-w-xl md:max-w-screen-2xl mx-auto;
 }
 
 .site-icon {

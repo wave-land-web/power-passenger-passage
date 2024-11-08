@@ -1,14 +1,115 @@
 ---
+// TODO: Replace with posts from CMS
+// TODO: Build /blog/[slug].astro for individual blog posts
+import blogCardOneImage from '../assets/blog-card-1.png'
+import BlogCard from '../components/ui/BlogCard.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Subscribe from '../components/ui/Subscribe.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Power Passenger Passage | Blog">
+<Layout
+  title="Power Passenger Passage | Blog"
+  description="Explore insights and resources designed to guide women on their personal healthcare journey. From finding peace in pregnancy to reclaiming control of your well-being, our blog is here to inspire, inform, and empower."
+>
   <PageHeader
     title='<span class="font-bold text-xl text-red-900">Empower</span> Your Healthcare Journey'
     subtitle="Explore insights and resources designed to guide women on their personal healthcare journey. From finding peace in pregnancy to reclaiming control of your well-being, our blog is here to inspire, inform, and empower."
   >
     <Subscribe class="mx-auto" />
   </PageHeader>
+
+  <main class="bg-gradient-to-b from-white to-tan-100">
+    <section id="recent-blog-posts" class="container-lg">
+      <h2 class="mb-8">Recent Blog Posts</h2>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <BlogCard
+          image={blogCardOneImage}
+          imageAlt=""
+          dateAndReadTime="May 29, 2023 • 3 min read"
+          title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+          text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+        />
+
+        <div class="flex flex-col gap-12">
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+            isRow={true}
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+            isRow={true}
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+            isRow={true}
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="all-blog-posts">
+      <div class="container-lg">
+        <h2 class="mb-8">All Blog Posts</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+          <BlogCard
+            image={blogCardOneImage}
+            imageAlt=""
+            dateAndReadTime="May 29, 2023 • 3 min read"
+            title="Power Passenger Passage Love Letter No. 11: Being 'Good'"
+            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
+          />
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
