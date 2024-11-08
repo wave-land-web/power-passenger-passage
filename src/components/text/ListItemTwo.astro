@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components'
+import BrandedIcon from '../ui/BrandedIcon.astro'
 
 export interface Props {
   icon: string
@@ -10,6 +10,6 @@ const { icon, text } = Astro.props
 ---
 
 <li class="flex items-center gap-4 text-left">
-  <Icon name={icon} class="size-12 p-3 rounded-full bg-tan-100 flex-shrink-0" />
+  <BrandedIcon icon={icon} />
   <span set:html={text} />
 </li>
