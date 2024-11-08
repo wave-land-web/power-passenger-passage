@@ -1,10 +1,132 @@
 ---
+// TODO: refactor
+import { Icon } from 'astro-icon/components'
+import { getImage } from 'astro:assets'
+import momAndDaughterImage from '../assets/mom-and-daughter.png'
+import CTA from '../components/text/CTA.astro'
 import Layout from '../layouts/Layout.astro'
+
+const { src: momAndDaughterImageWebp } = await getImage({
+  src: momAndDaughterImage,
+  format: 'webp',
+  quality: 75,
+  loading: 'eager',
+})
 ---
 
 <Layout title="Power Passenger Passage | Contact">
-  <header>
-    <h1 class="text-xl lsa lsa-slide-up">Contact</h1>
-    <p class="text-sm lsa lsa-slide-up delay-200">Get in touch with Power Passenger Passage</p>
+  <header class="relative p-0">
+    <div
+      class="w-full md:h-dvh bg-cover bg-center bg-no-repeat after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-whiteTransparent after:to-white"
+      style={`background-image: url(${momAndDaughterImageWebp});`}
+    >
+      <div
+        class="container-sm relative z-10 pt-[calc(var(--nav-height)+4rem)] md:pt-navHeight h-full flex flex-col items-center md:justify-center gap-8 text-center"
+      >
+        <Icon name="zig-zag" class="w-16 lsa no-repeat" />
+        <h1 class="lsa lsa-slide-up no-repeat">
+          <span class="font-bold text-xl text-red-900">Contact</span> Power Passenger Passage
+        </h1>
+        <p class="text-base lsa lsa-slide-up no-repeat delay-200">
+          We're here to guide you. Reach out here to start the conversation or schedule your free
+          consultation!
+        </p>
+        <div class="w-full lsa lsa-slide-up no-repeat delay-500">
+          <slot />
+        </div>
+      </div>
+    </div>
   </header>
+
+  <main class="bg-gradient-to-b from-white to-tan-100">
+    <section id="contact">
+      <h2 class="mb-8 text-center">Send Us a Message</h2>
+
+      <form
+        class="relative max-w-2xl mx-auto"
+        action="/action"
+        method="post"
+        name="contactForm"
+        data-netlify="true"
+      >
+        <Icon name="circle" class="absolute -top-20 -right-24 w-48" />
+
+        <div class="relative z-10 flex flex-col gap-4">
+          <div class="w-full flex flex-col md:flex-row gap-4 justify-between">
+            <div class="w-full">
+              <label for="first-name" class="sr-only">First Name</label>
+              <input
+                type="text"
+                name="First Name"
+                id="first-name"
+                class="w-full px-4 py-[clamp(0.5rem,2vi,1rem)] text-sm placeholder:text-grey-200 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm border rounded-lg transition"
+                autocomplete="name"
+                placeholder="First Name"
+                required
+              />
+            </div>
+
+            <div class="w-full">
+              <label for="last-name" class="sr-only">Last Name</label>
+              <input
+                type="text"
+                name="Last Name"
+                id="last-name"
+                class="w-full px-4 py-[clamp(0.5rem,2vi,1rem)] text-sm placeholder:text-grey-200 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm border rounded-lg transition"
+                autocomplete="name"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <input
+              type="email"
+              name="Email"
+              id="email"
+              class="w-full px-4 py-[clamp(0.5rem,2vi,1rem)] text-sm placeholder:text-grey-200 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm border rounded-lg transition"
+              autocomplete="email"
+              placeholder="Enter Address"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="message" class="sr-only">Message</label>
+            <textarea
+              id="message"
+              name="Message"
+              class="w-full px-4 py-[clamp(0.5rem,2vi,1rem)] text-sm placeholder:text-grey-200 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm border rounded-lg transition"
+              placeholder="How can we help?"
+              rows="4"
+              required></textarea>
+          </div>
+
+          <CTA class="max-w-full" type="button" text="Submit" />
+        </div>
+      </form>
+    </section>
+
+    <section id="schedule">
+      <h2 class="mb-8 text-center">
+        Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span>
+      </h2>
+
+      <!-- Calendly inline widget begin -->
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/wavelandweb/15-min-meeting"
+        style="min-width:320px;height:700px;"
+      >
+      </div>
+
+      <script
+        type="text/javascript"
+        src="https://assets.calendly.com/assets/external/widget.js"
+        async></script>
+      <!-- Calendly inline widget end -->
+    </section>
+  </main>
 </Layout>
