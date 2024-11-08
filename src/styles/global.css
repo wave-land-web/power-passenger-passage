@@ -128,11 +128,12 @@ html {
   @apply font-body;
 }
 
+html,
 body {
   @apply overflow-x-hidden;
 }
 
-body[data-overlay-displayed='true'] {
+html:has(body[data-overlay-displayed='true']) {
   @apply overflow-y-hidden;
 }
 
