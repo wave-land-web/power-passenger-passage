@@ -39,7 +39,7 @@ const { src: momAndDaughterImageWebp } = await getImage({
   </header>
 
   <main class="bg-gradient-to-b from-white to-tan-100">
-    <section id="contact">
+    <section id="contact" class="lsa lsa-slide-up no-repeat">
       <h2 class="mb-8 text-center">Send Us a Message</h2>
 
       <form
@@ -104,12 +104,24 @@ const { src: momAndDaughterImageWebp } = await getImage({
               required></textarea>
           </div>
 
+          <div class="flex items-center gap-4">
+            <input
+              type="checkbox"
+              name="Subscribe"
+              id="subscribe"
+              class="appearance-none relative size-4 bg-white text-white border border-black rounded cursor-pointer checked:bg-red-900 checked:ring-2 checked:ring-red-500 before:content-['✓'] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:opacity-0 checked:before:opacity-100 before:text-xs transition"
+            />
+            <label for="subscribe" class="text-sm cursor-pointer">
+              Subscribe to our newsletter
+            </label>
+          </div>
+
           <CTA class="max-w-full" type="button" text="Submit" />
         </div>
       </form>
     </section>
 
-    <section id="schedule">
+    <section id="schedule" class="lsa lsa-slide-up no-repeat">
       <h2 class="mb-8 text-center">
         Schedule Your <span class="font-bold text-lg text-red-900">Free Consultation</span>
       </h2>
