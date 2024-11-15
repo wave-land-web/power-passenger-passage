@@ -1,8 +1,11 @@
 ---
-import { Picture } from 'astro:assets'
+// TODO: add  `/blog/${createSlug(title)}` to the link
+import type { SanityAsset } from '@sanity/image-url/lib/types/types'
+import { createEllipsisText } from '../../sanity/lib/text'
+import { urlFor } from '../../sanity/lib/urlFor'
 
 export interface Props {
-  image: ImageMetadata
+  image: SanityAsset
   imageAlt: string
   dateAndReadTime: string
   title: string
@@ -15,8 +18,12 @@ const { image, imageAlt, dateAndReadTime, title, text, isRow, class: className }
 ---
 
 <article class={`${className} w-full lsa lsa-slide-up no-repeat`}>
-  <a class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]} href="/">
-    <Picture src={image} alt={imageAlt} />
+  <a class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]} href="#">
+    <img
+      src={urlFor(image).format('webp').url()}
+      alt={imageAlt}
+      class="aspect-square object-cover"
+    />
 
     <div class="flex flex-col gap-4">
       <span>{dateAndReadTime}</span>
@@ -24,7 +31,7 @@ const { image, imageAlt, dateAndReadTime, title, text, isRow, class: className }
         {title}
       </h3>
 
-      {text && <p>{text}</p>}
+      {text && <p>{createEllipsisText(text, 100)}</p>}
     </div>
   </a>
 </article>

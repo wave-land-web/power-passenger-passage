@@ -1,20 +1,32 @@
-<!-- ---
-TODO: pull blog posts from Sanity
-
-import { getCollection } from 'astro:content'
+---
+// TODO: Builg and style this page
+import type { SanityDocument } from '@sanity/client'
+import Layout from '../../layouts/Layout.astro'
+import { loadQuery } from '../../sanity/lib/load-query'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog')
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-    },
-    props: { post },
-  }))
+  const { data: posts } = await loadQuery<SanityDocument[]>({
+    query: `*[_type == "post"]`,
+  })
+
+  return posts.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    }
+  })
 }
 
-const { post } = Astro.props
-const { Content } = await post.render()
+const { params } = Astro
+
+const { data: post } = await loadQuery<SanityDocument>({
+  query: `*[_type == "post" && slug.current == $slug][0]`,
+  params,
+})
 ---
 
-<Content /> -->
+<Layout title={post.title} description={post.description}>
+  <h1>{post.title}</h1>
+  <!-- <PortableText portableText={post.body} /> -->
+</Layout>

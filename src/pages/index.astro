@@ -1,9 +1,8 @@
 ---
+import type { SanityDocument } from '@sanity/client'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
-import blogCardOneImage from '../assets/blog-card-1.png'
-import blogCardTwoImage from '../assets/blog-card-2.png'
-import blogCardThreeImage from '../assets/blog-card-3.png'
+import { sanityClient } from 'sanity:client'
 import emmieOneSquareImage from '../assets/emmie-1-square.png'
 import emmieOneImage from '../assets/emmie-1.png'
 import emmieTwoImage from '../assets/emmie-2.png'
@@ -15,6 +14,11 @@ import IconCard from '../components/ui/IconCard.astro'
 import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
+
+const posts = (await sanityClient.fetch(
+  `*[_type == "post"] | order(publishedAt desc)`
+)) as SanityDocument[]
+const recentPosts = posts.slice(0, 3)
 ---
 
 <Layout
@@ -99,34 +103,24 @@ import Layout from '../layouts/Layout.astro'
           class="max-w-screen-sm items-center md:items-start text-center md:text-left"
         />
 
-        <!-- Blog Cards TODO: replace with real content -->
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
         >
-          <BlogCard
-            image={blogCardOneImage}
-            imageAlt=""
-            dateAndReadTime="May 29, 2023 • 3 min read"
-            title='Power Passenger Passage Love Letter No. 11: Being "Good"'
-            text="I have recently heard more than one pregnant woman tell me that they just want to know how to be a “good” pregnant person. That they are..."
-            class="max-w-[350px] delay-100"
-          />
-          <BlogCard
-            image={blogCardTwoImage}
-            imageAlt=""
-            dateAndReadTime="Jul 7, 2022 • 3 min read"
-            title="Power Passenger Passage Love Letter No. 10: Shame"
-            text="Hi Loves! I want to talk about shame. Shame is a particularly common emotion that can surface during pregnancy and motherhood. We receive..."
-            class="max-w-[350px] delay-200"
-          />
-          <BlogCard
-            image={blogCardThreeImage}
-            imageAlt=""
-            dateAndReadTime="Jun 5, 2022 • 3 min read"
-            title="Power Passenger Passage Love Letter No. 9: Perfectly Imperfect"
-            text="Hello Loves! I have been putting out this blog monthly since September 2021. It is now June and I have skipped the month of May. And..."
-            class="max-w-[350px] delay-300"
-          />
+          {
+            recentPosts.map((post) => (
+              <BlogCard
+                image={post.mainImage}
+                imageAlt={post.mainImage.alt}
+                dateAndReadTime={`${new Date(post.publishedAt).toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                })} • 3 min read`}
+                title={post.title}
+                text={post.description}
+              />
+            ))
+          }
         </div>
 
         <CTA
