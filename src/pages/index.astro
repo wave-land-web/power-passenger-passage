@@ -106,21 +106,7 @@ const recentPosts = posts.slice(0, 3)
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
         >
-          {
-            recentPosts.map((post) => (
-              <BlogCard
-                image={post.mainImage}
-                imageAlt={post.mainImage.alt}
-                dateAndReadTime={`${new Date(post.publishedAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })} • 3 min read`}
-                title={post.title}
-                text={post.description}
-              />
-            ))
-          }
+          {recentPosts.map((post) => <BlogCard post={post} />)}
         </div>
 
         <CTA
