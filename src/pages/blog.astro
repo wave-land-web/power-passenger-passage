@@ -7,10 +7,12 @@ import PageHeader from '../components/ui/PageHeader.astro'
 import Subscribe from '../components/ui/Subscribe.astro'
 import Layout from '../layouts/Layout.astro'
 
+// Fetch all posts
 const posts = (await sanityClient.fetch(
   `*[_type == "post"] | order(publishedAt desc)`
 )) as SanityDocument[]
 
+// Sort posts by date
 const newestPost = posts[0]
 const recentPosts = posts.slice(1, 4)
 const remainingPosts = posts.slice(4)
@@ -32,35 +34,10 @@ const remainingPosts = posts.slice(4)
       <h2 class="mb-8">Recent Blog Posts</h2>
 
       <div class="grid lg:grid-cols-2 gap-12">
-        <BlogCard
-          image={newestPost.mainImage}
-          imageAlt={newestPost.mainImage.alt}
-          dateAndReadTime={`${new Date(newestPost.publishedAt).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })} • 3 min read`}
-          title={newestPost.title}
-          text={newestPost.description}
-        />
+        <BlogCard post={newestPost} />
 
         <div class="flex flex-col gap-12">
-          {
-            recentPosts.map((post) => (
-              <BlogCard
-                image={post.mainImage}
-                imageAlt={post.mainImage.alt}
-                dateAndReadTime={`${new Date(post.publishedAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })} • 3 min read`}
-                title={post.title}
-                text={post.description}
-                isRow={true}
-              />
-            ))
-          }
+          {recentPosts.map((post) => <BlogCard post={post} isRow={true} />)}
         </div>
       </div>
     </section>
@@ -70,21 +47,7 @@ const remainingPosts = posts.slice(4)
         <h2 class="mb-8">All Blog Posts</h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {
-            remainingPosts.map((post) => (
-              <BlogCard
-                image={post.mainImage}
-                imageAlt={post.mainImage.alt}
-                dateAndReadTime={`${new Date(post.publishedAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })} • 3 min read`}
-                title={post.title}
-                text={post.description}
-              />
-            ))
-          }
+          {remainingPosts.map((post) => <BlogCard post={post} />)}
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 ---
 // TODO: Builg and style this page
 import type { SanityDocument } from '@sanity/client'
+import PageHeader from '../../components/ui/PageHeader.astro'
 import Layout from '../../layouts/Layout.astro'
 import { loadQuery } from '../../sanity/lib/load-query'
 
@@ -27,6 +28,8 @@ const { data: post } = await loadQuery<SanityDocument>({
 ---
 
 <Layout title={post.title} description={post.description}>
-  <h1>{post.title}</h1>
+  <PageHeader title={`${post.title}`} />
+
+  <!-- TODO: display body content, images, etc. -->
   <!-- <PortableText portableText={post.body} /> -->
 </Layout>

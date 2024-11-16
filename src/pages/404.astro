@@ -1,10 +1,11 @@
 ---
+import CTA from '../components/text/CTA.astro'
+import PageHeader from '../components/ui/PageHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Power Passenger Passage | 404">
-  <header>
-    <h1 class="text-xl lsa lsa-slide-up">404</h1>
-    <p class="text-sm lsa lsa-slide-up delay-200">Page not found</p>
-  </header>
+  <PageHeader title="404" subtitle="The page you are looking for does not exist.">
+    <CTA type="link" href="/" text="Back to Site" class="mx-auto" />
+  </PageHeader>
 </Layout>

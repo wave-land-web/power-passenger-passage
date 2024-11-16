@@ -1,37 +1,42 @@
 ---
-// TODO: add  `/blog/${createSlug(title)}` to the link
-import type { SanityAsset } from '@sanity/image-url/lib/types/types'
+import type { SanityDocument } from '@sanity/client'
 import { createEllipsisText } from '../../sanity/lib/text'
 import { urlFor } from '../../sanity/lib/urlFor'
 
 export interface Props {
-  image: SanityAsset
-  imageAlt: string
-  dateAndReadTime: string
-  title: string
-  text?: string
+  post: SanityDocument
   isRow?: boolean
   class?: string
 }
 
-const { image, imageAlt, dateAndReadTime, title, text, isRow, class: className } = Astro.props
+const { post, isRow, class: className } = Astro.props
+
+// TODO: calculate the real read time
+const dateAndReadTime = `${new Date(post.publishedAt).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+})} • 3 min read`
 ---
 
 <article class={`${className} w-full lsa lsa-slide-up no-repeat`}>
-  <a class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]} href="#">
+  <a
+    class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]}
+    href=`/blog/${post.slug.current}`
+  >
     <img
-      src={urlFor(image).format('webp').url()}
-      alt={imageAlt}
+      src={urlFor(post.mainImage).format('webp').url()}
+      alt={post.mainImage.alt}
       class="aspect-square object-cover"
     />
 
     <div class="flex flex-col gap-4">
       <span>{dateAndReadTime}</span>
       <h3 class="text-base group-hover:text-red-900 transition">
-        {title}
+        {post.title}
       </h3>
 
-      {text && <p>{createEllipsisText(text, 100)}</p>}
+      {post.description && <p>{createEllipsisText(post.description, 100)}</p>}
     </div>
   </a>
 </article>
