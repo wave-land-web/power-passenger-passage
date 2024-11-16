@@ -125,7 +125,7 @@ html {
   scrollbar-width: thin;
 
   /* Font */
-  @apply font-body;
+  @apply font-body scroll-smooth;
 }
 
 html,
