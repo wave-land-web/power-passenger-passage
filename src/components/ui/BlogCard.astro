@@ -1,7 +1,7 @@
 ---
 import type { SanityDocument } from '@sanity/client'
 import { createEllipsisText } from '../../sanity/lib/text'
-import { urlFor } from '../../sanity/lib/urlFor'
+import SanityImage from './SanityImage.astro'
 
 export interface Props {
   post: SanityDocument
@@ -24,11 +24,7 @@ const dateAndReadTime = `${new Date(post.publishedAt).toLocaleDateString('en-US'
     class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]}
     href=`/blog/${post.slug.current}`
   >
-    <img
-      src={urlFor(post.mainImage).format('webp').url()}
-      alt={post.mainImage.alt}
-      class="aspect-square object-cover"
-    />
+    <SanityImage image={post.mainImage} alt={post.mainImage.alt} />
 
     <div class="flex flex-col gap-4">
       <span>{dateAndReadTime}</span>

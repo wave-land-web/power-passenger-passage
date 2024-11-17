@@ -1,7 +1,9 @@
 ---
-// TODO: Builg and style this page
+// TODO: Style this page
 import type { SanityDocument } from '@sanity/client'
-import PageHeader from '../../components/ui/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+import PortableText from '../../components/text/PortableText.astro'
+import SanityImage from '../../components/ui/SanityImage.astro'
 import Layout from '../../layouts/Layout.astro'
 import { loadQuery } from '../../sanity/lib/load-query'
 
@@ -28,8 +30,26 @@ const { data: post } = await loadQuery<SanityDocument>({
 ---
 
 <Layout title={post.title} description={post.description}>
-  <PageHeader title={`${post.title}`} />
+  <header class="bg-gradient-to-b from-tan-100 to-white px-0">
+    <div
+      class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-sitePadding flex flex-col items-center md:justify-center gap-8 text-center"
+    >
+      <Icon name="zig-zag" class="w-16 lsa no-repeat" />
+      <h1 class="lsa lsa-slide-up no-repeat" set:html={post.title} />
+      <div class="w-full lsa lsa-slide-up no-repeat delay-500">
+        <SanityImage image={post.mainImage} alt={post.mainImage.alt} />
+      </div>
+    </div>
+  </header>
 
-  <!-- TODO: display body content, images, etc. -->
-  <!-- <PortableText portableText={post.body} /> -->
+  <main class="container-sm">
+    <section id="post" class="flex flex-col gap-4 lsa lsa-slide-up no-repeat">
+      <PortableText portableText={post.body} />
+
+      <!-- TODO: pagination -->
+    </section>
+
+    <!-- TODO: add recent posts -->
+    <!-- <section id="recent-posts"></section> -->
+  </main>
 </Layout>
