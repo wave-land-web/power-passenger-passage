@@ -9,10 +9,10 @@ import emmieTwoImage from '../assets/emmie-2.png'
 import momOneImage from '../assets/mom-1.png'
 import CTA from '../components/text/CTA.astro'
 import SectionHeader from '../components/text/SectionHeader.astro'
-import BlogCard from '../components/ui/BlogCard.astro'
 import IconCard from '../components/ui/IconCard.astro'
 import ImageAndText from '../components/ui/ImageAndText.astro'
 import PageHeader from '../components/ui/PageHeader.astro'
+import RecentPosts from '../components/ui/RecentPosts.astro'
 import Layout from '../layouts/Layout.astro'
 
 const posts = (await sanityClient.fetch(
@@ -97,25 +97,10 @@ const recentPosts = posts.slice(0, 3)
     </section>
 
     <section id="recent-blog-articles" class="bg-gradient-to-b from-tan-100 to-white">
-      <div class="container-md flex flex-col gap-20">
-        <SectionHeader
-          title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
-          class="max-w-screen-sm items-center md:items-start text-center md:text-left"
-        />
-
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12"
-        >
-          {recentPosts.map((post) => <BlogCard post={post} />)}
-        </div>
-
-        <CTA
-          type="link"
-          href="/blog"
-          text="View All Posts"
-          class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
-        />
-      </div>
+      <RecentPosts
+        title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
+        posts={recentPosts}
+      />
     </section>
 
     <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">

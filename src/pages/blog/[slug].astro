@@ -3,6 +3,7 @@
 import type { SanityDocument } from '@sanity/client'
 import { Icon } from 'astro-icon/components'
 import PortableText from '../../components/text/PortableText.astro'
+import RecentPosts from '../../components/ui/RecentPosts.astro'
 import SanityImage from '../../components/ui/SanityImage.astro'
 import Layout from '../../layouts/Layout.astro'
 import { loadQuery } from '../../sanity/lib/load-query'
@@ -23,33 +24,41 @@ export async function getStaticPaths() {
 
 const { params } = Astro
 
-const { data: post } = await loadQuery<SanityDocument>({
+// Load the current post
+const { data: currentPost } = await loadQuery<SanityDocument>({
   query: `*[_type == "post" && slug.current == $slug][0]`,
+  params,
+})
+
+// Calculate recent posts by filtering out the current post
+const { data: recentPosts } = await loadQuery<SanityDocument[]>({
+  query: `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...3]`,
   params,
 })
 ---
 
-<Layout title={post.title} description={post.description}>
+<Layout title={currentPost.title} description={currentPost.description}>
   <header class="bg-gradient-to-b from-tan-100 to-white px-0 pb-12">
     <div
       class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-sitePadding flex flex-col items-center md:justify-center gap-8 text-center"
     >
       <Icon name="zig-zag" class="w-16 lsa no-repeat" />
-      <h1 class="lsa lsa-slide-up no-repeat" set:html={post.title} />
+      <h1 class="lsa lsa-slide-up no-repeat" set:html={currentPost.title} />
       <div class="w-full lsa lsa-slide-up no-repeat delay-500">
-        <SanityImage image={post.mainImage} alt={post.mainImage.alt} />
+        <SanityImage image={currentPost.mainImage} alt={currentPost.mainImage.alt} />
       </div>
     </div>
   </header>
 
   <main id="blog-layout" class="bg-gradient-to-b from-white to-tan-100">
     <section id="post" class="container-sm flex flex-col gap-[1lh] pt-0 lsa lsa-slide-up no-repeat">
-      <PortableText portableText={post.body} />
+      <PortableText portableText={currentPost.body} />
 
       <!-- TODO: pagination -->
     </section>
 
-    <!-- TODO: add recent posts -->
-    <!-- <section id="recent-posts"></section> -->
+    <section id="recent-posts" class="container-md">
+      <RecentPosts title="Recent Posts" posts={recentPosts} />
+    </section>
   </main>
 </Layout>

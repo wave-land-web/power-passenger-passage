@@ -31,7 +31,7 @@ const remainingPosts = posts.slice(4)
 
   <main class="bg-gradient-to-b from-white to-tan-100">
     <section id="recent-blog-posts" class="container-lg">
-      <h2 class="mb-8">Recent Blog Posts</h2>
+      <h2 class="mb-8 lsa lsa-slide-up no-repeat">Recent Blog Posts</h2>
 
       <div class="grid lg:grid-cols-2 gap-12">
         <BlogCard post={newestPost} />
@@ -44,7 +44,7 @@ const remainingPosts = posts.slice(4)
 
     <section id="all-blog-posts">
       <div class="container-lg">
-        <h2 class="mb-8">All Blog Posts</h2>
+        <h2 class="mb-8 lsa lsa-slide-up no-repeat">All Blog Posts</h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {remainingPosts.map((post) => <BlogCard post={post} />)}

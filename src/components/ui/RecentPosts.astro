@@ -1,0 +1,31 @@
+---
+import type { SanityDocument } from '@sanity/client'
+import CTA from '../text/CTA.astro'
+import SectionHeader from '../text/SectionHeader.astro'
+import BlogCard from './BlogCard.astro'
+
+export interface Posts {
+  title: string
+  posts: SanityDocument[]
+}
+
+const { title, posts } = Astro.props
+---
+
+<div class="container-md">
+  <SectionHeader
+    title={title}
+    class="mb-12 max-w-screen-sm items-center md:items-start text-center md:text-left"
+  />
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-start gap-12 mb-20"
+  >
+    {posts.map((post: SanityDocument) => <BlogCard post={post} />)}
+  </div>
+  <CTA
+    type="link"
+    href="/blog"
+    text="View All Posts"
+    class="ml-auto mr-auto md:ml-auto md:mr-0 lsa lsa-slide-up no-repeat delay-500"
+  />
+</div>
