@@ -110,10 +110,12 @@
   --line-height: calc(0.6rem + 2ex);
 
   /* Spacing */
+
   --site-padding: clamp(1rem, 2vw, 2rem);
   --section-padding: clamp(7rem, 10vw, 9rem);
 
   /* Sizing */
+
   --nav-height: 98px;
 }
 
@@ -270,6 +272,7 @@ a {
 }
 
 /* Blog post styles */
+
 #post {
   & h2,
   & h3,
