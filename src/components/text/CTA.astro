@@ -1,6 +1,7 @@
 ---
+// TODO: create global .cta class and refactor this component
 export interface Props {
-  type: 'button' | 'link'
+  type: 'button' | 'link' | 'link-2'
   text: string
   href?: string
   newWindow?: boolean
@@ -14,7 +15,7 @@ const { type, text, href, newWindow, class: className } = Astro.props
   type === 'link' ? (
     <a
       href={href}
-      class={`${className} block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-lg shadow-sm transition`}
+      class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-lg shadow-sm transition`}
       target={newWindow ? '_blank' : '_self'}
       rel={newWindow ? 'noopener noreferrer' : ''}
       title={text}
@@ -22,13 +23,20 @@ const { type, text, href, newWindow, class: className } = Astro.props
     >
       {text}
     </a>
-  ) : (
+  ) : type === 'button' ? (
     <button
-      class={`${className} block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-lg shadow-sm transition`}
+      class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-lg shadow-sm transition`}
       title={text}
       aria-label={text}
     >
       {text}
     </button>
+  ) : (
+    <a
+      href={`/blog/${href}`}
+      class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-red-900 hover:text-white border hover:bg-red-900 rounded-lg shadow-sm transition`}
+    >
+      {text}
+    </a>
   )
 }

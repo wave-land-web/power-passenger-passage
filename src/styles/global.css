@@ -280,7 +280,7 @@ a {
     @apply mt-[0.5lh];
   }
 
-  & a {
+  & a:not(.cta) {
     @apply underline text-red-900 hover:text-red-500;
   }
 

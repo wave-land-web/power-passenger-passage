@@ -1,7 +1,7 @@
 ---
-// TODO: Style this page
 import type { SanityDocument } from '@sanity/client'
 import { Icon } from 'astro-icon/components'
+import CTA from '../../components/text/CTA.astro'
 import PortableText from '../../components/text/PortableText.astro'
 import RecentPosts from '../../components/ui/RecentPosts.astro'
 import SanityImage from '../../components/ui/SanityImage.astro'
@@ -9,20 +9,24 @@ import Layout from '../../layouts/Layout.astro'
 import { loadQuery } from '../../sanity/lib/load-query'
 
 export async function getStaticPaths() {
-  const { data: posts } = await loadQuery<SanityDocument[]>({
-    query: `*[_type == "post"]`,
+  const { data: allPosts } = await loadQuery<SanityDocument[]>({
+    query: `*[_type == "post"] | order(publishedAt asc)`,
   })
 
-  return posts.map(({ slug }) => {
+  return allPosts.map((post) => {
     return {
       params: {
-        slug: slug.current,
+        slug: post.slug.current,
+      },
+      props: {
+        allPosts,
       },
     }
   })
 }
 
-const { params } = Astro
+// Get page data and props
+const { params, props } = Astro
 
 // Load the current post
 const { data: currentPost } = await loadQuery<SanityDocument>({
@@ -35,6 +39,11 @@ const { data: recentPosts } = await loadQuery<SanityDocument[]>({
   query: `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...3]`,
   params,
 })
+
+// Pagination: previous and next post
+const currentPostIndex = props.allPosts.findIndex((p) => p.slug.current === params.slug)
+const previousPost = props.allPosts[currentPostIndex - 1] || null
+const nextPost = props.allPosts[currentPostIndex + 1] || null
 ---
 
 <Layout title={currentPost.title} description={currentPost.description}>
@@ -51,10 +60,28 @@ const { data: recentPosts } = await loadQuery<SanityDocument[]>({
   </header>
 
   <main id="blog-layout" class="bg-gradient-to-b from-white to-tan-100">
-    <section id="post" class="container-sm flex flex-col gap-[1lh] pt-0 lsa lsa-slide-up no-repeat">
+    <section id="post" class="container-sm flex flex-col gap-[1lh] py-0">
       <PortableText portableText={currentPost.body} />
 
-      <!-- TODO: pagination -->
+      <!-- Pagination -->
+      <div class="flex flex-wrap gap-8 justify-between mt-[1lh]">
+        {
+          previousPost && (
+            <CTA
+              type="link-2"
+              text="Previous Post"
+              href={previousPost.slug.current}
+              class="mr-auto"
+            />
+          )
+        }
+
+        {
+          nextPost && (
+            <CTA type="link-2" text="Next Post" href={nextPost.slug.current} class="ml-auto" />
+          )
+        }
+      </div>
     </section>
 
     <section id="recent-posts" class="container-md">
