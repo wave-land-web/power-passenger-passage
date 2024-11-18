@@ -117,6 +117,53 @@
   --nav-height: 98px;
 }
 
+/* Animations */
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /**
+    * Required class: `lsa` (initializes animations and defaults to fade-in)
+    * Note: Add `no-repeat` class to prevent animations from repeating on scroll
+    */
+  .lsa {
+    @apply opacity-0 transform transition-[opacity,transform] duration-700;
+
+    /* Slide animations */
+    &.lsa-slide-up {
+      @apply translate-y-4;
+    }
+    &.lsa-slide-down {
+      @apply -translate-y-4;
+    }
+    &.lsa-slide-left {
+      @apply -translate-x-4;
+    }
+    &.lsa-slide-right {
+      @apply translate-x-4;
+    }
+    &.lsa-slide-down-right {
+      @apply -translate-x-4 -translate-y-4;
+    }
+    &.lsa-slide-down-left {
+      @apply translate-x-4 -translate-y-4;
+    }
+    &.lsa-slide-up-right {
+      @apply -translate-x-4 translate-y-4;
+    }
+    &.lsa-slide-up-left {
+      @apply translate-x-4 translate-y-4;
+    }
+
+    /* Handle active state */
+    &.active {
+      @apply opacity-100 translate-x-0 translate-y-0;
+    }
+  }
+}
+
 /* General */
 
 html {
@@ -188,9 +235,12 @@ h4 {
 }
 
 p,
-li,
-span {
+li {
   @apply text-sm text-slate text-pretty;
+}
+
+span {
+  @apply text-sm text-pretty;
 }
 
 a {
@@ -219,49 +269,31 @@ a {
   @apply hover:text-white transition-all;
 }
 
-/* Animations */
+/* Blog post styles */
+#post {
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & img {
+    @apply mt-[0.5lh];
+  }
 
-@view-transition {
-  navigation: auto;
-}
+  & a {
+    @apply underline text-red-900 hover:text-red-500;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  /**
-    * Required class: `lsa` (initializes animations and defaults to fade-in)
-    * Note: Add `no-repeat` class to prevent animations from repeating on scroll
-    */
-  .lsa {
-    @apply opacity-0 transform transition-[opacity,transform] duration-700;
+  & ol,
+  & ul {
+    @apply flex flex-col gap-[0.5lh] pl-8 list-outside;
+  }
 
-    /* Slide animations */
-    &.lsa-slide-up {
-      @apply translate-y-4;
-    }
-    &.lsa-slide-down {
-      @apply -translate-y-4;
-    }
-    &.lsa-slide-left {
-      @apply -translate-x-4;
-    }
-    &.lsa-slide-right {
-      @apply translate-x-4;
-    }
-    &.lsa-slide-down-right {
-      @apply -translate-x-4 -translate-y-4;
-    }
-    &.lsa-slide-down-left {
-      @apply translate-x-4 -translate-y-4;
-    }
-    &.lsa-slide-up-right {
-      @apply -translate-x-4 translate-y-4;
-    }
-    &.lsa-slide-up-left {
-      @apply translate-x-4 translate-y-4;
-    }
+  & ol {
+    @apply list-decimal;
+  }
 
-    /* Handle active state */
-    &.active {
-      @apply opacity-100 translate-x-0 translate-y-0;
-    }
+  & ul {
+    @apply list-disc;
   }
 }

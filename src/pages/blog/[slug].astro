@@ -30,7 +30,7 @@ const { data: post } = await loadQuery<SanityDocument>({
 ---
 
 <Layout title={post.title} description={post.description}>
-  <header class="bg-gradient-to-b from-tan-100 to-white px-0">
+  <header class="bg-gradient-to-b from-tan-100 to-white px-0 pb-12">
     <div
       class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-sitePadding flex flex-col items-center md:justify-center gap-8 text-center"
     >
@@ -42,8 +42,8 @@ const { data: post } = await loadQuery<SanityDocument>({
     </div>
   </header>
 
-  <main class="container-sm">
-    <section id="post" class="flex flex-col gap-4 lsa lsa-slide-up no-repeat">
+  <main id="blog-layout" class="bg-gradient-to-b from-white to-tan-100">
+    <section id="post" class="container-sm flex flex-col gap-[1lh] pt-0 lsa lsa-slide-up no-repeat">
       <PortableText portableText={post.body} />
 
       <!-- TODO: pagination -->
