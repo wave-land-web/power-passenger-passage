@@ -2,6 +2,7 @@
 import type { SanityDocument } from '@sanity/client'
 import { Icon } from 'astro-icon/components'
 import CTA from '../../components/text/CTA.astro'
+import DateAndReadTime from '../../components/text/DateAndReadTime.astro'
 import PortableText from '../../components/text/PortableText.astro'
 import RecentPosts from '../../components/ui/RecentPosts.astro'
 import SanityImage from '../../components/ui/SanityImage.astro'
@@ -30,13 +31,31 @@ const { params, props } = Astro
 
 // Load the current post
 const { data: currentPost } = await loadQuery<SanityDocument>({
-  query: `*[_type == "post" && slug.current == $slug][0]`,
+  query: `*[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    description,
+    mainImage,
+    body,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  }`,
   params,
 })
 
 // Calculate recent posts by filtering out the current post
 const { data: recentPosts } = await loadQuery<SanityDocument[]>({
-  query: `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...3]`,
+  query: `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    description,
+    mainImage,
+    body,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  }`,
   params,
 })
 
@@ -53,7 +72,12 @@ const nextPost = props.allPosts[currentPostIndex + 1] || null
     >
       <Icon name="zig-zag" class="w-16 lsa no-repeat" />
       <h1 class="lsa lsa-slide-up no-repeat" set:html={currentPost.title} />
-      <div class="w-full lsa lsa-slide-up no-repeat delay-500">
+      <DateAndReadTime
+        publishedAt={currentPost.publishedAt}
+        estimatedReadingTime={currentPost.estimatedReadingTime}
+        class="lsa lsa-slide-up no-repeat delay-100"
+      />
+      <div class="w-full lsa lsa-slide-up no-repeat delay-200">
         <SanityImage image={currentPost.mainImage} alt={currentPost.mainImage.alt} />
       </div>
     </div>

@@ -1,6 +1,7 @@
 ---
 import type { SanityDocument } from '@sanity/client'
 import { createEllipsisText } from '../../sanity/lib/text'
+import DateAndReadTime from '../text/DateAndReadTime.astro'
 import SanityImage from './SanityImage.astro'
 
 export interface Props {
@@ -10,13 +11,6 @@ export interface Props {
 }
 
 const { post, isRow, class: className } = Astro.props
-
-// TODO: calculate the real read time
-const dateAndReadTime = `${new Date(post.publishedAt).toLocaleDateString('en-US', {
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
-})} • 3 min read`
 ---
 
 <article class={`${className} w-full lsa lsa-slide-up no-repeat`}>
@@ -27,7 +21,11 @@ const dateAndReadTime = `${new Date(post.publishedAt).toLocaleDateString('en-US'
     <SanityImage image={post.mainImage} alt={post.mainImage.alt} />
 
     <div class="flex flex-col gap-4">
-      <span>{dateAndReadTime}</span>
+      <DateAndReadTime
+        publishedAt={post.publishedAt}
+        estimatedReadingTime={post.estimatedReadingTime}
+        class="group-hover:text-red-900 transition"
+      />
       <h3 class="text-base group-hover:text-red-900 transition">
         {post.title}
       </h3>

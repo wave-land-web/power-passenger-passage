@@ -9,7 +9,15 @@ import Layout from '../layouts/Layout.astro'
 
 // Fetch all posts
 const posts = (await sanityClient.fetch(
-  `*[_type == "post"] | order(publishedAt desc)`
+  `*[_type == "post"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    description,
+    mainImage,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  }`
 )) as SanityDocument[]
 
 // Sort posts by date
