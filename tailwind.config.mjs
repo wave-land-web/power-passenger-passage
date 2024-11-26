@@ -42,6 +42,7 @@ export default {
       tan: {
         100: 'var(--color-tan-100)',
       },
+      green: 'var(--color-green)',
     },
     extend: {
       fontFamily: {

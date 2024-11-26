@@ -2,15 +2,16 @@
 import CTA from '../text/CTA.astro'
 
 export interface Props {
+  formId: string
   class?: string
 }
 
-const { class: className } = Astro.props
+const { formId, class: className } = Astro.props
 ---
 
-<form action="/" method="post" class={`${className} w-full max-w-lg`}>
+<form id={formId} method="post" class={`${className} w-full max-w-lg`}>
   <label for="email" class="sr-only">Email:</label>
-  <div class="relative h-16">
+  <div class="relative h-16 mb-2">
     <input
       type="email"
       name="Email"
@@ -26,4 +27,71 @@ const { class: className } = Astro.props
       class="absolute top-1/2 right-[6px] -translate-y-1/2 h-[calc(100%-12px)] flex items-center text-sm"
     />
   </div>
+  <p id="response" class="hidden text-left text-xs">
+    <!-- Form submission response handled via JS -->
+  </p>
 </form>
+
+<script is:inline define:vars={{ formId }}>
+  const form = document.querySelector(`#${formId}`)
+  const responseMessage = form?.querySelector('#response')
+
+  /**
+   * Handle UI messages based on submission state
+   * @param {String} state - 'loading', 'error', 'success'
+   * @param {String} message - Message to display
+   */
+  function handleMessageUI(state, message) {
+    const errorClasses = ['text-red-900']
+    const successClasses = ['text-green']
+
+    // Reset styles
+    responseMessage.classList.remove('hidden')
+    responseMessage.classList.remove(...errorClasses)
+    responseMessage.classList.remove(...successClasses)
+
+    // Set message text based on API response
+    responseMessage.textContent = message
+
+    // Set message color based on state
+    if (state === 'error') {
+      responseMessage.classList.add(...errorClasses)
+    } else if (state === 'success') {
+      responseMessage.classList.add(...successClasses)
+    }
+  }
+
+  /**
+   * Handle email subscription form submission
+   * @param e Form submission event
+   */
+  async function submit(e) {
+    e.preventDefault()
+
+    // Show loading message
+    handleMessageUI('loading', 'Subscribing...')
+
+    // Get form data and send to API
+    const formData = new FormData(e.target)
+    const response = await fetch('/api/subscribe.json/', {
+      method: 'POST',
+      body: formData,
+    })
+    const data = await response.json()
+
+    // Error
+    if (response.status === 500 || response.status === 404) {
+      handleMessageUI('error', data.message)
+    }
+
+    // Success
+    if (response.status === 200) {
+      handleMessageUI('success', data.message)
+    }
+
+    form?.reset()
+  }
+
+  // Submit event listener
+  form?.addEventListener('submit', submit)
+</script>
