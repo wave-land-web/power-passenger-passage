@@ -34,30 +34,31 @@ const { formId, class: className } = Astro.props
 
 <script is:inline define:vars={{ formId }}>
   const form = document.querySelector(`#${formId}`)
-  const responseMessage = form?.querySelector('#response')
+  const responseMessage = form.querySelector('#response')
 
   /**
    * Handle UI messages based on submission state
+   * @param {HTMLParagraphElement} responseElement - Element to display message
    * @param {String} state - 'loading', 'error', 'success'
    * @param {String} message - Message to display
    */
-  function handleMessageUI(state, message) {
+  function formValidationMessage(responseElement, state, message) {
     const errorClasses = ['text-red-900']
     const successClasses = ['text-green']
 
     // Reset styles
-    responseMessage.classList.remove('hidden')
-    responseMessage.classList.remove(...errorClasses)
-    responseMessage.classList.remove(...successClasses)
+    responseElement.classList.remove('hidden')
+    responseElement.classList.remove(...errorClasses)
+    responseElement.classList.remove(...successClasses)
 
     // Set message text based on API response
-    responseMessage.textContent = message
+    responseElement.textContent = message
 
     // Set message color based on state
     if (state === 'error') {
-      responseMessage.classList.add(...errorClasses)
+      responseElement.classList.add(...errorClasses)
     } else if (state === 'success') {
-      responseMessage.classList.add(...successClasses)
+      responseElement.classList.add(...successClasses)
     }
   }
 
@@ -69,7 +70,7 @@ const { formId, class: className } = Astro.props
     e.preventDefault()
 
     // Show loading message
-    handleMessageUI('loading', 'Subscribing...')
+    formValidationMessage(responseMessage, 'loading', 'Subscribing...')
 
     // Get form data and send to API
     const formData = new FormData(e.target)
@@ -81,12 +82,12 @@ const { formId, class: className } = Astro.props
 
     // Error
     if (response.status === 500 || response.status === 404) {
-      handleMessageUI('error', data.message)
+      formValidationMessage(responseMessage, 'error', data.message)
     }
 
     // Success
     if (response.status === 200) {
-      handleMessageUI('success', data.message)
+      formValidationMessage(responseMessage, 'success', data.message)
     }
 
     form?.reset()

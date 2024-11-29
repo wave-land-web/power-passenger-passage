@@ -53,7 +53,7 @@ const { src: momAndDaughterImageWebp } = await getImage({
       >
         <Icon name="circle" class="absolute -top-20 -right-24 w-48" />
 
-        <div class="relative z-10 flex flex-col gap-4">
+        <div class="relative z-10 flex flex-col gap-4 mb-2">
           <div class="w-full flex flex-col md:flex-row gap-4 justify-between">
             <div class="w-full">
               <label for="first-name" class="sr-only">First Name</label>
@@ -120,6 +120,9 @@ const { src: momAndDaughterImageWebp } = await getImage({
 
           <CTA class="max-w-full" type="button" text="Submit" />
         </div>
+        <p id="contact-response" class="hidden text-left text-xs">
+          <!-- Form error handling handled via JS -->
+        </p>
       </form>
     </section>
 
@@ -146,29 +149,42 @@ const { src: momAndDaughterImageWebp } = await getImage({
 </Layout>
 
 <script>
+  import { formValidationMessage } from '../lib/formValidationMessage'
+
   const form = document.querySelector('form[name="contactForm"]') as HTMLFormElement
+  const responseMessage = form?.querySelector('#contact-response') as HTMLParagraphElement
 
-  // if user has subscribed, suscribe them to the newsletter
-  // if user has not subscribed, do not subscribe them
-  // submit the form to Netlify
-
-  form.addEventListener('submit', (event) => {
+  /**
+   * If the user has opted in to subscribe, subscribe user and submit form
+   *
+   * Otherwise, submit form without subscribing
+   * @param event
+   */
+  function handleSubmit(event: Event) {
     event.preventDefault()
 
     const formData = new FormData(form)
     const subscribeData = formData.get('Subscribe')
 
     if (subscribeData === 'on') {
-      const response = fetch('/api/subscribe.json/', {
+      fetch('/api/subscribe.json/', {
         method: 'POST',
         body: formData,
       })
-        .then(() => form.submit())
+        .then((res) => {
+          if (res.ok) {
+            form.submit()
+          } else {
+            console.error(res.statusText)
+            formValidationMessage(responseMessage, 'error', res.statusText)
+          }
+        })
         .catch((error) => console.error(error))
-
-      console.log(response)
     } else {
       form.submit()
     }
-  })
+  }
+
+  // Event listener for form submission
+  form.addEventListener('submit', handleSubmit)
 </script>
