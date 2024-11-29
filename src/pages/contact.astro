@@ -148,31 +148,27 @@ const { src: momAndDaughterImageWebp } = await getImage({
 <script>
   const form = document.querySelector('form[name="contactForm"]') as HTMLFormElement
 
-  /**
-   * Handle form submission
-   * @param e Form submission event
-   */
-  async function submit(e: Event) {
-    e.preventDefault()
+  // if user has subscribed, suscribe them to the newsletter
+  // if user has not subscribed, do not subscribe them
+  // submit the form to Netlify
 
-    // Get form data and send to API
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
+
     const formData = new FormData(form)
+    const subscribeData = formData.get('Subscribe')
 
-    const subscribeValue = formData.get('Subscribe')
-
-    if (subscribeValue === 'on') {
-      const response = await fetch('/api/subscribe.json/', {
+    if (subscribeData === 'on') {
+      const response = fetch('/api/subscribe.json/', {
         method: 'POST',
         body: formData,
       })
-      const data = await response.json()
+        .then(() => form.submit())
+        .catch((error) => console.error(error))
 
-      console.log(data)
+      console.log(response)
+    } else {
+      form.submit()
     }
-
-    form.submit()
-  }
-
-  // Submit event listener
-  form.addEventListener('submit', submit)
+  })
 </script>
