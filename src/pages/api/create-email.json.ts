@@ -30,8 +30,9 @@ export const POST: APIRoute = async ({ params, request }) => {
     </body>`,
   })
 
-  // Return request body as JSON
-  return new Response(JSON.stringify(body), {
-    headers: { 'content-type': 'application/json' },
-  })
+  return new Response(
+    JSON.stringify({
+      body,
+    })
+  )
 }
