@@ -72,8 +72,8 @@ export const POST: APIRoute = async ({ request }) => {
   // Send email to all contacts
   const { data: emailData, error: emailError } = await resend.emails.send({
     from: 'Power Passenger Passage <josh@wavelandweb.com>',
-    to: contactData?.data.map((contact) => contact.email) || [],
-    subject: `New Post: ${body.title}`,
+    to: contactData?.data.map((contact) => contact.email) ?? [],
+    subject: body.title,
     html: /* HTML */ `<body
       style='font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; color: #0E1726; margin-bottom: 36px;'
     >
@@ -82,15 +82,37 @@ export const POST: APIRoute = async ({ request }) => {
         height="auto"
         src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
         style="display:block;outline:none;border:none;text-decoration:none;margin-top:24px;margin-bottom:24px;margin-right:auto;"
-        width="170"
+        width="150"
       />
 
-      <h1>${body.title}</h1>
-      <p>${body.description}</p>
-      <p>${contactData}</p>
-      <p>
-        Click here to read the full post:
-        <a href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}">Read Post</a>
+      <h1 style="margin-bottom: 16px;">Hi there!</h1>
+
+      <p style="margin-bottom: 16px;">
+        I just posted something new on the Power Passenger Passage blog, and I wanted you to be the
+        first to know! Here's a quick look at what it's all about:
+      </p>
+
+      <h2 style="margin-bottom: 16px;">${body.title}</h2>
+      <p style="margin-bottom: 16px;">${body.description}</p>
+
+      <p style="margin-bottom: 24px;">
+        Dive into the full post to explore more:
+        <a
+          href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}"
+          style="color: #1E90FF; text-decoration: none;"
+        >
+          Read the Full Post
+        </a>
+      </p>
+
+      <p style="margin-bottom: 24px;">
+        Thanks for subscribing and being part of this journey with me. If you have any thoughts or
+        questions, just hit reply—I'd really enjoy hearing what you think.
+      </p>
+
+      <p style="font-size: 0.875rem; color: #666;">
+        All the best,<br />
+        Emmie
       </p>
     </body>`,
   })
