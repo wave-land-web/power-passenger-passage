@@ -3,7 +3,7 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import { resend } from '../../lib/resend'
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const POST: APIRoute = async ({ params, request }) => {
   console.log('params', params)
   console.log('request', request)
   console.log('request body: ', request.body)
@@ -34,7 +34,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 
   return new Response(
     JSON.stringify({
-      body: request.body,
+      body: request,
     })
   )
 }
