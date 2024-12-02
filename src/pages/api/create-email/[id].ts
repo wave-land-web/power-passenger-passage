@@ -2,11 +2,12 @@ export const prerender = false
 
 import type { SanityDocument } from '@sanity/client'
 import type { APIRoute } from 'astro'
-import { resend } from '../../lib/resend'
-import { loadQuery } from '../../sanity/lib/load-query'
+import { resend } from '../../../lib/resend'
+import { loadQuery } from '../../../sanity/lib/load-query'
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, request }) => {
   console.log('params', params)
+  console.log('request', request)
   const { id } = params
 
   // Get post with given pararm id from Sanity
