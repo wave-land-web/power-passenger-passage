@@ -28,6 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
         />
 
         <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">New Post:</h1>
+        <p>${body}</p>
       </body>`,
     })
 
