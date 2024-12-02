@@ -2,6 +2,7 @@ export const prerender = false
 
 import type { APIRoute } from 'astro'
 import { resend } from '../../lib/resend'
+import { urlForImage } from '../../sanity/lib/urlForImage'
 
 // const sampleRequestBody = {
 //   _rev: 'FC4JjQUtfvPledz4Kb77f7',
@@ -63,6 +64,7 @@ interface postProps {
 
 export const POST: APIRoute = async ({ request }) => {
   const body = (await request.json()) as postProps
+  const imageUrl = urlForImage(body.mainImage).url()
 
   // Retrieve all contacts from Resend
   const { data: contactData, error: contactError } = await resend.contacts.list({
@@ -85,17 +87,12 @@ export const POST: APIRoute = async ({ request }) => {
         width="150"
       />
 
-      <h1 style="margin-bottom: 16px;">Hi there!</h1>
-
+      <p style="margin-bottom: 16px;">Hi and welcome to Power Passenger Passage!</p>
       <p style="margin-bottom: 16px;">
         I just posted something new on the Power Passenger Passage blog, and I wanted you to be the
-        first to know! Here's a quick look at what it's all about:
+        first to know!
       </p>
-
-      <h2 style="margin-bottom: 16px;">${body.title}</h2>
-      <p style="margin-bottom: 16px;">${body.description}</p>
-
-      <p style="margin-bottom: 24px;">
+      <p style="margin-bottom: 16px;">
         Dive into the full post to explore more:
         <a
           href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}"
@@ -105,11 +102,21 @@ export const POST: APIRoute = async ({ request }) => {
         </a>
       </p>
 
-      <p style="margin-bottom: 24px;">
+      <p style="margin-bottom: 16px;">Here's a sneak peek:</p>
+      <h1 style="margin-bottom: 16px;">${body.title}</h1>
+      <p style="margin-bottom: 16px;">${body.description}</p>
+      <img
+        alt="${body.mainImage.alt}"
+        height="auto"
+        src="${imageUrl}"
+        style="display:block;outline:none;border:none;text-decoration:none;margin-top:16px;margin-bottom:16px;margin-right:auto;"
+        width="300"
+      />
+
+      <p style="margin-bottom: 16px;">
         Thanks for subscribing and being part of this journey with me. If you have any thoughts or
         questions, just hit reply—I'd really enjoy hearing what you think.
       </p>
-
       <p style="font-size: 0.875rem; color: #666;">
         All the best,<br />
         Emmie

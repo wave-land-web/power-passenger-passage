@@ -46,7 +46,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
           height="auto"
           src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
           style="display:block;outline:none;border:none;text-decoration:none;margin-top:24px;margin-bottom:24px;margin-right:auto;"
-          width="170"
+          width="150"
         />
         <p>
           ${email} has been unsubscribed from our email list. You will no longer receive any emails
