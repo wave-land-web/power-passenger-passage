@@ -122,16 +122,16 @@ export const POST: APIRoute = async ({ request }) => {
       </p>
       <p>Thanks again for joining, <br />Emmie</p>
       <p>
-        <a href="mailto:emmie@erslifecoach.com" target="_blank">Email</a>
+        <a href="mailto:emmie@erslifecoach.com" target="_blank" style="color: #1E90FF;>Email</a>
         |
-        <a href="https://www.instagram.com/erslifecoach/" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/erslifecoach/" target="_blank" style="color: #1E90FF;>Instagram</a>
       </p>
       <p style="color:#626060;">
         To unsubscribe, simply reply to this email with "Unsubscribe" in the subject line or click
         the link below.
       </p>
       <p>
-        <a href="https://powerpassengerpassage.netlify.app/api/unsubscribe/${''}" target="_blank"
+        <a href="https://powerpassengerpassage.netlify.app/api/unsubscribe/${''}" target="_blank" style="color: #1E90FF;
           >Unsubscribe</a
         >
       </p>
