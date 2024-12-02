@@ -87,12 +87,12 @@ export const POST: APIRoute = async ({ request }) => {
         width="150"
       />
 
-      <p style="margin-bottom: 16px;">Hi and welcome to Power Passenger Passage!</p>
-      <p style="margin-bottom: 16px;">
+      <p>Hi and welcome to Power Passenger Passage!</p>
+      <p>
         I just posted something new on the Power Passenger Passage blog, and I wanted you to be the
         first to know!
       </p>
-      <p style="margin-bottom: 16px;">
+      <p style="margin-bottom: 24px;">
         Dive into the full post to explore more:
         <a
           href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}"
@@ -102,24 +102,34 @@ export const POST: APIRoute = async ({ request }) => {
         </a>
       </p>
 
-      <p style="margin-bottom: 16px;">Here's a sneak peek:</p>
-      <h1 style="margin-bottom: 16px;">${body.title}</h1>
-      <p style="margin-bottom: 16px;">${body.description}</p>
+      <h1>${body.title}</h1>
+      <p>${body.description}</p>
       <img
         alt="${body.mainImage.alt}"
         height="auto"
         src="${imageUrl}"
-        style="display:block;outline:none;border:none;text-decoration:none;margin-top:16px;margin-bottom:16px;margin-right:auto;"
+        style="display:block;outline:none;border:none;text-decoration:none;margin-top:16px;margin-bottom:24px;margin-right:auto;"
         width="300"
       />
 
-      <p style="margin-bottom: 16px;">
+      <p>
         Thanks for subscribing and being part of this journey with me. If you have any thoughts or
         questions, just hit reply—I'd really enjoy hearing what you think.
       </p>
-      <p style="font-size: 0.875rem; color: #666;">
-        All the best,<br />
-        Emmie
+      <p>Thanks again for joining, <br />Emmie</p>
+      <p>
+        <a href="mailto:emmie@erslifecoach.com" target="_blank">Email</a>
+        |
+        <a href="https://www.instagram.com/erslifecoach/" target="_blank">Instagram</a>
+      </p>
+      <p style="color:#626060;">
+        To unsubscribe, simply reply to this email with "Unsubscribe" in the subject line or click
+        the link below.
+      </p>
+      <p>
+        <a href="https://powerpassengerpassage.netlify.app/api/unsubscribe/${''}" target="_blank"
+          >Unsubscribe</a
+        >
       </p>
     </body>`,
   })
