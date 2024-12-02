@@ -1,3 +1,5 @@
+// TODO: add email to "unsubscribe" link
+
 export const prerender = false
 
 import type { APIRoute } from 'astro'
@@ -93,13 +95,15 @@ export const POST: APIRoute = async ({ request }) => {
         first to know!
       </p>
       <p style="margin-bottom: 24px;">
-        Dive into the full post to explore more:
-        <a
-          href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}"
-          style="color: #1E90FF; text-decoration: none;"
-        >
-          Read the Full Post
-        </a>
+        <em
+          >Dive into the full post to explore more:
+          <a
+            href="https://powerpassengerpassage.netlify.app/blog/${body.slug.current}"
+            style="color: #1E90FF; text-decoration: none;"
+          >
+            Read the Full Post
+          </a>
+        </em>
       </p>
 
       <h1>${body.title}</h1>
