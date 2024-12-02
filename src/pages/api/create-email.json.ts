@@ -131,9 +131,7 @@ export const POST: APIRoute = async ({ request }) => {
         the link below.
       </p>
       <p>
-        <a href="https://powerpassengerpassage.netlify.app/api/unsubscribe/${''}" target="_blank" style="color: #1E90FF;
-          >Unsubscribe</a
-        >
+        <a href="https://powerpassengerpassage.netlify.app/api/unsubscribe/${''}" target="_blank" style="color: #1E90FF;>Unsubscribe</a>
       </p>
     </body>`,
   })
