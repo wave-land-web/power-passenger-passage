@@ -4,9 +4,7 @@ import type { APIRoute } from 'astro'
 import { resend } from '../../lib/resend'
 
 export const POST: APIRoute = async ({ params, request }) => {
-  console.log('params', params)
-  console.log('request', request)
-  console.log('request body: ', request.body)
+  const body = await request.json()
 
   // Get post with given pararm id from Sanity
   // const { data: post } = await loadQuery<SanityDocument>({
@@ -32,9 +30,8 @@ export const POST: APIRoute = async ({ params, request }) => {
     </body>`,
   })
 
-  return new Response(
-    JSON.stringify({
-      body: request,
-    })
-  )
+  // Return request body as JSON
+  return new Response(JSON.stringify(body), {
+    headers: { 'content-type': 'application/json' },
+  })
 }
