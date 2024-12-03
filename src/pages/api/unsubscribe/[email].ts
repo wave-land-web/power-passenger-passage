@@ -1,6 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
+import UnsubscribeEmail from '../../../components/email/UnsubscribeEmail'
 import { resend } from '../../../lib/resend'
 
 /**
@@ -37,27 +38,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
     from: 'Power Passenger Passage <josh@wavelandweb.com>',
     to: [email],
     subject: 'You have been unsubscribed',
-    html: /* HTML */ `
-      <body
-        style='font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; color: #0E1726; margin-bottom: 36px;'
-      >
-        <img
-          alt="Power Passenger Passage Logo"
-          height="auto"
-          src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
-          style="display:block;outline:none;border:none;text-decoration:none;margin-top:24px;margin-bottom:24px;margin-right:auto;"
-          width="150"
-        />
-        <p>
-          ${email} has been unsubscribed from our email list. You will no longer receive any emails
-          from us.
-        </p>
-        <p>
-          Go back to our website →
-          <a href="https://powerpassengerpassage.com">Power Passenger Passage</a>
-        </p>
-      </body>
-    `,
+    react: UnsubscribeEmail({ email }),
   })
 
   // Log the response from Resend
