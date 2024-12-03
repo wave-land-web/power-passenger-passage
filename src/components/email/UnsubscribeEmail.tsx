@@ -33,8 +33,8 @@ export default function UnsubscribeEmail({ email }: UnsubscribeEmailProps) {
             style={logo}
           />
           <Text style={paragraph}>
-            ${email} has been unsubscribed from our email list. You will no longer receive any
-            emails from us.
+            {email} has been unsubscribed from our email list. You will no longer receive any emails
+            from us.
           </Text>
           <Text style={paragraph}>Come back anytime!</Text>
           <Section>
