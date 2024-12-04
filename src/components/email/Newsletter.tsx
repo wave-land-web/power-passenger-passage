@@ -1,6 +1,4 @@
 import { PortableText } from '@portabletext/react'
-import type { CSSProperties } from 'react'
-
 import {
   Body,
   Container,
@@ -14,6 +12,8 @@ import {
   Section,
   Text,
 } from '@react-email/components'
+import type { CSSProperties } from 'react'
+import { urlForImage } from '../../sanity/lib/urlForImage'
 
 interface NewsletterProps {
   title: string
@@ -45,7 +45,17 @@ export default function Newsletter({
           }
           alt: string
         }
-      }) => <Img src={value.asset.url} width="100%" height="auto" alt={value.alt} style={image} />,
+      }) => {
+        return (
+          <Img
+            src={urlForImage(value.asset).url()}
+            width="100%"
+            height="auto"
+            alt={value.alt}
+            style={image}
+          />
+        )
+      },
     },
   }
 
