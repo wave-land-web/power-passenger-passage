@@ -43,22 +43,20 @@ export const POST: APIRoute = async ({ request }) => {
     audienceId: import.meta.env.RESEND_AUDIENCE_ID,
   })
 
-  // Send email to all contacts
-  // TODO: add email to "unsubscribe" link as prop
-  // const { data: emailData, error: emailError } = await resend.emails.send({
-  //   from: 'Power Passenger Passage <josh@wavelandweb.com>',
-  //   to: contactData?.data.map((contact) => contact.email) ?? [],
-  //   subject: body.title,
-  //   react: Newsletter({
-  //     title: body.title,
-  //     slug: body.slug.current,
-  //     description: body.description,
-  //     imageUrl,
-  //     imageAlt: body.mainImage.alt,
-  //     email: 'example@gmail.com',
-  //   }),
-  // })
+  // If contacts were not retrieved >> return an error message
+  if (contactError) {
+    return new Response(
+      JSON.stringify({
+        message: `Failed to retrieve contacts: ${contactError?.message}`,
+      }),
+      {
+        status: 500,
+        statusText: `Internal Server Error: ${contactError?.message}`,
+      }
+    )
+  }
 
+  // Create an array of email data for each contact
   const batchData =
     contactData?.data.map((contact) => {
       return {
@@ -76,23 +74,11 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }) ?? []
 
+  // Send email to all contacts
   const { data: emailData, error: emailError } = await resend.batch.send(batchData)
 
   // Log the response from Resend
   console.log({ contactData, contactError, emailData, emailError })
-
-  // If contacts were not retrieved >> return an error message
-  if (contactError) {
-    return new Response(
-      JSON.stringify({
-        message: `Failed to retrieve contacts: ${contactError?.message}`,
-      }),
-      {
-        status: 500,
-        statusText: `Internal Server Error: ${contactError?.message}`,
-      }
-    )
-  }
 
   // If email was not sent >> return an error message
   if (emailError) {

@@ -74,7 +74,7 @@ export default function Newsletter({
 
           <Hr style={hr} />
           <Link
-            href={`https://powerpassengerpassage.netlify.app/api/unsubscribe/${'TODO: email'}`}
+            href={`https://powerpassengerpassage.netlify.app/api/unsubscribe/${email}`}
             target="_blank"
           >
             unsubscribe
