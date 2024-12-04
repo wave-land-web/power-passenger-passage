@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react'
+import type { CSSProperties } from 'react'
 
 import {
   Body,
@@ -53,33 +54,25 @@ export default function Newsletter({
           </Text>
           <Text style={paragraph}>
             <em>
-              Dive into the full post to explore more:{' '}
               <Link href={`https://powerpassengerpassage.netlify.app/blog/${slug}`}>
-                Read the Full Post
+                View in browser
               </Link>
             </em>
           </Text>
 
+          <Hr style={hr} />
+
           <Section style={container}>
             <Heading as="h1">{title}</Heading>
             <Text style={paragraph}>{description}</Text>
-            <Img src={imageUrl} width="300" height="auto" alt={imageAlt} style={image} />
+            <Img src={imageUrl} width="100%" height="auto" alt={imageAlt} style={image} />
 
             {/* Post Content */}
             <PortableText value={body} />
           </Section>
 
-          <Text style={paragraph}>
-            Thanks for subscribing and being part of this journey with me. If you have any thoughts
-            or questions, feel free to reply to this email—I'd love to hear from you!
-          </Text>
-          <Text style={paragraph}>
-            Love,
-            <br />
-            Emmie
-          </Text>
-
           <Hr style={hr} />
+
           <Link
             href={`https://powerpassengerpassage.netlify.app/api/unsubscribe/${email}`}
             target="_blank"
@@ -102,6 +95,7 @@ const main = {
 const container = {
   margin: '0 auto',
   padding: '20px 0 48px',
+  fontSize: '16px',
 }
 
 const logo = {
@@ -113,17 +107,19 @@ const paragraph = {
   lineHeight: '26px',
 }
 
-const image = {
+const image: CSSProperties = {
   margin: '0 auto',
   borderRadius: '3px',
+  objectFit: 'cover',
+  maxHeight: '350px',
 }
 
 const hr = {
-  borderColor: '#cccccc',
+  borderColor: '#e5e1dd',
   margin: '20px 0',
 }
 
 const footer = {
-  color: '#8898aa',
+  color: '#999697',
   fontSize: '12px',
 }
