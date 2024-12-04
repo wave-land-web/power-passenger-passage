@@ -43,6 +43,21 @@ export const POST: APIRoute = async ({ request }) => {
     audienceId: import.meta.env.RESEND_AUDIENCE_ID,
   })
 
+  // Send email to all contacts
+  // TODO: add email to "unsubscribe" link as prop
+  // const { data: emailData, error: emailError } = await resend.emails.send({
+  //   from: 'Power Passenger Passage <josh@wavelandweb.com>',
+  //   to: contactData?.data.map((contact) => contact.email) ?? [],
+  //   subject: body.title,
+  //   react: Newsletter({
+  //     title: body.title,
+  //     slug: body.slug.current,
+  //     description: body.description,
+  //     imageUrl,
+  //     imageAlt: body.mainImage.alt,
+  //   }),
+  // })
+
   // If contacts were not retrieved >> return an error message
   if (contactError) {
     return new Response(
@@ -57,41 +72,37 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // Send email to each contact
-  try {
-    contactData?.data.map(async (contact) => {
-      const { data, error } = await resend.emails.send({
-        from: 'Power Passenger Passage <josh@wavelandweb.com>',
-        to: contact.email ?? [],
-        subject: body.title,
-        react: Newsletter({
-          title: body.title,
-          slug: body.slug.current,
-          description: body.description,
-          imageUrl,
-          imageAlt: body.mainImage.alt,
-          email: contact.email,
-        }),
-      })
-
-      // If email was not sent >> return an error message
-      if (error) {
-        return new Response(
-          JSON.stringify({
-            message: `Failed to send email: ${error?.message}`,
-          }),
-          {
-            status: 500,
-            statusText: `Internal Server Error: ${error?.message}`,
-          }
-        )
-      }
-
-      // Log the response from Resend
-      console.log({ data })
+  contactData?.data.map(async (contact) => {
+    const { data: emailData, error: emailError } = await resend.emails.send({
+      from: 'Power Passenger Passage <josh@wavelandweb.com>',
+      to: contact.email ?? [],
+      subject: body.title,
+      react: Newsletter({
+        title: body.title,
+        slug: body.slug.current,
+        description: body.description,
+        imageUrl,
+        imageAlt: body.mainImage.alt,
+        email: contact.email,
+      }),
     })
-  } catch (error) {
-    console.error(error)
-  }
+
+    // Log the response from Resend
+    console.log({ emailData, emailError })
+
+    // If email was not sent >> return an error message
+    if (emailError) {
+      return new Response(
+        JSON.stringify({
+          message: `Failed to send email: ${emailError?.message}`,
+        }),
+        {
+          status: 500,
+          statusText: `Internal Server Error: ${emailError?.message}`,
+        }
+      )
+    }
+  })
 
   // If everything worked >> return a success message
   return new Response(JSON.stringify({ message: 'Email sent successfully' }), {
