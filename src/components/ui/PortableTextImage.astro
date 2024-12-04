@@ -9,5 +9,5 @@ const webpUrl = urlForImage(asset).format('webp').url()
 
 <picture>
   <source srcset={webpUrl} type="image/webp" />
-  <img class="aspect-square object-cover" src={url} alt={alt} />
+  <img class="w-full max-h-[clamp(300px,40vw,500px)] object-cover" src={url} alt={alt} />
 </picture>

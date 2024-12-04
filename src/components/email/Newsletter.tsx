@@ -1,5 +1,5 @@
-import { PortableText } from '@portabletext/react'
 import type { CSSProperties } from 'react'
+import PortableText from '../../components/text/PortableText.astro'
 
 import {
   Body,
@@ -68,7 +68,7 @@ export default function Newsletter({
             <Img src={imageUrl} width="100%" height="auto" alt={imageAlt} style={image} />
 
             {/* Post Content */}
-            <PortableText value={body} />
+            <PortableText portableText={body} />
           </Section>
 
           <Hr style={hr} />
