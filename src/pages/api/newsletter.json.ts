@@ -70,6 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
           imageUrl,
           imageAlt: body.mainImage.alt,
           email: contact.email,
+          body: body.body,
         }),
       }
     }) ?? []
