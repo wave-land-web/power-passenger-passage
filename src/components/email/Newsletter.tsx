@@ -1,4 +1,4 @@
-// import { toHTML } from '@portabletext/to-html'
+import { PortableText } from '@portabletext/react'
 
 import {
   Body,
@@ -21,15 +21,7 @@ interface NewsletterProps {
   imageAlt: string
   slug: string
   email: string
-  // body: [
-  //   {
-  //     style: string
-  //     _key: string
-  //     _type: string
-  //     children: [{ _key: string; _type: string; marks: []; text: string }]
-  //     markDefs: []
-  //   },
-  // ]
+  body: any
 }
 
 export default function Newsletter({
@@ -39,7 +31,7 @@ export default function Newsletter({
   imageAlt,
   slug,
   email,
-  // body,
+  body,
 }: NewsletterProps) {
   return (
     <Html>
@@ -74,7 +66,7 @@ export default function Newsletter({
             <Img src={imageUrl} width="300" height="auto" alt={imageAlt} style={image} />
 
             {/* Post Content */}
-            {/* <Section dangerouslySetInnerHTML={{ __html: toHTML(body) }} /> */}
+            <PortableText value={body} />
           </Section>
 
           <Text style={paragraph}>
