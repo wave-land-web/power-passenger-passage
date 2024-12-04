@@ -18,6 +18,7 @@ interface NewsletterProps {
   imageUrl: string
   imageAlt: string
   slug: string
+  email: string
 }
 
 export default function Newsletter({
@@ -26,11 +27,12 @@ export default function Newsletter({
   imageUrl,
   imageAlt,
   slug,
+  email,
 }: NewsletterProps) {
   return (
     <Html>
       <Head />
-      <Preview>Hi and welcome to Power Passenger Passage!</Preview>
+      <Preview>Welcome to Power Passenger Passage, {email}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img
@@ -40,7 +42,7 @@ export default function Newsletter({
             alt="Power Passenger Passage Logo"
             style={logo}
           />
-          <Text style={paragraph}>Hi and welcome to Power Passenger Passage,</Text>
+          <Text style={paragraph}>Hi {email},</Text>
           <Text style={paragraph}>
             I just posted something new on the Power Passenger Passage blog, and I wanted you to be
             the first to know!
@@ -48,7 +50,7 @@ export default function Newsletter({
           <Text style={paragraph}>
             <em>
               Dive into the full post to explore more:{' '}
-              <Link href={`href="https://powerpassengerpassage.netlify.app/blog/${slug}"`}>
+              <Link href={`https://powerpassengerpassage.netlify.app/blog/${slug}`}>
                 Read the Full Post
               </Link>
             </em>
@@ -56,16 +58,16 @@ export default function Newsletter({
 
           <Section style={container}>
             <Heading as="h1">{title}</Heading>
-            <Text>{description}</Text>
+            <Text style={paragraph}>{description}</Text>
             <Img src={imageUrl} width="300" height="auto" alt={imageAlt} style={image} />
           </Section>
 
           <Text style={paragraph}>
             Thanks for subscribing and being part of this journey with me. If you have any thoughts
-            or questions, just hit reply—I'd really enjoy hearing what you think.
+            or questions, feel free to reply to this email—I'd love to hear from you!
           </Text>
           <Text style={paragraph}>
-            Thanks again for joining,
+            Love,
             <br />
             Emmie
           </Text>
