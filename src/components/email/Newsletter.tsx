@@ -1,4 +1,4 @@
-import { toHTML } from '@portabletext/to-html'
+// import { toHTML } from '@portabletext/to-html'
 
 import {
   Body,
@@ -21,15 +21,15 @@ interface NewsletterProps {
   imageAlt: string
   slug: string
   email: string
-  body: [
-    {
-      style: string
-      _key: string
-      _type: string
-      children: [{ _key: string; _type: string; marks: []; text: string }]
-      markDefs: []
-    },
-  ]
+  // body: [
+  //   {
+  //     style: string
+  //     _key: string
+  //     _type: string
+  //     children: [{ _key: string; _type: string; marks: []; text: string }]
+  //     markDefs: []
+  //   },
+  // ]
 }
 
 export default function Newsletter({
@@ -39,7 +39,7 @@ export default function Newsletter({
   imageAlt,
   slug,
   email,
-  body,
+  // body,
 }: NewsletterProps) {
   return (
     <Html>
@@ -72,9 +72,9 @@ export default function Newsletter({
             <Heading as="h1">{title}</Heading>
             <Text style={paragraph}>{description}</Text>
             <Img src={imageUrl} width="300" height="auto" alt={imageAlt} style={image} />
-            
+
             {/* Post Content */}
-            <Section dangerouslySetInnerHTML={{ __html: toHTML(body) }} />
+            {/* <Section dangerouslySetInnerHTML={{ __html: toHTML(body) }} /> */}
           </Section>
 
           <Text style={paragraph}>
