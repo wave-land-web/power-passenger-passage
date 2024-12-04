@@ -1,5 +1,5 @@
+import { PortableText } from '@portabletext/react'
 import type { CSSProperties } from 'react'
-import PortableText from '../../components/text/PortableText.astro'
 
 import {
   Body,
@@ -34,6 +34,21 @@ export default function Newsletter({
   email,
   body,
 }: NewsletterProps) {
+  const components = {
+    types: {
+      image: ({
+        value,
+      }: {
+        value: {
+          asset: {
+            url: string
+          }
+          alt: string
+        }
+      }) => <Img src={value.asset.url} width="100%" height="auto" alt={value.alt} style={image} />,
+    },
+  }
+
   return (
     <Html>
       <Head />
@@ -68,7 +83,7 @@ export default function Newsletter({
             <Img src={imageUrl} width="100%" height="auto" alt={imageAlt} style={image} />
 
             {/* Post Content */}
-            <PortableText portableText={body} />
+            <PortableText value={body} components={components} />
           </Section>
 
           <Hr style={hr} />
