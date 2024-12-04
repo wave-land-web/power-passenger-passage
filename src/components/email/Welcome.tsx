@@ -6,47 +6,55 @@ import {
   Hr,
   Html,
   Img,
+  Link,
   Preview,
   Section,
   Text,
 } from '@react-email/components'
 
-interface UnsubscribeEmailProps {
+interface WelcomeProps {
   email: string
 }
 
-export default function UnsubscribeEmail({ email }: UnsubscribeEmailProps) {
+export default function Welcome({ email }: WelcomeProps) {
   return (
     <Html>
       <Head />
-      <Preview>
-        {email} has been unsubscribed from our email list. You will no longer receive any emails
-        from us.
-      </Preview>
+      <Preview>Welcome to Power Passenger Passage, {email}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img
             src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
             width="150"
             height="auto"
-            alt="Koala"
+            alt="Power Passenger Passage Logo"
             style={logo}
           />
+          <Text style={paragraph}>Hi {email},</Text>
           <Text style={paragraph}>
-            {email} has been unsubscribed from our email list. You will no longer receive any emails
-            from us.
+            Thank you for signing up for Power Passenger Passage! I'm Emmie, your guide on this
+            journey.
           </Text>
-          <Text style={paragraph}>Come back anytime!</Text>
+          <Text style={paragraph}>
+            I'm here to help. Please reach out anytime with questions, comments, or just to say hi!
+          </Text>
           <Section>
-            <Button
-              style={button}
-              href="https://powerpassengerpassage.netlify.app/"
-              target="_blank"
-            >
-              Back to Power Passenger Passage
+            <Button style={button} href="https://powerpassengerpassage.netlify.app/">
+              Learn More
             </Button>
           </Section>
+          <Text style={paragraph}>
+            Love,
+            <br />
+            Emmie
+          </Text>
           <Hr style={hr} />
+          <Link
+            href={`https://powerpassengerpassage.netlify.app/api/unsubscribe/${email}`}
+            target="_blank"
+          >
+            unsubscribe
+          </Link>
           <Text style={footer}>470 Noor Ave STE B #1148, South San Francisco, CA 94080</Text>
         </Container>
       </Body>

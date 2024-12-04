@@ -1,7 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
-import WelcomeEmail from '../../components/email/WelcomeEmail'
+import Welcome from '../../components/email/Welcome'
 import { resend } from '../../lib/resend'
 
 export const POST: APIRoute = async ({ request }) => {
@@ -43,7 +43,7 @@ export const POST: APIRoute = async ({ request }) => {
     from: 'Power Passenger Passage <josh@wavelandweb.com>',
     to: [email],
     subject: `Welcome to Power Passenger Passage, ${email}`,
-    react: WelcomeEmail({ email }),
+    react: Welcome({ email }),
   })
 
   // Log the response from Resend

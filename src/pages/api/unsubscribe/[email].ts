@@ -1,7 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
-import UnsubscribeEmail from '../../../components/email/UnsubscribeEmail'
+import Unsubscribe from '../../../components/email/Unsubscribe'
 import { resend } from '../../../lib/resend'
 
 /**
@@ -38,7 +38,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
     from: 'Power Passenger Passage <josh@wavelandweb.com>',
     to: [email],
     subject: 'You have been unsubscribed',
-    react: UnsubscribeEmail({ email }),
+    react: Unsubscribe({ email }),
   })
 
   // Log the response from Resend
