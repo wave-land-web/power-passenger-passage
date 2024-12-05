@@ -17,14 +17,14 @@ import { urlForImage } from '../../../sanity/lib/urlForImage'
 
 interface MarketingNewsletterProps {
   email: string
-  title: string
+  subject: string
   preview: string
   body: any
 }
 
 export default function MarketingNewsletter({
   email,
-  title,
+  subject,
   preview,
   body,
 }: MarketingNewsletterProps) {
@@ -56,7 +56,7 @@ export default function MarketingNewsletter({
   return (
     <Html>
       <Head />
-      <Preview>Welcome to Power Passenger Passage, {email}</Preview>
+      <Preview>{preview}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img
@@ -67,12 +67,11 @@ export default function MarketingNewsletter({
             style={logo}
           />
           <Text style={paragraph}>Hi {email},</Text>
-          <Text style={paragraph}>{preview}</Text>
 
           <Hr style={hr} />
 
           <Section style={container}>
-            <Heading as="h1">{title}</Heading>
+            <Heading as="h1">{subject}</Heading>
 
             {/* Post Content */}
             <PortableText value={body} components={components} />

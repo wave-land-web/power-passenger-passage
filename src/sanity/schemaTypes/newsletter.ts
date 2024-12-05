@@ -8,14 +8,20 @@ export default defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'subject',
+      title: 'Subject',
       type: 'string',
     }),
     defineField({
-      name: 'emailDetails',
-      title: 'Email Details',
-      type: 'emailContent',
+      name: 'preview',
+      title: 'Preview',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     }),
   ],
 })

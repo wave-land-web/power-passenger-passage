@@ -41,28 +41,20 @@ interface marketingNewsletterProps {
   _rev: string
   _type: string
   _updatedAt: string
-  title: string
-  emailDetails: {
+  body: {
+    _key: string
     _type: string
-    subject: string
-    preview: string
-    body: [
-      {
-        _type: string
-        _key: string
-        style: string
-        markDefs: []
-        children: [
-          {
-            _type: string
-            _key: string
-            text: string
-            marks: []
-          },
-        ]
-      },
-    ]
-  }
+    children: {
+      _key: string
+      _type: string
+      marks: []
+      text: string
+    }[]
+    markDefs: []
+    style: string
+  }[]
+  preview: string
+  subject: string
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -161,12 +153,12 @@ export const POST: APIRoute = async ({ request }) => {
         return {
           from: 'Power Passenger Passage <josh@wavelandweb.com>',
           to: contact.email,
-          subject: newsletterBody.title,
+          subject: newsletterBody.subject,
           react: MarketingNewsletter({
-            title: newsletterBody.title,
-            preview: newsletterBody.emailDetails.preview,
+            subject: newsletterBody.subject,
+            preview: newsletterBody.preview,
             email: contact.email,
-            body: newsletterBody.emailDetails.body,
+            body: newsletterBody.body,
           }),
         }
       }) ?? []
