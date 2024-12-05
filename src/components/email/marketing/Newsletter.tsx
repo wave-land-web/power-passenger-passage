@@ -13,27 +13,21 @@ import {
   Text,
 } from '@react-email/components'
 import type { CSSProperties } from 'react'
-import { urlForImage } from '../../sanity/lib/urlForImage'
+import { urlForImage } from '../../../sanity/lib/urlForImage'
 
-interface NewsletterProps {
-  title: string
-  description: string
-  imageUrl: string
-  imageAlt: string
-  slug: string
+interface MarketingNewsletterProps {
   email: string
+  title: string
+  preview: string
   body: any
 }
 
-export default function Newsletter({
-  title,
-  description,
-  imageUrl,
-  imageAlt,
-  slug,
+export default function MarketingNewsletter({
   email,
+  title,
+  preview,
   body,
-}: NewsletterProps) {
+}: MarketingNewsletterProps) {
   const components = {
     types: {
       image: ({
@@ -73,24 +67,12 @@ export default function Newsletter({
             style={logo}
           />
           <Text style={paragraph}>Hi {email},</Text>
-          <Text style={paragraph}>
-            I just posted something new on the Power Passenger Passage blog, and I wanted you to be
-            the first to know!
-          </Text>
-          <Text style={paragraph}>
-            <em>
-              <Link href={`https://powerpassengerpassage.netlify.app/blog/${slug}`}>
-                View in browser
-              </Link>
-            </em>
-          </Text>
+          <Text style={paragraph}>{preview}</Text>
 
           <Hr style={hr} />
 
           <Section style={container}>
             <Heading as="h1">{title}</Heading>
-            <Text style={paragraph}>{description}</Text>
-            <Img src={imageUrl} width="100%" height="auto" alt={imageAlt} style={image} />
 
             {/* Post Content */}
             <PortableText value={body} components={components} />
