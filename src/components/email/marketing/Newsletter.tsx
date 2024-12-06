@@ -102,6 +102,7 @@ const container = {
   margin: '0 auto',
   padding: '20px 0 48px',
   fontSize: '16px',
+  lineHeight: '26px',
 }
 
 const logo = {
