@@ -2,7 +2,7 @@ import { EarthGlobeIcon, EnvelopeIcon } from '@sanity/icons'
 
 export const structure = (S: any) => {
   return S.list()
-    .title('Base')
+    .title('Sanity Studio')
     .items([
       // Website (posts, pages, etc.)
       S.listItem()
@@ -11,7 +11,7 @@ export const structure = (S: any) => {
         .child(
           S.list()
             .title('Website')
-            .items([S.documentTypeListItem('post').title('Posts')])
+            .items([S.documentTypeListItem('post').title('Blog')])
           // TODO: Add pages here
         ),
       // Emails (newsletters, etc.)
