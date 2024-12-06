@@ -9,7 +9,8 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://powerpassengerpassage.com',
+  // TODO: update to https://powerpassengerpassage.com/ when published
+  site: 'https://powerpassengerpassage.netlify.app/',
   output: 'hybrid',
   prefetch: {
     prefetchAll: true,
