@@ -11,8 +11,7 @@ export interface Props {
 
 const { title, description, socialImage } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-// TODO: add a default social image
-const socialImageURL = new URL(socialImage || '/images/og-image.png', canonicalURL)
+const socialImageURL = new URL(socialImage || '/images/default_og-image.png', canonicalURL)
 ---
 
 <html lang="en">

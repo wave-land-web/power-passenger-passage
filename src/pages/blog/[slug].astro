@@ -8,6 +8,7 @@ import RecentPosts from '../../components/ui/RecentPosts.astro'
 import SanityImage from '../../components/ui/SanityImage.astro'
 import Layout from '../../layouts/Layout.astro'
 import { loadQuery } from '../../sanity/lib/load-query'
+import { urlForImage } from '../../sanity/lib/urlForImage'
 
 export async function getStaticPaths() {
   const { data: allPosts } = await loadQuery<SanityDocument[]>({
@@ -63,9 +64,12 @@ const { data: recentPosts } = await loadQuery<SanityDocument[]>({
 const currentPostIndex = props.allPosts.findIndex((p) => p.slug.current === params.slug)
 const previousPost = props.allPosts[currentPostIndex - 1] || null
 const nextPost = props.allPosts[currentPostIndex + 1] || null
+
+// Generate social image for SEO
+const socialImage = urlForImage(currentPost.mainImage).url()
 ---
 
-<Layout title={currentPost.title} description={currentPost.description}>
+<Layout title={currentPost.title} description={currentPost.description} socialImage={socialImage}>
   <header class="bg-gradient-to-b from-tan-100 to-white px-0 pb-12">
     <div
       class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-sitePadding flex flex-col items-center md:justify-center gap-8 text-center"
