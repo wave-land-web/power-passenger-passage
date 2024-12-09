@@ -92,7 +92,9 @@ export default function MarketingNewsletter({
           <Hr style={hr} />
 
           <Section style={container}>
-            <Heading as="h1">{subject}</Heading>
+            <Heading as="h1" style={heading}>
+              {subject}
+            </Heading>
 
             {/* Post Content */}
             <PortableText value={body} components={components} />
