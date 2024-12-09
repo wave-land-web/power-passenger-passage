@@ -1,4 +1,4 @@
-import { PortableText } from '@portabletext/react'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import {
   Body,
   Container,
@@ -28,18 +28,9 @@ export default function MarketingNewsletter({
   preview,
   body,
 }: MarketingNewsletterProps) {
-  const components = {
+  const components: PortableTextComponents = {
     types: {
-      image: ({
-        value,
-      }: {
-        value: {
-          asset: {
-            url: string
-          }
-          alt: string
-        }
-      }) => {
+      image: ({ value }) => {
         return (
           <Img
             src={urlForImage(value.asset).url()}
@@ -48,6 +39,36 @@ export default function MarketingNewsletter({
             alt={value.alt}
             style={image}
           />
+        )
+      },
+    },
+    block: {
+      h2: ({ children }) => {
+        return (
+          <Heading as="h2" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h3: ({ children }) => {
+        return (
+          <Heading as="h3" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h4: ({ children }) => {
+        return (
+          <Heading as="h4" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h5: ({ children }) => {
+        return (
+          <Heading as="h5" style={heading}>
+            {children}
+          </Heading>
         )
       },
     },
@@ -107,6 +128,10 @@ const container = {
 
 const logo = {
   margin: '0 auto',
+}
+
+const heading = {
+  lineHeight: 'normal',
 }
 
 const paragraph = {

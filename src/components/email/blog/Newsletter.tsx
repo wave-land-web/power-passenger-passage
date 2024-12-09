@@ -1,4 +1,4 @@
-import { PortableText } from '@portabletext/react'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import {
   Body,
   Container,
@@ -34,18 +34,9 @@ export default function BlogNewsletter({
   email,
   body,
 }: BlogNewsletterProps) {
-  const components = {
+  const components: PortableTextComponents = {
     types: {
-      image: ({
-        value,
-      }: {
-        value: {
-          asset: {
-            url: string
-          }
-          alt: string
-        }
-      }) => {
+      image: ({ value }) => {
         return (
           <Img
             src={urlForImage(value.asset).url()}
@@ -54,6 +45,36 @@ export default function BlogNewsletter({
             alt={value.alt}
             style={image}
           />
+        )
+      },
+    },
+    block: {
+      h2: ({ children }) => {
+        return (
+          <Heading as="h2" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h3: ({ children }) => {
+        return (
+          <Heading as="h3" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h4: ({ children }) => {
+        return (
+          <Heading as="h4" style={heading}>
+            {children}
+          </Heading>
+        )
+      },
+      h5: ({ children }) => {
+        return (
+          <Heading as="h5" style={heading}>
+            {children}
+          </Heading>
         )
       },
     },
@@ -88,7 +109,9 @@ export default function BlogNewsletter({
           <Hr style={hr} />
 
           <Section style={container}>
-            <Heading as="h1">{title}</Heading>
+            <Heading as="h1" style={heading}>
+              {title}
+            </Heading>
             <Text style={paragraph}>{description}</Text>
             <Img src={imageUrl} width="100%" height="auto" alt={imageAlt} style={image} />
 
@@ -126,6 +149,10 @@ const container = {
 
 const logo = {
   margin: '0 auto',
+}
+
+const heading = {
+  lineHeight: 'normal',
 }
 
 const paragraph = {
