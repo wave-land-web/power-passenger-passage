@@ -30,25 +30,34 @@ export default function Welcome({ email }: WelcomeProps) {
             alt="Power Passenger Passage Logo"
             style={logo}
           />
+
           <Text style={paragraph}>Hi {email},</Text>
-          <Text style={paragraph}>
-            Thank you for signing up for Power Passenger Passage! I'm Emmie, your guide on this
-            journey.
-          </Text>
-          <Text style={paragraph}>
-            I'm here to help. Please reach out anytime with questions, comments, or just to say hi!
-          </Text>
-          <Section>
-            <Button style={button} href="https://powerpassengerpassage.netlify.app/">
-              Learn More
-            </Button>
-          </Section>
-          <Text style={paragraph}>
-            Love,
-            <br />
-            Emmie
-          </Text>
+
           <Hr style={hr} />
+
+          <Section style={container}>
+            <Text style={paragraph}>
+              Thank you for signing up for Power Passenger Passage! I'm Emmie, your guide on this
+              journey.
+            </Text>
+            <Text style={paragraph}>
+              I'm here to help. Please reach out anytime with questions, comments, or just to say
+              hi!
+            </Text>
+            <Section>
+              <Button style={button} href="https://powerpassengerpassage.netlify.app/">
+                Learn More
+              </Button>
+            </Section>
+            <Text style={paragraph}>
+              Love,
+              <br />
+              Emmie
+            </Text>
+          </Section>
+
+          <Hr style={hr} />
+
           <Link
             href={`https://powerpassengerpassage.netlify.app/api/unsubscribe/${email}`}
             target="_blank"

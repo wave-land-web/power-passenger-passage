@@ -32,12 +32,15 @@ export default function Unsubscribe({ email }: UnsubscribeProps) {
             alt="Power Passenger Passage Logo"
             style={logo}
           />
-          <Text style={paragraph}>
-            {email} has been unsubscribed from our email list. You will no longer receive any emails
-            from us.
-          </Text>
-          <Text style={paragraph}>Come back anytime!</Text>
-          <Section>
+
+          <Hr style={hr} />
+
+          <Section style={container}>
+            <Text style={paragraph}>
+              {email} has been unsubscribed from our email list. You will no longer receive any
+              emails from us.
+            </Text>
+            <Text style={paragraph}>Come back anytime!</Text>
             <Button
               style={button}
               href="https://powerpassengerpassage.netlify.app/"
@@ -46,7 +49,9 @@ export default function Unsubscribe({ email }: UnsubscribeProps) {
               Back to Power Passenger Passage
             </Button>
           </Section>
+
           <Hr style={hr} />
+
           <Text style={footer}>470 Noor Ave STE B #1148, South San Francisco, CA 94080</Text>
         </Container>
       </Body>
