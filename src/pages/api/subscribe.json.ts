@@ -40,7 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (confirmationEmailError) {
     return new Response(
       JSON.stringify({
-        message: `Welcome message failed to send: ${confirmationEmailError?.message}`,
+        message: `Confirmation email failed to send: ${confirmationEmailError?.message}`,
       }),
       {
         status: 500,
@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // If everything worked >> return a success message
-  return new Response(JSON.stringify({ message: `Welcome message sent to ${email}!` }), {
+  return new Response(JSON.stringify({ message: `Confirmation email sent to ${email}` }), {
     status: 200,
     statusText: 'OK',
   })
