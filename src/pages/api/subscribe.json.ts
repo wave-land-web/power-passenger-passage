@@ -1,7 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
-import Welcome from '../../components/email/Welcome'
+import Confirmation from '../../components/email/Confirmation'
 import { resend } from '../../lib/resend'
 
 export const POST: APIRoute = async ({ request }) => {
@@ -21,66 +21,37 @@ export const POST: APIRoute = async ({ request }) => {
     )
   }
 
-  // -------------------------
-  // ------ Create User ------
-  // -------------------------
+  // -------------------------------------
+  // ------ Send Confirmation Email ------
+  // -------------------------------------
 
-  // Subscribe the user to the Resend audience
-  const { data: subscribeData, error: subscribeError } = await resend.contacts.create({
-    email,
-    audienceId: import.meta.env.RESEND_AUDIENCE_ID,
-  })
-
-  // Log the response from Resend
-  console.log({ subscribeData, subscribeError })
-
-  // ------------------------
-  // ------ Send Email ------
-  // ------------------------
-
-  const { data: welcomeEmailData, error: welcomeEmailError } = await resend.emails.send({
+  const { data: confirmationEmailData, error: confirmationEmailError } = await resend.emails.send({
     // TODO: add PPP domain to Resend update with emmie's email (ex/ emmie@powerpassengerpassage.com)
     from: 'Power Passenger Passage <josh@wavelandweb.com>',
     to: [email],
-    subject: `Welcome to Power Passenger Passage, ${email}`,
-    react: Welcome({ email }),
+    subject: `Please confirm your subscription to Power Passenger Passage`,
+    react: Confirmation({ email }),
   })
 
   // Log the response from Resend
-  console.log({ welcomeEmailData, welcomeEmailError })
-
-  // If there was an error subscribing the email address >> return an error
-  if (subscribeError) {
-    return new Response(
-      JSON.stringify({
-        message: `There was an error subscribing the email address: ${subscribeError?.message}`,
-      }),
-      {
-        status: 500,
-        statusText: `Internal Server Error: ${subscribeError?.message}`,
-      }
-    )
-  }
+  console.log({ confirmationEmailData, confirmationEmailError })
 
   // If there was an error sending the email >> return an error
-  if (welcomeEmailError) {
+  if (confirmationEmailError) {
     return new Response(
       JSON.stringify({
-        message: `Welcome message failed to send: ${welcomeEmailError?.message}`,
+        message: `Welcome message failed to send: ${confirmationEmailError?.message}`,
       }),
       {
         status: 500,
-        statusText: `Internal Server Error: ${welcomeEmailError?.message}`,
+        statusText: `Internal Server Error: ${confirmationEmailError?.message}`,
       }
     )
   }
 
   // If everything worked >> return a success message
-  return new Response(
-    JSON.stringify({ message: `Email address ${email} was successfully subscribed!` }),
-    {
-      status: 200,
-      statusText: 'OK',
-    }
-  )
+  return new Response(JSON.stringify({ message: `Welcome message sent to ${email}!` }), {
+    status: 200,
+    statusText: 'OK',
+  })
 }
