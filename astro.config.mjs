@@ -1,5 +1,6 @@
 // @ts-check
 import netlify from '@astrojs/netlify'
+import partytown from '@astrojs/partytown'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
@@ -32,6 +33,7 @@ export default defineConfig({
       studioBasePath: '/studio',
     }),
     react(),
+    partytown(),
   ],
   adapter: netlify({
     imageCDN: false,
