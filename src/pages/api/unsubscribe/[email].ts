@@ -35,7 +35,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
   // Send an email to the user confirming their unsubscription
   const { data: unsubscribeEmailData, error: unsubscribeEmailError } = await resend.emails.send({
     // TODO: add PPP domain to Resend update with emmie's email (ex/ emmie@powerpassengerpassage.com)
-    from: 'Power Passenger Passage <josh@wavelandweb.com>',
+    from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
     to: [email],
     subject: 'You have been unsubscribed',
     react: Unsubscribe({ email }),
