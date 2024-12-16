@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
   // -------------------------------------
 
   const { data: confirmationEmailData, error: confirmationEmailError } = await resend.emails.send({
-    // TODO: add PPP domain to Resend update with emmie's email (ex/ emmie@powerpassengerpassage.com)
+    // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
     from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
     to: [email],
     subject: `Please confirm your subscription to Power Passenger Passage`,

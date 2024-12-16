@@ -86,8 +86,9 @@ export const POST: APIRoute = async ({ request }) => {
     // Create an array of email data for each contact
     const batchData =
       contactData?.data.map((contact) => {
+        // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
         return {
-          from: 'Power Passenger Passage <josh@wavelandweb.com>',
+          from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
           to: contact.email,
           subject: postBody.title,
           react: BlogNewsletter({
@@ -150,8 +151,9 @@ export const POST: APIRoute = async ({ request }) => {
     // Create an array of email data for each contact
     const batchData =
       contactData?.data.map((contact) => {
+        // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
         return {
-          from: 'Power Passenger Passage <josh@wavelandweb.com>',
+          from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
           to: contact.email,
           subject: newsletterBody.subject,
           react: MarketingNewsletter({

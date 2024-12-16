@@ -41,7 +41,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
   // ------------------------
 
   const { data: welcomeEmailData, error: welcomeEmailError } = await resend.emails.send({
-    // TODO: add PPP domain to Resend update with emmie's email (ex/ emmie@powerpassengerpassage.com)
+    // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
     from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
     to: [email],
     subject: `Welcome to Power Passenger Passage, ${email}!`,
