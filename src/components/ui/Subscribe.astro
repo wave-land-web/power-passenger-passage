@@ -10,7 +10,7 @@ const { formId, class: className } = Astro.props
 ---
 
 <form id={formId} method="post" class={`${className} w-full max-w-lg`}>
-  <label for="email" class="sr-only">Email:</label>
+  <label for=`${formId}-email` class="sr-only">Email:</label>
   <div class="relative h-16 mb-2">
     <input
       type="email"
