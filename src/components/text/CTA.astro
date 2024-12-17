@@ -34,6 +34,8 @@ const { type, text, href, newWindow, class: className } = Astro.props
     <a
       href={`/blog/${href}/`}
       class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-red-900 hover:text-white border hover:bg-red-900 rounded-lg shadow-sm transition`}
+      title={text}
+      aria-label={text}
     >
       {text}
     </a>
