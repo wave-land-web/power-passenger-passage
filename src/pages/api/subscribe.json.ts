@@ -26,8 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
   // -------------------------------------
 
   const { data: confirmationEmailData, error: confirmationEmailError } = await resend.emails.send({
-    // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
-    from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
+    from: 'Power Passenger Passage <emmie@powerpassengerpassage.com>',
     to: [email],
     subject: `Please confirm your subscription to Power Passenger Passage`,
     react: Confirmation({ email }),

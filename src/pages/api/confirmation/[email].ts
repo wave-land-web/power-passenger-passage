@@ -41,8 +41,7 @@ export const GET: APIRoute = async ({ params, redirect }) => {
   // ------------------------
 
   const { data: welcomeEmailData, error: welcomeEmailError } = await resend.emails.send({
-    // TODO: replace with emmie's email (ex/ emmie@powerpassengerpassage.com)
-    from: 'Power Passenger Passage <josh@powerpassengerpassage.com>',
+    from: 'Power Passenger Passage <emmie@powerpassengerpassage.com>',
     to: [email],
     subject: `Welcome to Power Passenger Passage, ${email}!`,
     react: Welcome({ email }),
