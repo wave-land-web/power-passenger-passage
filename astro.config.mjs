@@ -23,6 +23,10 @@ export default defineConfig({
     icon(),
     sitemap({
       lastmod: new Date(),
+      filter: (page) =>
+        page !== 'https://powerpassengerpassage.com/subscribed/' &&
+        page !== 'https://powerpassengerpassage.com/unsubscribed/' &&
+        page !== 'https://powerpassengerpassage.com/success/',
     }),
     sanity({
       projectId: 'tenszbcb',
