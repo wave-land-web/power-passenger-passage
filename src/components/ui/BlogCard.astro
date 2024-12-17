@@ -16,7 +16,7 @@ const { post, isRow, class: className } = Astro.props
 <article class={`${className} w-full lsa lsa-slide-up no-repeat`}>
   <a
     class:list={['grid items-center gap-4 group', { 'md:grid-cols-2': isRow }]}
-    href=`/blog/${post.slug.current}`
+    href=`/blog/${post.slug.current}/`
   >
     <SanityImage image={post.mainImage} alt={post.mainImage.alt} />
 
