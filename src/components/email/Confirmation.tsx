@@ -25,7 +25,7 @@ export default function Confirmation({ email }: ConfirmationProps) {
       <Body style={main}>
         <Container style={container}>
           <Img
-            src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
+            src="https://powerpassengerpassage.com/images/ppp-logo.png"
             width="150"
             height="auto"
             alt="Power Passenger Passage Logo"
@@ -43,7 +43,7 @@ export default function Confirmation({ email }: ConfirmationProps) {
             </Text>
             <Button
               style={button}
-              href={`https://powerpassengerpassage.netlify.app/api/confirmation/${email}`}
+              href={`https://powerpassengerpassage.com/api/confirmation/${email}`}
               target="_blank"
             >
               Click to confirm your subscription

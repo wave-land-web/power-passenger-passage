@@ -26,7 +26,7 @@ export default function Unsubscribe({ email }: UnsubscribeProps) {
       <Body style={main}>
         <Container style={container}>
           <Img
-            src="https://powerpassengerpassage.netlify.app/images/ppp-logo.png"
+            src="https://powerpassengerpassage.com/images/ppp-logo.png"
             width="150"
             height="auto"
             alt="Power Passenger Passage Logo"
@@ -41,11 +41,7 @@ export default function Unsubscribe({ email }: UnsubscribeProps) {
               emails from us.
             </Text>
             <Text style={paragraph}>Come back anytime!</Text>
-            <Button
-              style={button}
-              href="https://powerpassengerpassage.netlify.app/"
-              target="_blank"
-            >
+            <Button style={button} href="https://powerpassengerpassage.com/" target="_blank">
               Back to Power Passenger Passage
             </Button>
           </Section>
