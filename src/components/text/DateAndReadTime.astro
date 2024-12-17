@@ -9,7 +9,7 @@ const { publishedAt, estimatedReadingTime, class: className } = Astro.props
 ---
 
 <p class={className}>
-  <time
+  <time datetime={publishedAt}
     >{
       new Date(publishedAt).toLocaleDateString('en-US', {
         month: 'long',
