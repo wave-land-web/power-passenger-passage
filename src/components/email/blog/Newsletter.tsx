@@ -119,7 +119,11 @@ export default function BlogNewsletter({
 
           <Hr style={hr} />
 
-          <Link href={`https://powerpassengerpassage.com/api/unsubscribe/${email}`} target="_blank">
+          <Link
+            style={link}
+            href={`https://powerpassengerpassage.com/api/unsubscribe/${email}`}
+            target="_blank"
+          >
             unsubscribe
           </Link>
           <Text style={footer}>470 Noor Ave STE B #1148, South San Francisco, CA 94080</Text>
@@ -153,6 +157,10 @@ const heading = {
 const paragraph = {
   fontSize: '16px',
   lineHeight: '26px',
+}
+
+const link = {
+  fontSize: '12px',
 }
 
 const image: CSSProperties = {
