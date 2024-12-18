@@ -109,10 +109,14 @@ const recentPosts = posts.slice(0, 3)
     </section>
 
     <section id="recent-blog-articles" class="bg-gradient-to-b from-tan-100 to-white">
-      <RecentPosts
-        title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
-        posts={recentPosts}
-      />
+      {
+        recentPosts.length > 0 && (
+          <RecentPosts
+            title='<span class="font-bold text-lg text-red-900">Stay Informed</span> With Our Recent Blog Articles'
+            posts={recentPosts}
+          />
+        )
+      }
     </section>
 
     <section id="cta" class="bg-gradient-to-b from-white to-tan-100 lsa no-repeat">
