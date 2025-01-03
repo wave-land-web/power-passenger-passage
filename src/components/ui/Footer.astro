@@ -65,8 +65,13 @@ import Subscribe from './Subscribe.astro'
         class="container-lg flex items-center justify-between py-12 border-t-[1px] border-red-200"
       >
         <p>
-          <a class="site-link-2 text-red-200" href="/docs/terms-of-use.pdf" download>Terms of Use</a
-          >
+          <a
+            class="site-link-2 inline-flex items-center gap-2 text-red-200"
+            href="/docs/terms-of-use.pdf"
+            download
+            >Terms of Use
+            <Icon name="tabler:download" class="site-icon" />
+          </a>
         </p>
 
         <ul class="flex gap-8">
