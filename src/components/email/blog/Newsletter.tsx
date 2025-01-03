@@ -126,7 +126,7 @@ export default function BlogNewsletter({
           >
             unsubscribe
           </Link>
-          <Text style={footer}>470 Noor Ave STE B #1148, South San Francisco, CA 94080</Text>
+          <Text style={footer}>304 Daffodil Ct, Purcellville VA 20132</Text>
         </Container>
       </Body>
     </Html>
