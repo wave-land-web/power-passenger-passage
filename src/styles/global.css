@@ -1,76 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-  @font-face {
-    font-family: 'Alegreya';
-    src:
-      url('/fonts/Alegreya-Regular.woff2') format('woff2'),
-      url('/fonts/Alegreya-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Alegreya';
-    src:
-      url('/fonts/Alegreya-Italic.woff2') format('woff2'),
-      url('/fonts/Alegreya-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Alegreya Sans';
-    src:
-      url('/fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-      url('/fonts/AlegreyaSans-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Alegreya Sans';
-    src:
-      url('/fonts/AlegreyaSans-Bold.woff2') format('woff2'),
-      url('/fonts/AlegreyaSans-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Alegreya Sans';
-    src:
-      url('/fonts/AlegreyaSans-Italic.woff2') format('woff2'),
-      url('/fonts/AlegreyaSans-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Alegreya Sans';
-    src:
-      url('/fonts/AlegreyaSans-BoldItalic.woff2') format('woff2'),
-      url('/fonts/AlegreyaSans-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-  }
+@font-face {
+  font-family: 'Alegreya';
+  src:
+    url('/fonts/Alegreya-Regular.woff2') format('woff2'),
+    url('/fonts/Alegreya-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-@layer components {
-  .site-icon {
-    @apply w-6 stroke-1;
-  }
+@font-face {
+  font-family: 'Alegreya';
+  src:
+    url('/fonts/Alegreya-Italic.woff2') format('woff2'),
+    url('/fonts/Alegreya-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
-:root {
+@font-face {
+  font-family: 'Alegreya Sans';
+  src:
+    url('/fonts/AlegreyaSans-Regular.woff2') format('woff2'),
+    url('/fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  src:
+    url('/fonts/AlegreyaSans-Bold.woff2') format('woff2'),
+    url('/fonts/AlegreyaSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  src:
+    url('/fonts/AlegreyaSans-Italic.woff2') format('woff2'),
+    url('/fonts/AlegreyaSans-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  src:
+    url('/fonts/AlegreyaSans-BoldItalic.woff2') format('woff2'),
+    url('/fonts/AlegreyaSans-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
   --color-transparent: transparent;
   --color-white: #ffffff;
   --color-white: oklch(100% 3.5594404384177905e-8 106.37411429114086);
@@ -99,17 +89,38 @@
   --color-green: #2ca883;
   --color-green: oklch(65.58% 0.1201 168.18);
 
+  /* Typography */
+
+  --font-header: 'Alegreya', serif;
+  --font-body: 'Alegreya Sans', sans-serif;
+
   /* Font sizes: source (https://fluid-type.tolin.ski/) */
-  --fs-2xs: clamp(0.64rem, 0.05vi + 0.63rem, 0.67rem);
-  --fs-xs: clamp(0.8rem, 0.17vi + 0.76rem, 0.89rem);
-  --fs-sm: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
-  --fs-base: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
-  --fs-md: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
-  --fs-lg: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
-  --fs-xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
-  --fs-2xl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
 
   --line-height: calc(0.6rem + 2ex);
+
+  --text-2xs: clamp(0.64rem, 0.05vi + 0.63rem, 0.67rem);
+  --text-2xs--line-height: var(--line-height);
+
+  --text-xs: clamp(0.8rem, 0.17vi + 0.76rem, 0.89rem);
+  --text-xs--line-height: var(--line-height);
+
+  --text-sm: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
+  --text-sm--line-height: var(--line-height);
+
+  --text-base: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
+  --text-base--line-height: var(--line-height);
+
+  --text-md: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
+  --text-md--line-height: var(--line-height);
+
+  --text-lg: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
+  --text-lg--line-height: var(--line-height);
+
+  --text-xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
+  --text-xl--line-height: var(--line-height);
+
+  --text-2xl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
+  --text-2xl--line-height: var(--line-height);
 
   /* Spacing */
 
@@ -133,7 +144,7 @@
     * Note: Add `no-repeat` class to prevent animations from repeating on scroll
     */
   .lsa {
-    @apply opacity-0 transform transition-[opacity,transform] duration-700;
+    @apply opacity-0 transform transition duration-700;
 
     /* Slide animations */
     &.lsa-slide-up {
@@ -170,135 +181,139 @@
 
 /* General */
 
-html {
-  /* Scrollbar */
-  scrollbar-color: var(--color-black) var(--color-white);
-  scrollbar-width: thin;
+@layer base {
+  html {
+    /* Scrollbar */
+    scrollbar-color: var(--color-black) var(--color-white);
+    scrollbar-width: thin;
 
-  /* Font */
-  @apply font-body scroll-smooth;
-}
+    /* Font */
+    @apply font-body scroll-smooth;
+  }
 
-html,
-body {
-  @apply overflow-x-hidden;
-}
+  html,
+  body {
+    @apply overflow-x-hidden;
+  }
 
-html:has(body[data-overlay-displayed='true']) {
-  @apply overflow-y-hidden;
-}
+  html:has(body[data-overlay-displayed='true']) {
+    @apply overflow-y-hidden;
+  }
 
-section {
-  @apply py-sectionPadding px-sitePadding;
-}
+  section {
+    @apply py-(--section-padding) px-(--site-padding);
+  }
 
-header,
-main,
-nav {
-  @apply w-full mx-auto;
-}
+  header,
+  main,
+  nav {
+    @apply w-full mx-auto;
+  }
 
-header {
-  @apply pb-sectionPadding px-sitePadding md:p-sitePadding;
-}
+  header {
+    @apply pb-(--section-padding) px-(--site-padding) md:p-(--site-padding);
+  }
 
-img,
-svg,
-video {
-  @apply block w-full h-auto;
-}
+  img,
+  svg,
+  video {
+    @apply block w-full h-auto;
+  }
 
-img {
-  @apply rounded-3xl drop-shadow-sm;
-}
+  img {
+    @apply rounded-3xl drop-shadow-sm;
+  }
 
-/* Typography */
+  /* Typography */
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  @apply text-balance font-header text-black;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply text-balance font-header text-black;
+  }
 
-h1 {
-  @apply text-xl;
-}
+  h1 {
+    @apply text-xl;
+  }
 
-h2 {
-  @apply text-lg;
-}
+  h2 {
+    @apply text-lg;
+  }
 
-h3 {
-  @apply text-md;
-}
+  h3 {
+    @apply text-md;
+  }
 
-h4 {
-  @apply text-base;
-}
+  h4 {
+    @apply text-base;
+  }
 
-p,
-li {
-  @apply text-sm text-slate text-pretty;
-}
+  p,
+  li {
+    @apply text-sm text-slate text-pretty;
+  }
 
-span {
-  @apply text-sm text-pretty;
-}
+  span {
+    @apply text-sm text-pretty;
+  }
 
-a {
-  @apply hover:text-red-900 transition-all;
+  a {
+    @apply hover:text-red-900 transition-all;
+  }
+
+  /* Blog post styles */
+
+  #post {
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6,
+    & img {
+      @apply mt-[0.5lh];
+    }
+
+    & a:not(.cta) {
+      @apply underline text-red-900 hover:text-red-500;
+    }
+
+    & ol,
+    & ul {
+      @apply flex flex-col gap-[0.5lh] pl-8 list-outside;
+    }
+
+    & ol {
+      @apply list-decimal;
+    }
+
+    & ul {
+      @apply list-disc;
+    }
+  }
 }
 
 /* Utility Classes */
 
-.container-sm {
-  @apply w-full max-w-xl md:max-w-4xl mx-auto;
-}
-
-.container-md {
-  @apply w-full max-w-xl md:max-w-6xl mx-auto;
-}
-
-.container-lg {
-  @apply w-full max-w-xl md:max-w-screen-2xl mx-auto;
-}
-
-.site-icon {
-  @apply w-6 stroke-1;
-}
-
-.site-link-2 {
-  @apply hover:text-white transition-all;
-}
-
-/* Blog post styles */
-
-#post {
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6,
-  & img {
-    @apply mt-[0.5lh];
+@layer components {
+  .container-sm {
+    @apply w-full max-w-xl md:max-w-4xl mx-auto;
   }
 
-  & a:not(.cta) {
-    @apply underline text-red-900 hover:text-red-500;
+  .container-md {
+    @apply w-full max-w-xl md:max-w-6xl mx-auto;
   }
 
-  & ol,
-  & ul {
-    @apply flex flex-col gap-[0.5lh] pl-8 list-outside;
+  .container-lg {
+    @apply w-full max-w-xl md:max-w-screen-2xl mx-auto;
   }
 
-  & ol {
-    @apply list-decimal;
+  .site-icon {
+    @apply w-6 stroke-1;
   }
 
-  & ul {
-    @apply list-disc;
+  .site-link-2 {
+    @apply hover:text-white transition-all;
   }
 }

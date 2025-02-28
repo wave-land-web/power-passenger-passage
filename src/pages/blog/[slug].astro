@@ -72,7 +72,7 @@ const socialImage = urlForImage(currentPost.mainImage).url()
 <Layout title={currentPost.title} description={currentPost.description} socialImage={socialImage}>
   <header class="bg-gradient-to-b from-tan-100 to-white px-0 pb-12">
     <div
-      class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-sitePadding flex flex-col items-center md:justify-center gap-8 text-center"
+      class="container-sm h-full pt-[calc(var(--nav-height)+4rem)] px-(--site-padding) flex flex-col items-center md:justify-center gap-8 text-center"
     >
       <Icon name="zig-zag" class="w-16 lsa no-repeat" />
       <h1 class="lsa lsa-slide-up no-repeat" set:html={currentPost.title} />

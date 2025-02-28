@@ -7,7 +7,7 @@ const currentPath = Astro.url.pathname
 
 <nav
   id="navigation"
-  class="group fixed top-0 has-[.active]:bottom-[1rem] left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-navHeight z-20 mt-sitePadding px-8 py-2 bg-whiteTransparent has-[.active]:bg-white backdrop-blur-xl border rounded-full has-[.active]:rounded-lg has-[.active]:transition has-[.active]:shadow-lg overflow-auto transition-all duration-500"
+  class="group fixed top-0 has-[.active]:bottom-[1rem] left-1/2 right-1/2 -translate-x-1/2 w-[calc(100%-var(--site-padding)*2)] max-w-screen-2xl min-h-(--nav-height) z-20 mt-(--site-padding) px-8 py-2 bg-whiteTransparent has-[.active]:bg-white backdrop-blur-xl border rounded-full has-[.active]:rounded-lg has-[.active]:transition has-[.active]:shadow-lg overflow-auto transition-all duration-500"
   data-current-url={currentPath}
 >
   <div class="flex items-center justify-between gap-4">
@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname
     <!-- Menu toggle -->
     <button
       id="hamburger"
-      class="relative size-10 flex md:hidden flex-col justify-center items-center hover:bg-red-100 transition rounded-lg"
+      class="relative size-10 flex md:hidden flex-col justify-center items-center hover:bg-red-100 transition rounded-lg cursor-pointer"
       aria-expanded="false"
       title="Menu"
       aria-label="Menu"
@@ -76,7 +76,10 @@ const currentPath = Astro.url.pathname
   </div>
 
   <!-- Mobile navigation -->
-  <div id="mobile-nav" class="hidden group-[.active]:block pt-12">
+  <div
+    id="mobile-nav"
+    class="hidden group-[.active]:flex flex-col justify-between gap-12 h-[calc(100%-var(--nav-height))] pt-12"
+  >
     <ul class="font-header">
       <li class="border-y-[1px] border-grey-100 py-6">
         <a href="/" title="Home" aria-label="Home" class="block hover:translate-x-2 text-md">Home</a
@@ -123,7 +126,7 @@ const currentPath = Astro.url.pathname
     </ul>
 
     <!-- Subscribe -->
-    <div class="hidden custom-height-mq:group-[.active]:block absolute bottom-8 w-5/6 max-w-80">
+    <div>
       <p class="mb-4">Subscribe to our newsletter:</p>
       <Subscribe formId="navigation-subscribe" />
     </div>
