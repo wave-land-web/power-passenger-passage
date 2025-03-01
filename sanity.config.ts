@@ -11,4 +11,5 @@ export default defineConfig({
   dataset: import.meta.env.PUBLIC_SANITY_DATASET,
   plugins: isDev ? devOnlyPlugins : [structureTool({ structure })],
   schema,
+  name: 'power-passenger-passage',
 })

@@ -224,6 +224,11 @@
     @apply rounded-3xl drop-shadow-sm;
   }
 
+  input,
+  textarea {
+    @apply bg-white;
+  }
+
   /* Typography */
 
   h1,
