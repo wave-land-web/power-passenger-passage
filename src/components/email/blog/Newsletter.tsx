@@ -83,7 +83,7 @@ export default function BlogNewsletter({
   return (
     <Html>
       <Head />
-      <Preview>Welcome to Power Passenger Passage, {email}</Preview>
+      <Preview>New Blog Post from Power Passenger Passage</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img
