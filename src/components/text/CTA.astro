@@ -5,14 +5,16 @@ export interface Props {
   href?: string
   newWindow?: boolean
   class?: string
+  id?: string
 }
 
-const { type, text, href, newWindow, class: className } = Astro.props
+const { type, text, href, newWindow, class: className, id } = Astro.props
 ---
 
 {
   type === 'link' ? (
     <a
+      id={id}
       href={href}
       class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-full shadow-sm transition`}
       target={newWindow ? '_blank' : '_self'}
@@ -24,6 +26,7 @@ const { type, text, href, newWindow, class: className } = Astro.props
     </a>
   ) : type === 'button' ? (
     <button
+      id={id}
       class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-white hover:text-white bg-red-900 hover:bg-red-800 rounded-full shadow-sm transition`}
       title={text}
       aria-label={text}
@@ -32,6 +35,7 @@ const { type, text, href, newWindow, class: className } = Astro.props
     </button>
   ) : (
     <a
+      id={id}
       href={`/blog/${href}/`}
       class={`${className} cta block max-w-fit px-[clamp(1rem,2vi,2rem)] py-[clamp(0.5rem,2vi,1rem)] text-base text-red-900 hover:text-white border hover:bg-red-900 rounded-full shadow-sm transition`}
       title={text}

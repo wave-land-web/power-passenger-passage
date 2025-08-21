@@ -1,0 +1,123 @@
+---
+import CTA from '../text/CTA.astro'
+---
+
+<div
+  id="promo-banner"
+  class="block z-20 fixed bottom-0 left-0 right-0 p-4 md:px-8 bg-tan-100 transition-all duration-300 ease-in-out border-t-1 border-black shadow-sm transform translate-y-full opacity-0"
+>
+  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center">
+    <p class="m-0 text-slate">
+      New 6-week coaching course: Finding Peace in Pregnancy! <a
+        id="learn-more-link"
+        href="/#course-sign-up"
+        class="site-link font-bold"
+        >Learn more & register <span aria-hidden="true">→</span>
+      </a>
+    </p>
+    <button
+      id="close-banner"
+      class="cursor-pointer hover:text-red-900 transition-colors"
+      aria-label="Close Promo"
+      title="Close Promo"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <line
+          x1="5"
+          y1="5"
+          x2="15"
+          y2="15"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"></line>
+        <line
+          x1="15"
+          y1="5"
+          x2="5"
+          y2="15"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"></line>
+      </svg>
+    </button>
+  </div>
+</div>
+<CTA
+  id="open-banner"
+  type="button"
+  text="Course Info ✨"
+  class="fixed bottom-4 right-4 z-20 border-0 text-xs md:text-sm cursor-pointer transition-all duration-300"
+  aria-label="Learn more about Finding Peace in Pregnancy course"
+/>
+
+<script>
+  const banner = document.getElementById('promo-banner') as HTMLElement
+  const closeBtn = document.getElementById('close-banner') as HTMLElement
+  const openBtn = document.getElementById('open-banner') as HTMLElement
+  const learnMoreLink = document.getElementById('learn-more-link') as HTMLAnchorElement
+  let bannerIsOpen = sessionStorage.getItem('bannerClosed') === 'true'
+
+  // Open/close banner helpers
+  // Handles session storage and styling with smooth slide animation
+  function closeBanner() {
+    banner.classList.add('translate-y-full', 'opacity-0')
+    banner.classList.remove('translate-y-0', 'opacity-100')
+    setTimeout(() => {
+      banner.classList.add('hidden')
+      openBtn.classList.remove('hidden')
+      // Force a reflow to ensure the hidden class is removed before animation
+      openBtn.offsetHeight
+      openBtn.classList.remove('translate-y-full', 'opacity-0')
+      openBtn.classList.add('translate-y-0', 'opacity-100')
+    }, 300) // Match the duration-300 transition
+    sessionStorage.setItem('bannerClosed', 'true')
+    bannerIsOpen = true
+  }
+
+  function openBanner() {
+    openBtn.classList.add('translate-y-full', 'opacity-0')
+    openBtn.classList.remove('translate-y-0', 'opacity-100')
+    setTimeout(() => {
+      openBtn.classList.add('hidden')
+      banner.classList.remove('hidden')
+      // Force a reflow to ensure the hidden class is removed before animation
+      banner.offsetHeight
+      banner.classList.remove('translate-y-full', 'opacity-0')
+      banner.classList.add('translate-y-0', 'opacity-100')
+    }, 300) // Match the duration-300 transition
+    sessionStorage.removeItem('bannerClosed')
+    bannerIsOpen = false
+  }
+
+  // (Load): Check if the banner should be open or closed
+  // Initialize banner state with proper animation classes
+  if (bannerIsOpen) {
+    // Banner was previously closed, show the open button
+    banner.classList.add('translate-y-full', 'opacity-0', 'hidden')
+    banner.classList.remove('translate-y-0', 'opacity-100')
+    openBtn.classList.remove('hidden', 'translate-y-full', 'opacity-0')
+    openBtn.classList.add('translate-y-0', 'opacity-100')
+  } else {
+    // Banner should show - animate it in from the bottom
+    openBtn.classList.add('hidden', 'translate-y-full', 'opacity-0')
+    openBtn.classList.remove('translate-y-0', 'opacity-100')
+
+    // Animate banner in after a short delay
+    setTimeout(() => {
+      banner.classList.remove('translate-y-full', 'opacity-0')
+      banner.classList.add('translate-y-0', 'opacity-100')
+    }, 100) // Small delay for better perceived performance
+  }
+
+  closeBtn.addEventListener('click', closeBanner)
+  openBtn.addEventListener('click', openBanner)
+  learnMoreLink.addEventListener('click', closeBanner)
+</script>
