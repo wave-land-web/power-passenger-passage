@@ -143,6 +143,7 @@ const paragraph = {
 }
 
 const link = {
+  fontSize: '16px',
   color: '#a82c51',
   textDecoration: 'underline',
 }

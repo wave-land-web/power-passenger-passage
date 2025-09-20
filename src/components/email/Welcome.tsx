@@ -59,7 +59,7 @@ export default function Welcome({ email }: WelcomeProps) {
                 target="_self"
                 download={true}
                 style={button}
-                href="/docs/calming-your-mind-in-pregnancy_3-simple-grounding-tools.pdf"
+                href="https://powerpassengerpassage.com/docs/calming-your-mind-in-pregnancy_3-simple-grounding-tools.pdf"
               >
                 Download Your Free PDF
               </Link>
@@ -114,6 +114,7 @@ const paragraph = {
 }
 
 const link = {
+  fontSize: '16px',
   color: '#a82c51',
   textDecoration: 'underline',
 }
