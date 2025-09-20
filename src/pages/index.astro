@@ -87,25 +87,118 @@ const recentPosts = posts.slice(0, 3)
       </div>
 
       <!-- Testimonials -->
-      <div class="container-md grid md:grid-cols-2 gap-8 text-center md:text-left">
-        <h3 class="text-lg md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
-          From <span class="text-lg text-red-900 font-bold">Our Community</span>
-        </h3>
+      <div id="testimonials" class="container-md">
+        <div class="mx-auto flex justify-between flex-wrap gap-8 mb-8">
+          <h3 class="text-lg mx-auto md:mx-0 md:max-w-56 lsa lsa-slide-up no-repeat delay-500">
+            From <span class="text-lg text-red-900 font-bold">Our Community</span>
+          </h3>
 
-        <blockquote class="relative px-4 md:px-0 lsa lsa-slide-up no-repeat delay-700">
-          <span class="absolute -top-8 left-0 md:-top-12 md:-left-4 text-2xl text-red-900">“</span>
-          <p class="mb-4">
-            <em>
-              I had a great experience with Emmie Strassberg during my coaching sessions. I went
-              through 5 rounds of Intrauterine insemination and three rounds of In vitro
-              fertilization which resulted in one miscarriage and one successful pregnancy. Emmie's
-              support was crucial in the process. It was an emotional experience and having a life
-              coach was very helpful.
-            </em>
-          </p>
-          <cite> - MG</cite>
-          <span class="absolute -bottom-8 right-0 md:-right-4 text-2xl text-red-900">”</span>
-        </blockquote>
+          <!-- Swiper Main Container -->
+          <div class="w-full md:w-auto flex flex-col gap-4">
+            <!-- Swiper -->
+            <div class="swiper testimonials-swiper w-full max-w-sm md:max-w-lg">
+              <!-- Quotes -->
+              <span class="absolute -top-0 left-0 text-2xl text-red-900">"</span>
+              <span class="absolute bottom-4 right-0 text-2xl text-red-900">"</span>
+
+              <div class="swiper-wrapper">
+                <!-- Slide 1 - Original testimonial -->
+                <div class="swiper-slide">
+                  <blockquote class="relative px-4 md:px-8 py-6 text-center md:text-left">
+                    <p class="mb-4">
+                      <em>
+                        I had a great experience with Emmie Strassberg during my coaching sessions.
+                        I went through 5 rounds of Intrauterine insemination and three rounds of In
+                        vitro fertilization which resulted in one miscarriage and one successful
+                        pregnancy. Emmie's support was crucial in the process. It was an emotional
+                        experience and having a life coach was very helpful.
+                      </em>
+                    </p>
+                    <cite class="font-semibold text-red-900"> - MG</cite>
+                  </blockquote>
+                </div>
+
+                <!-- Slide 2 - GW testimonial -->
+                <div class="swiper-slide">
+                  <blockquote class="relative px-4 md:px-8 py-6 text-center md:text-left">
+                    <div class="mb-4 space-y-4">
+                      <p>
+                        <em>A voice of calm and reason during my pregnancy.</em>
+                      </p>
+                      <p>
+                        <em>
+                          I cannot adequately express in words my gratitude to Dr. Emmie. Pregnancy
+                          is such a precious and life-altering time, but I struggled both physically
+                          and mentally with 'first time' jitters and some difficult side effects.
+                        </em>
+                      </p>
+                      <p>
+                        <em>
+                          Enter Dr. Emmie — a voice of calm and reason. She shared her expertise in
+                          a way that was deeply reassuring. She explained not only how my body
+                          works, but also how the system works, so I felt better equipped to
+                          navigate it and accept its limitations.
+                        </em>
+                      </p>
+                      <p>
+                        <em>
+                          In a system that often feels rushed, I loved having the space to ask
+                          questions. Dr. Emmie was always eager to share the latest research and
+                          offer guidance drawn from her years of practical experience — always in a
+                          way that supported me best.
+                        </em>
+                      </p>
+                      <p>
+                        <em>
+                          As a high-risk pregnancy doctor, she doesn't shy away from hard topics.
+                          When a pregnant friend of mine received difficult news, I immediately
+                          referred her to Dr. Emmie. She was gentle and understanding in her
+                          counseling, and my friend was so grateful for her support.
+                        </em>
+                      </p>
+                      <p>
+                        <em>I could not recommend working with Dr. Emmie more highly.</em>
+                      </p>
+                    </div>
+                    <cite class="font-semibold text-red-900"> - GW</cite>
+                  </blockquote>
+                </div>
+
+                <!-- Slide 3 - SM testimonial -->
+                <div class="swiper-slide">
+                  <blockquote class="relative px-4 md:px-8 py-6 text-center md:text-left">
+                    <div class="mb-4 space-y-4">
+                      <p>
+                        <em>
+                          When I started pregnancy coaching with Dr. Emmie Strassberg, I wasn't sure
+                          what to expect. I had just moved, was preparing for another baby, and felt
+                          overwhelmed by how challenging pregnancy had been the first time around.
+                          What stood out immediately was her unique perspective as a Maternal-Fetal
+                          Medicine physician—she understood both the medical and emotional sides of
+                          pregnancy and gave me practical tools to cope.
+                        </em>
+                      </p>
+                      <p>
+                        <em>
+                          Her warmth and empathy filled in the gap that traditional prenatal care
+                          often misses. Instead of just hearing "stress isn't good for pregnancy," I
+                          learned how to actually manage it, reframe my thinking, and find more
+                          peace. If you're considering pregnancy coaching with Dr. Strassberg, do
+                          it—having someone who is both compassionate and a physician makes a world
+                          of difference.
+                        </em>
+                      </p>
+                    </div>
+                    <cite class="font-semibold text-red-900"> - SM</cite>
+                  </blockquote>
+                </div>
+              </div>
+
+              <!-- Pagination -->
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -203,3 +296,67 @@ const recentPosts = posts.slice(0, 3)
     </section>
   </main>
 </Layout>
+
+<style>
+  .swiper {
+    padding-bottom: 2rem; /* Space for pagination */
+  }
+
+  /* Custom navigation button hover states */
+  .swiper-button-prev-custom:hover,
+  .swiper-button-next-custom:hover {
+    transform: scale(1.05);
+  }
+
+  .swiper-button-prev-custom:disabled,
+  .swiper-button-next-custom:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Custom pagination styling using Swiper CSS variables */
+  .testimonials-swiper {
+    --swiper-pagination-color: var(--color-red-900);
+    --swiper-pagination-bullet-size: 12px;
+    --swiper-pagination-bullet-width: 12px;
+    --swiper-pagination-bullet-height: 12px;
+    --swiper-pagination-bullet-inactive-color: var(--color-red-200);
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 6px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .testimonials-swiper .swiper-pagination {
+    bottom: 0;
+  }
+
+  .testimonials-swiper .swiper-pagination-bullet-active {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper/bundle'
+  import 'swiper/css/bundle'
+  import { Pagination } from 'swiper/modules'
+
+  // Initialize testimonials swiper
+  const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+    modules: [Pagination],
+    spaceBetween: 30,
+    grabCursor: true,
+    autoHeight: true,
+    autoplay: {
+      delay: 5000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next-custom',
+      prevEl: '.swiper-button-prev-custom',
+    },
+  })
+</script>
