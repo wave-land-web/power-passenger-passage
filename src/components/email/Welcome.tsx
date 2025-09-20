@@ -44,10 +44,31 @@ export default function Welcome({ email }: WelcomeProps) {
               I'm here to help. Please reach out anytime with questions, comments, or just to say
               hi!
             </Text>
+
+            <Text style={paragraph}>
+              As a welcome gift, I've prepared a special resource just for you:
+            </Text>
+
+            <Section style={giftSection}>
+              <Text style={giftTitle}>🎁 Free Download: "Calming Your Mind in Pregnancy"</Text>
+              <Text style={giftDescription}>
+                3 simple grounding tools to help you find peace and calm during your pregnancy
+                journey.
+              </Text>
+              <Link
+                target="_self"
+                download={true}
+                style={button}
+                href="/docs/calming-your-mind-in-pregnancy_3-simple-grounding-tools.pdf"
+              >
+                Download Your Free PDF
+              </Link>
+            </Section>
+
             <Section>
-              <Button style={button} href="https://powerpassengerpassage.com/">
-                Learn More
-              </Button>
+              <Link style={link} href="https://powerpassengerpassage.com/">
+                Visit our website
+              </Link>
             </Section>
             <Text style={paragraph}>
               Love,
@@ -58,7 +79,11 @@ export default function Welcome({ email }: WelcomeProps) {
 
           <Hr style={hr} />
 
-          <Link href={`https://powerpassengerpassage.com/api/unsubscribe/${email}`} target="_blank">
+          <Link
+            style={link}
+            href={`https://powerpassengerpassage.com/api/unsubscribe/${email}`}
+            target="_blank"
+          >
             unsubscribe
           </Link>
           <Text style={footer}>304 Daffodil Ct, Purcellville VA 20132</Text>
@@ -88,15 +113,22 @@ const paragraph = {
   lineHeight: '26px',
 }
 
+const link = {
+  color: '#a82c51',
+  textDecoration: 'underline',
+}
+
 const button = {
   backgroundColor: '#a82c51',
-  borderRadius: '3px',
+  borderRadius: '6px',
   color: '#ffffff',
   fontSize: '16px',
+  fontWeight: 'bold',
   textDecoration: 'none',
   textAlign: 'center' as const,
   display: 'block',
-  padding: '12px',
+  padding: '14px 28px',
+  margin: '0 auto',
 }
 
 const hr = {
@@ -107,4 +139,33 @@ const hr = {
 const footer = {
   color: '#8898aa',
   fontSize: '12px',
+}
+
+const giftSection = {
+  margin: '32px 0',
+  padding: '24px',
+  backgroundColor: '#fef7f0',
+  borderRadius: '8px',
+  border: '1px solid #f3e5d0',
+  display: 'flex',
+  flexDirection: 'column' as const,
+  alignItems: 'center' as const,
+  textAlign: 'center' as const,
+  gap: '12px',
+}
+
+const giftTitle = {
+  fontSize: '18px',
+  fontWeight: 'bold',
+  color: '#a82c51',
+  margin: '0 0 12px 0',
+  textAlign: 'center' as const,
+}
+
+const giftDescription = {
+  fontSize: '16px',
+  lineHeight: '24px',
+  color: '#666666',
+  margin: '0 0 20px 0',
+  textAlign: 'center' as const,
 }

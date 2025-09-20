@@ -100,7 +100,9 @@ export default function BlogNewsletter({
           </Text>
           <Text style={paragraph}>
             <em>
-              <Link href={`https://powerpassengerpassage.com/blog/${slug}`}>View in browser</Link>
+              <Link style={link} href={`https://powerpassengerpassage.com/blog/${slug}`}>
+                View in browser
+              </Link>
             </em>
           </Text>
 
@@ -160,7 +162,8 @@ const paragraph = {
 }
 
 const link = {
-  fontSize: '12px',
+  color: '#a82c51',
+  textDecoration: 'underline',
 }
 
 const image: CSSProperties = {

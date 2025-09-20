@@ -143,7 +143,8 @@ const paragraph = {
 }
 
 const link = {
-  fontSize: '12px',
+  color: '#a82c51',
+  textDecoration: 'underline',
 }
 
 const image: CSSProperties = {
