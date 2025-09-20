@@ -239,19 +239,23 @@
     @apply text-balance font-header text-black;
   }
 
-  h1 {
+  h1,
+  .h1 {
     @apply text-xl;
   }
 
-  h2 {
+  h2,
+  .h2 {
     @apply text-lg;
   }
 
-  h3 {
+  h3,
+  .h3 {
     @apply text-md;
   }
 
-  h4 {
+  h4,
+  .h4 {
     @apply text-base;
   }
 

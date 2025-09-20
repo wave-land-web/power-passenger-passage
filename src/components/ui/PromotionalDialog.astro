@@ -1,0 +1,134 @@
+---
+import CTA from '../text/CTA.astro'
+---
+
+<dialog
+  id="promo-popup"
+  class="w-[calc(100%-2rem)] max-w-2xl m-auto p-12 bg-red-100 border rounded-3xl shadow-sm transition-all duration-300 ease-in-out opacity-0 translate-y-4 scale-95 backdrop:transition-all backdrop:duration-300"
+>
+  <div class="flex flex-col gap-8">
+    <h2 class="text-center text-slate">New 6-week coaching course: Finding Peace in Pregnancy!</h2>
+
+    <CTA
+      type="link"
+      id="learn-more-link"
+      href="/#course-sign-up"
+      text="Learn More & Register"
+      class="mx-auto"
+    />
+  </div>
+  <button
+    id="close-popup"
+    class="cursor-pointer absolute top-4 right-4 hover:text-red-900 transition-colors"
+    aria-label="Close Promo"
+    title="Close Promo"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+      focusable="false"
+      class="size-8"
+    >
+      <line
+        x1="5"
+        y1="5"
+        x2="15"
+        y2="15"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></line>
+      <line
+        x1="15"
+        y1="5"
+        x2="5"
+        y2="15"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></line>
+    </svg>
+  </button>
+</dialog>
+
+<CTA
+  id="open-popup"
+  type="button"
+  text="Course Info ✨"
+  class="fixed bottom-4 right-4 z-20 border-0 text-xs md:text-sm cursor-pointer transition-all duration-300 hidden"
+  aria-label="Learn more about Finding Peace in Pregnancy course"
+/>
+
+<style>
+  dialog[open] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: translateY(16px) scale(0.95);
+    }
+
+    dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const popup = document.getElementById('promo-popup') as HTMLDialogElement
+  const closeBtn = document.getElementById('close-popup') as HTMLElement
+  const openBtn = document.getElementById('open-popup') as HTMLElement
+  const learnMoreLink = document.getElementById('learn-more-link') as HTMLAnchorElement
+  const wasPopupClosed = sessionStorage.getItem('popupClosed') === 'true'
+
+  // Open/close popup helpers using native dialog API
+  function closePopup() {
+    // Add closing animation class before closing
+    popup.style.opacity = '0'
+    popup.style.transform = 'translateY(16px)'
+    popup.style.transform = 'scale(0.95)'
+
+    // Close after animation completes
+    setTimeout(() => {
+      popup.close()
+      openBtn.classList.remove('hidden')
+      // Reset styles for next opening
+      popup.style.opacity = ''
+      popup.style.transform = ''
+    }, 300) // Match the transition duration
+
+    sessionStorage.setItem('popupClosed', 'true')
+  }
+
+  function openPopup() {
+    popup.showModal()
+    openBtn.classList.add('hidden')
+    sessionStorage.removeItem('popupClosed')
+  }
+
+  // Initialize popup state on page load
+  if (wasPopupClosed) {
+    // Popup was previously closed, show the open button
+    openBtn.classList.remove('hidden')
+  } else {
+    // Show popup on page load with 5 second delay
+    setTimeout(() => {
+      popup.showModal()
+    }, 5000)
+  }
+
+  // Event listeners
+  closeBtn.addEventListener('click', closePopup)
+  openBtn.addEventListener('click', openPopup)
+  learnMoreLink.addEventListener('click', closePopup)
+
+  // Close popup when clicking the backdrop
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      closePopup()
+    }
+  })
+</script>
