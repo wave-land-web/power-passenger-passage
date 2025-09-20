@@ -1,0 +1,88 @@
+---
+import { getImage } from 'astro:assets'
+import momOneImage from '../assets/mom-1.png'
+import CTA from '../components/text/CTA.astro'
+import SubscribeForm from '../components/ui/Subscribe.astro'
+import Layout from '../layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+
+const { src: momOneImageWebp } = await getImage({
+  src: momOneImage,
+  format: 'webp',
+  quality: 75,
+  loading: 'eager',
+})
+---
+
+<Layout
+  title="Power Passenger Passage | Subscribe"
+  description="Join our community of empowered mothers. Get weekly pregnancy coaching insights delivered to your inbox."
+  socialImage="/images/default_og-image.png"
+>
+  <header class="relative p-0">
+    <div
+      class="hero-bg w-full md:h-dvh p-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-whiteTransparent after:to-white"
+      style={`--bg-image: url(${momOneImageWebp});`}
+    >
+      <div
+        class="container-sm relative z-10 pt-[calc(var(--nav-height)+4rem)] md:pt-(--nav-height) h-full flex flex-col items-center md:justify-center gap-8 text-center"
+      >
+        <Icon name="zig-zag" class="w-16 lsa no-repeat" />
+        <h1 class="leading-none lsa lsa-slide-up no-repeat">
+          Join Our <span class="font-bold text-xl text-red-900">Community</span>
+        </h1>
+        <p class="max-w-2xl text-base lsa lsa-slide-up no-repeat delay-200">
+          Sometimes our minds like to play tricks on us during pregnancy. Get weekly support and
+          practical tools to calm anxiety, trust your body, and create the peaceful pregnancy
+          experience you deserve.
+        </p>
+        <div class="lsa lsa-slide-up delay-500 no-repeat">
+          <CTA class="mx-auto" type="link" href="#subscribe" text="Subscribe Now" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="bg-gradient-to-b from-white to-tan-100">
+    <section id="subscribe" class="lsa lsa-slide-up no-repeat">
+      <h2 class="max-w-xl mb-8 mx-auto text-center">You Deserve Support in Pregnancy</h2>
+
+      <div class="relative max-w-lg mx-auto">
+        <Icon name="circle" class="absolute bottom-0 -right-24 -z-10 w-48" />
+
+        <div class="relative z-10 flex flex-col gap-4">
+          <p>
+            Join a community of mothers receiving weekly tools to catch those "what if" thoughts,
+            bring yourself back to calm, and feel safer in each moment of your pregnancy journey.
+          </p>
+
+          <SubscribeForm formId="subscribe-page-form" class="mx-auto" />
+
+          <p>
+            <strong class="text-red-900">Bonus:</strong> Get our free guide with 3 simple tools to calm
+            your mind when you subscribe!
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Grayscale Background */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    opacity: 0.45;
+    z-index: 0;
+  }
+</style>
